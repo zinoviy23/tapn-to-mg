@@ -27,7 +27,7 @@ public class CreateGui {
 			}
 		}
 
-		appGui.setVisible(true);
+		appGui.setVisible(false);
 		appGui.checkForUpdate(false);
 	}
 
