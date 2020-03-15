@@ -29,6 +29,14 @@ sourceSets {
         //test {
         //    srcDirs = ['tests']
         //}
+        test {
+            java {
+                srcDirs = ['intTests/src']
+            }
+            resources {
+                srcDirs = ['intTests/resources', 'src/resources']
+            }
+        }
     }
 }
 
