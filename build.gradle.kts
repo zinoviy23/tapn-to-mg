@@ -19,8 +19,10 @@ dependencies {
 }
 
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
+
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = "1.8"
@@ -28,14 +30,6 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
-
-    compileJava { setupJava11() }
-    compileTestJava { setupJava11() }
-}
-
-fun JavaCompile.setupJava11() {
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
 }
 
 val tapaalVersion = "3.6"
