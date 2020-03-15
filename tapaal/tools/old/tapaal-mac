@@ -1,0 +1,13 @@
+#!/bin/sh
+
+##Overwrite verifyta path:
+#verifyta=/path/to/verifyta
+
+if [ -z $verifyta ]; then
+        #Search path for verifyta
+	if [ -f /Applications/verifyta ]; then
+	        export verifyta=/Applications/verifyta
+	fi 
+fi
+
+( cd `dirname "$0"`; cd lib; java -Xdock:name=TAPAAL -Dcom.apple.mrj.application.growbox.intrudes=false -Dcom.apple.macos.smallTabs=true -Dcom.apple.mrj.application.apple.menu.about.name=TAPAAL -Dcom.apple.macos.useScreenMenuBar=true -cp .:* TAPAAL )
