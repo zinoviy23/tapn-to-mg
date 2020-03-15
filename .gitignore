@@ -33,6 +33,9 @@ tapaal/run-tapaal-j6.sh
 tapaal/run-tapaal-j7.sh
 tapaal/build
 
+# cli
+cli-app/build
+
 # project
 .gradle
 build
