@@ -1,5 +1,6 @@
 package pipe.gui;
 
+import java.awt.*;
 import java.util.ArrayList;
 import com.sun.jna.Platform;
 import net.tapaal.TAPAAL;
@@ -17,6 +18,10 @@ public class CreateGui {
 	public static final String imgPath = "resources/Images/";
 
 	public static void init() {
+		if (GraphicsEnvironment.isHeadless()) {
+			throw new IllegalStateException("Please, do not call this method in headless mode");
+		}
+
 		appGui = new GuiFrame(TAPAAL.getProgramName());
 
 		if (Platform.isMac()){
@@ -32,6 +37,9 @@ public class CreateGui {
 	}
 
 	public static DataLayer getModel() {
+		if (appGui == null) {
+			return null;
+		}
 		return getModel(appGui.getSelectedTabIndex());
 	}
 

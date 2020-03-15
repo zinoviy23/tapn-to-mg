@@ -57,7 +57,7 @@ public class TimedPlaceComponent extends Place {
 		this.place.addTimedPlaceListener(listener);
 
 		attributesVisible = true;
-		ageOfTokensWindow = new Window(new Frame());
+//		ageOfTokensWindow = new Window(new Frame());
 
 		//XXX: kyrke 2018-09-06, this is bad as we leak "this", think its ok for now, as it alwas constructed when
 		//XXX: handler is called. Make static constructor and add handler from there, to make it safe.
@@ -72,7 +72,7 @@ public class TimedPlaceComponent extends Place {
 				nameOffsetXInput, nameOffsetYInput);
 		listener = timedPlaceListener();
 		attributesVisible = true;
-		ageOfTokensWindow = new Window(new Frame());
+//		ageOfTokensWindow = new Window(new Frame());
 
 		//XXX: kyrke 2018-09-06, this is bad as we leak "this", think its ok for now, as it alwas constructed when
 		//XXX: handler is called. Make static constructor and add handler from there, to make it safe.

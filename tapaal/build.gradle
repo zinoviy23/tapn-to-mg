@@ -65,5 +65,5 @@ dependencies {
 }
 
 test {
-    systemProperty 'java.awt.headless', 'false'
+    systemProperty 'java.awt.headless', 'true'
 }
