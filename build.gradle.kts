@@ -12,6 +12,9 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+
+    implementation(project(":tapaal"))
+
     testImplementation("junit", "junit", "4.12")
 }
 
@@ -25,6 +28,14 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
+
+    compileJava { setupJava11() }
+    compileTestJava { setupJava11() }
+}
+
+fun JavaCompile.setupJava11() {
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
 }
 
 val tapaalVersion = "3.6"
