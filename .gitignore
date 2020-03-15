@@ -21,3 +21,18 @@
 *.mtc1
 *.out
 *.synctex.gz
+
+# tapaal ignore
+tapaal/gradle
+tapaal/.bzr
+tapaal/gradlew.bat
+tapaal/gradlew
+tapaal/.bzrignore
+tapaal/Makefile
+tapaal/run-tapaal-j6.sh
+tapaal/run-tapaal-j7.sh
+tapaal/build
+
+# project
+.gradle
+build
