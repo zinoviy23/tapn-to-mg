@@ -1,7 +1,8 @@
 package pipe.gui;
 
-import java.awt.*;
 import java.util.ArrayList;
+
+import com.github.zinoviy23.tapaal.TapaalHeadlessService;
 import com.sun.jna.Platform;
 import net.tapaal.TAPAAL;
 import pipe.dataLayer.DataLayer;
@@ -18,7 +19,7 @@ public class CreateGui {
 	public static final String imgPath = "resources/Images/";
 
 	public static void init() {
-		if (GraphicsEnvironment.isHeadless()) {
+		if (TapaalHeadlessService.isHeadless()) {
 			throw new IllegalStateException("Please, do not call this method in headless mode");
 		}
 
@@ -32,7 +33,7 @@ public class CreateGui {
 			}
 		}
 
-		appGui.setVisible(false);
+		appGui.setVisible(true);
 		appGui.checkForUpdate(false);
 	}
 
