@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Polygon;
 import java.util.Hashtable;
 
+import com.github.zinoviy23.tapaal.TapaalHeadlessService;
 import pipe.dataLayer.DataLayer;
 import pipe.gui.CreateGui;
 import pipe.gui.DrawingSurfaceImpl;
@@ -61,7 +62,7 @@ public class TimedTransportArcComponent extends TimedInputArcComponent {
 	public void setUnderlyingArc(TransportArc arc) {
 		underlyingTransportArc = arc; // must explicitly set underlying arc
 											// on connected to
-//		updateLabel(true);
+		TapaalHeadlessService.handleHeadless(() -> updateLabel(true));
 	}
 
 	public TransportArc underlyingTransportArc() {
