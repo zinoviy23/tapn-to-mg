@@ -5,22 +5,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public final class Node implements Identity {
+public final class MovingPoint implements Identity {
     private final String id;
-    private final String label;
+    private final double position;
     private final String comment;
 
-    public static final Node INFINITY = new Node(
-            "infinity", "infinity", "This is an infinity node. Edges with this node has only one vertex"
-    );
-
-    public Node(@NotNull String id, @NotNull String label) {
-        this(id, label, null);
+    public MovingPoint(@NotNull String id, double position) {
+        this(id, position, null);
     }
 
-    public Node(@NotNull String id, @NotNull String label, @Nullable String comment) {
+    public MovingPoint(@NotNull String id, double position, @Nullable String comment) {
         this.id = Objects.requireNonNull(id, "id");
-        this.label = Objects.requireNonNull(label, "label");
+        this.position = position;
         this.comment = comment;
     }
 
@@ -28,8 +24,8 @@ public final class Node implements Identity {
         return id;
     }
 
-    public @NotNull String getLabel() {
-        return label;
+    public double getPosition() {
+        return position;
     }
 
     public @Nullable String getComment() {
@@ -40,8 +36,8 @@ public final class Node implements Identity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node node = (Node) o;
-        return id.equals(node.id);
+        MovingPoint movingPoint = (MovingPoint) o;
+        return id.equals(movingPoint.id);
     }
 
     @Override
@@ -51,9 +47,9 @@ public final class Node implements Identity {
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "MovingPoint{" +
                        "id='" + id + '\'' +
-                       ", label='" + label + '\'' +
+                       ", position=" + position +
                        '}';
     }
 }
