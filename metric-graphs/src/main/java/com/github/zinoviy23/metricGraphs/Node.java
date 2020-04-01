@@ -1,11 +1,13 @@
 package com.github.zinoviy23.metricGraphs;
 
+import com.github.zinoviy23.metricGraphs.api.Identity;
+import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public final class Node implements Identity {
+public final class Node implements Identity, ObjectWithComment {
     private final String id;
     private final String label;
     private final String comment;
@@ -28,6 +30,7 @@ public final class Node implements Identity {
         this.comment = comment;
     }
 
+    @Override
     public @NotNull String getId() {
         return id;
     }
@@ -36,6 +39,7 @@ public final class Node implements Identity {
         return label;
     }
 
+    @Override
     public @Nullable String getComment() {
         return comment;
     }

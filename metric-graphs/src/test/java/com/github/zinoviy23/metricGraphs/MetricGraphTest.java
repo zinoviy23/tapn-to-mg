@@ -134,7 +134,12 @@ public class MetricGraphTest {
                             .addArc(arc1)
                             .addArc(arc2)
                             .addArc(arc3)
+                            .setComment("Comment")
                             .buildGraph();
+
+        assertEquals("Graph", graph.getId());
+        assertEquals("Graph", graph.getLabel());
+        assertEquals("Comment", graph.getComment());
 
         var arcs = graph.getGraph().edgeSet();
         assertEquals(3, arcs.size());

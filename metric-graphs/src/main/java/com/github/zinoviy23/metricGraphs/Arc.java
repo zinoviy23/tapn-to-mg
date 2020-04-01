@@ -1,5 +1,7 @@
 package com.github.zinoviy23.metricGraphs;
 
+import com.github.zinoviy23.metricGraphs.api.Identity;
+import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public final class Arc implements Identity {
+public final class Arc implements Identity, ObjectWithComment {
     private static final String POINT_MUST_BE_ON_ARC_ERROR = "Point %s isn't on arc. [0, %f] is not contains it";
     private static final String POINT_ID_ALREADY_ASSIGNED_TO_NODE = "Points id %s already assigned to node";
 
@@ -36,6 +38,7 @@ public final class Arc implements Identity {
         this.points = List.copyOf(checkPointsOnArc(length, Objects.requireNonNull(points, "points")));
     }
 
+    @Override
     public @NotNull String getId() {
         return id;
     }
@@ -52,6 +55,7 @@ public final class Arc implements Identity {
         return target;
     }
 
+    @Override
     public @Nullable String getComment() {
         return comment;
     }

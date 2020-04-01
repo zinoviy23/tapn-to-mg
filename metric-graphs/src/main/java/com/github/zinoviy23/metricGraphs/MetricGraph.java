@@ -1,5 +1,7 @@
 package com.github.zinoviy23.metricGraphs;
 
+import com.github.zinoviy23.metricGraphs.api.Identity;
+import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,17 +13,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public final class MetricGraph implements Identity {
+public final class MetricGraph implements Identity, ObjectWithComment {
     private final String id;
     private final String label;
+    private final String comment;
     private final Graph<Node, Arc> graph;
 
-    private MetricGraph(@NotNull String id, @Nullable String label, @NotNull Graph<Node, Arc> graph) {
+    private MetricGraph(@NotNull String id,
+                        @Nullable String label,
+                        @Nullable String comment,
+                        @NotNull Graph<Node, Arc> graph) {
         this.id = Objects.requireNonNull(id, "id");
+        this.comment = comment;
         this.label = Objects.requireNonNullElse(label, id);
         this.graph = Objects.requireNonNull(graph, "graph");
     }
 
+    @Override
     public @NotNull String getId() {
         return id;
     }
@@ -32,6 +40,11 @@ public final class MetricGraph implements Identity {
 
     public @NotNull String getLabel() {
         return label;
+    }
+
+    @Override
+    public @Nullable String getComment() {
+        return comment;
     }
 
     @Override
@@ -70,6 +83,7 @@ public final class MetricGraph implements Identity {
         private final Map<String, Object> ids = new HashMap<>();
 
         private String label;
+        private String comment;
 
         public MetricGraphBuilder(@NotNull String id) {
             this.id = Objects.requireNonNull(id, "id");
@@ -78,7 +92,7 @@ public final class MetricGraph implements Identity {
 
         @Contract(value = " -> new", pure = true)
         public @NotNull MetricGraph buildGraph() {
-            return new MetricGraph(id, label, new AsUnmodifiableGraph<>(graph));
+            return new MetricGraph(id, label, comment, new AsUnmodifiableGraph<>(graph));
         }
 
         public @NotNull MetricGraphBuilder addNode(@NotNull Node node) {
@@ -103,8 +117,13 @@ public final class MetricGraph implements Identity {
             return this;
         }
 
-        public MetricGraphBuilder setLabel(@NotNull String label) {
-            this.label = Objects.requireNonNull(label, "label");
+        public MetricGraphBuilder setLabel(@Nullable String label) {
+            this.label = label;
+            return this;
+        }
+
+        public MetricGraphBuilder setComment(@NotNull String comment) {
+            this.comment = comment;
             return this;
         }
 

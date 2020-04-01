@@ -1,11 +1,13 @@
 package com.github.zinoviy23.metricGraphs;
 
+import com.github.zinoviy23.metricGraphs.api.Identity;
+import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public final class MovingPoint implements Identity {
+public final class MovingPoint implements Identity, ObjectWithComment {
     private final String id;
     private final double position;
     private final String comment;
@@ -20,6 +22,7 @@ public final class MovingPoint implements Identity {
         this.comment = comment;
     }
 
+    @Override
     public @NotNull String getId() {
         return id;
     }
@@ -28,6 +31,7 @@ public final class MovingPoint implements Identity {
         return position;
     }
 
+    @Override
     public @Nullable String getComment() {
         return comment;
     }
