@@ -21,14 +21,14 @@ public final class Arc implements Identity {
     private final List<MovingPoint> points;
 
     private Arc(@NotNull String id,
-                @NotNull String label,
+                @Nullable String label,
                 @NotNull Node source,
                 @NotNull Node target,
                 @Nullable String comment,
                 double length,
                 @NotNull List<MovingPoint> points) {
         this.id = Objects.requireNonNull(id, "id");
-        this.label = Objects.requireNonNull(label, "label");
+        this.label = Objects.requireNonNullElse(label, id);
         this.source = Objects.requireNonNull(source, "source");
         this.target = Objects.requireNonNull(target, "target");
         this.comment = comment;

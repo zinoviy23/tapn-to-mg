@@ -70,13 +70,14 @@ public class ArcTest {
                 .createArc();
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test
     public void withoutLabel() {
-        Arc.createBuilder("0")
-                .setLength(10)
-                .setSource(node1)
-                .setTarget(node2)
-                .createArc();
+        var arc = Arc.createBuilder("0")
+                          .setLength(10)
+                          .setSource(node1)
+                          .setTarget(node2)
+                          .createArc();
+        assertEquals("0",  arc.getLabel());
     }
 
     @Test(expected = IllegalArgumentException.class)

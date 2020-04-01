@@ -2,6 +2,7 @@ package com.github.zinoviy23.metricGraphs;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.AsUnmodifiableGraph;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
@@ -12,10 +13,12 @@ import java.util.Objects;
 
 public final class MetricGraph implements Identity {
     private final String id;
+    private final String label;
     private final Graph<Node, Arc> graph;
 
-    public MetricGraph(@NotNull String id, @NotNull Graph<Node, Arc> graph) {
+    private MetricGraph(@NotNull String id, @Nullable String label, @NotNull Graph<Node, Arc> graph) {
         this.id = Objects.requireNonNull(id, "id");
+        this.label = Objects.requireNonNullElse(label, id);
         this.graph = Objects.requireNonNull(graph, "graph");
     }
 
@@ -25,6 +28,10 @@ public final class MetricGraph implements Identity {
 
     public @NotNull Graph<Node, Arc> getGraph() {
         return graph;
+    }
+
+    public @NotNull String getLabel() {
+        return label;
     }
 
     @Override
@@ -62,6 +69,8 @@ public final class MetricGraph implements Identity {
         private final Map<MovingPoint, Arc> containingPoints = new HashMap<>();
         private final Map<String, Object> ids = new HashMap<>();
 
+        private String label;
+
         public MetricGraphBuilder(@NotNull String id) {
             this.id = Objects.requireNonNull(id, "id");
             ids.put(id, "CURRENT GRAPH");
@@ -69,7 +78,7 @@ public final class MetricGraph implements Identity {
 
         @Contract(value = " -> new", pure = true)
         public @NotNull MetricGraph buildGraph() {
-            return new MetricGraph(id, new AsUnmodifiableGraph<>(graph));
+            return new MetricGraph(id, label, new AsUnmodifiableGraph<>(graph));
         }
 
         public @NotNull MetricGraphBuilder addNode(@NotNull Node node) {
@@ -91,6 +100,11 @@ public final class MetricGraph implements Identity {
             graph.setEdgeWeight(arc, arc.getLength());
             addId(arc);
             addPoints(arc);
+            return this;
+        }
+
+        public MetricGraphBuilder setLabel(@NotNull String label) {
+            this.label = Objects.requireNonNull(label, "label");
             return this;
         }
 
