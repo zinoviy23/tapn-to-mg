@@ -1,6 +1,5 @@
 package com.github.zinoviy23.metricGraphs.io;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
@@ -13,36 +12,17 @@ import java.io.OutputStream;
 import java.io.Writer;
 
 public final class MetricGraphWriter implements AutoCloseable, Closeable {
-    private static final JsonFactory factory = new JsonFactory();
-
-    private static final String DIRECTED = "directed";
-    private static final String ID = "id";
-    private static final String GRAPH = "graph";
-    private static final String ALREADY_WRITE_GRAPH_TO_STREAM_MESSAGE = "Already write graph to stream!";
-    private static final String TYPE = "type";
-    private static final String METRIC_GRAPH = "metric graph";
-    private static final String LABEL = "label";
-    private static final String NODES = "nodes";
-    private static final String EDGES = "edges";
-    private static final String SOURCE = "source";
-    private static final String TARGET = "target";
-    private static final String RELATION = "relation";
-    private static final String NODES_CONNECTION = "nodes connection";
-    private static final String METADATA = "metadata";
-    private static final String POINTS = "points";
-    private static final String POSITION = "position";
-    private static final String COMMENT = "comment";
 
     private final JsonGenerator generator;
     private boolean isWritten;
     private boolean errorOccurred;
 
     public MetricGraphWriter(@NotNull OutputStream outputStream, boolean usePrettyPrinter) throws IOException {
-        this(factory.createGenerator(outputStream), usePrettyPrinter);
+        this(IoUtils.factory.createGenerator(outputStream), usePrettyPrinter);
     }
 
     public MetricGraphWriter(@NotNull Writer writer, boolean usePrettyPrinter) throws IOException {
-        this(factory.createGenerator(writer), usePrettyPrinter);
+        this(IoUtils.factory.createGenerator(writer), usePrettyPrinter);
     }
 
     private MetricGraphWriter(@NotNull JsonGenerator generator, boolean usePrettyPrint) {
@@ -53,7 +33,7 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
     }
 
     public void write(@NotNull MetricGraph graph) throws IOException {
-        if (isWritten || errorOccurred) throw new IllegalStateException(ALREADY_WRITE_GRAPH_TO_STREAM_MESSAGE);
+        if (isWritten || errorOccurred) throw new IllegalStateException(IoUtils.ALREADY_WRITE_GRAPH_TO_STREAM_MESSAGE);
 
         try {
             internalWrite(graph);
@@ -67,7 +47,7 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
 
     private void internalWrite(@NotNull MetricGraph graph) throws IOException {
         generator.writeStartObject();
-        generator.writeObjectFieldStart(GRAPH);
+        generator.writeObjectFieldStart(IoUtils.GRAPH);
 
         writeGraphInfo(graph);
         writeNodes(graph);
@@ -79,18 +59,18 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
     }
 
     private void writeGraphInfo(@NotNull MetricGraph graph) throws IOException {
-        generator.writeBooleanField(DIRECTED, true);
-        generator.writeStringField(ID, graph.getId());
-        generator.writeStringField(TYPE, METRIC_GRAPH);
-        generator.writeStringField(LABEL, graph.getLabel());
+        generator.writeBooleanField(IoUtils.DIRECTED, true);
+        generator.writeStringField(IoUtils.ID, graph.getId());
+        generator.writeStringField(IoUtils.TYPE, IoUtils.METRIC_GRAPH);
+        generator.writeStringField(IoUtils.LABEL, graph.getLabel());
     }
 
     private void writeNodes(@NotNull MetricGraph graph) throws IOException {
-        generator.writeObjectFieldStart(NODES);
+        generator.writeObjectFieldStart(IoUtils.NODES);
 
         for (var node : graph.getGraph().vertexSet()) {
             generator.writeObjectFieldStart(node.getId());
-            generator.writeStringField(LABEL, node.getLabel());
+            generator.writeStringField(IoUtils.LABEL, node.getLabel());
             writeComment(node);
             generator.writeEndObject();
         }
@@ -98,15 +78,15 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
     }
 
     private void writeEdges(@NotNull MetricGraph graph) throws IOException {
-        generator.writeArrayFieldStart(EDGES);
+        generator.writeArrayFieldStart(IoUtils.EDGES);
 
         for (var arc : graph.getGraph().edgeSet()) {
             generator.writeStartObject();
-            generator.writeStringField(ID, arc.getId());
-            generator.writeStringField(SOURCE, arc.getSource().getId());
-            generator.writeStringField(TARGET, arc.getTarget().getId());
-            generator.writeStringField(RELATION, NODES_CONNECTION);
-            generator.writeStringField(LABEL, arc.getLabel());
+            generator.writeStringField(IoUtils.ID, arc.getId());
+            generator.writeStringField(IoUtils.SOURCE, arc.getSource().getId());
+            generator.writeStringField(IoUtils.TARGET, arc.getTarget().getId());
+            generator.writeStringField(IoUtils.RELATION, IoUtils.NODES_CONNECTION);
+            generator.writeStringField(IoUtils.LABEL, arc.getLabel());
             writeArcMetadata(arc);
             generator.writeEndObject();
         }
@@ -115,21 +95,23 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
     }
 
     private void writeArcMetadata(@NotNull Arc arc) throws IOException {
-        generator.writeObjectFieldStart(METADATA);
+        generator.writeObjectFieldStart(IoUtils.METADATA);
 
-        generator.writeArrayFieldStart(POINTS);
+        generator.writeArrayFieldStart(IoUtils.POINTS);
         for (var point : arc.getPoints()) {
             generator.writeStartObject();
-            generator.writeStringField(ID, point.getId());
-            generator.writeNumberField(POSITION, point.getPosition());
+            generator.writeStringField(IoUtils.ID, point.getId());
+            generator.writeNumberField(IoUtils.POSITION, point.getPosition());
             writeComment(point);
             generator.writeEndObject();
         }
         generator.writeEndArray();
 
         if (arc.getComment() != null) {
-            generator.writeStringField(COMMENT, arc.getComment());
+            generator.writeStringField(IoUtils.COMMENT, arc.getComment());
         }
+
+        generator.writeNumberField(IoUtils.LENGTH, arc.getLength());
 
         generator.writeEndObject();
     }
@@ -137,8 +119,8 @@ public final class MetricGraphWriter implements AutoCloseable, Closeable {
     private void writeComment(@NotNull ObjectWithComment objectWithComment) throws IOException {
         if (objectWithComment.getComment() == null) return;
 
-        generator.writeObjectFieldStart(METADATA);
-        generator.writeStringField(COMMENT, objectWithComment.getComment());
+        generator.writeObjectFieldStart(IoUtils.METADATA);
+        generator.writeStringField(IoUtils.COMMENT, objectWithComment.getComment());
 
         generator.writeEndObject();
     }

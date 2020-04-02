@@ -28,7 +28,8 @@
         "points" : [ {
           "id" : "p1",
           "position" : 0.5
-        } ]
+        } ],
+        "length" : 1.0
       }
     }, {
       "id" : "arc2",
@@ -40,7 +41,8 @@
         "points" : [ {
           "id" : "p2",
           "position" : 0.7
-        } ]
+        } ],
+        "length" : 1.0
       }
     }, {
       "id" : "arc3",
@@ -52,7 +54,8 @@
         "points" : [ {
           "id" : "p3",
           "position" : 0.2
-        } ]
+        } ],
+        "length" : 1.0
       }
     } ],
     "metadata" : {
