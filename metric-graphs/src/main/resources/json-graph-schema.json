@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://jsongraphformat.info/v2.0/json-graph-schema.json",
-  "title": "JSON Graph Schema",
+  "title": "JSON Metric Graph Schema",
   "oneOf": [
     {
       "type": "object",
@@ -14,23 +14,12 @@
       "required": [
         "graph"
       ]
-    },
-    {
-      "type": "object",
-      "properties": {
-        "graphs": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/graph"
-          }
-        }
-      },
-      "additionalProperties": false
     }
   ],
   "definitions": {
     "graph": {
       "type": "object",
+      "required": ["id"],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -100,12 +89,35 @@
               "metadata": {
                 "type": [
                   "object"
-                ]
+                ],
+                "properties": {
+                  "point": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "position": {
+                          "type": "number"
+                        },
+                        "metadata": {
+                          "type": "object"
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": ["id", "position"]
+                    }
+                  }
+                },
+                "additionalProperties": true
               }
             },
             "required": [
               "source",
-              "target"
+              "target",
+              "id"
             ]
           }
         }
