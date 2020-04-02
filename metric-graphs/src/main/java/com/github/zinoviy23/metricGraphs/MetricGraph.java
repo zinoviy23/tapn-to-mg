@@ -67,9 +67,9 @@ public final class MetricGraph implements Identity, ObjectWithComment {
                        '}';
     }
 
-    @Contract("_ -> new")
-    public static @NotNull MetricGraphBuilder createBuilder(@NotNull String id) {
-        return new MetricGraphBuilder(id);
+    @Contract(" -> new")
+    public static @NotNull MetricGraphBuilder createBuilder() {
+        return new MetricGraphBuilder();
     }
 
     public static final class MetricGraphBuilder {
@@ -77,17 +77,15 @@ public final class MetricGraph implements Identity, ObjectWithComment {
         private static final String ID_ALREADY_EXISTS_MESSAGE = "Id %s already assigned to %s";
 
         private final Graph<Node, Arc> graph = new SimpleDirectedWeightedGraph<>(null, null);
-        private final String id;
 
         private final Map<MovingPoint, Arc> containingPoints = new HashMap<>();
         private final Map<String, Object> ids = new HashMap<>();
 
+        private String id;
         private String label;
         private String comment;
 
-        public MetricGraphBuilder(@NotNull String id) {
-            this.id = Objects.requireNonNull(id, "id");
-            ids.put(id, "CURRENT GRAPH");
+        private MetricGraphBuilder() {
         }
 
         @Contract(value = " -> new", pure = true)
@@ -122,8 +120,15 @@ public final class MetricGraph implements Identity, ObjectWithComment {
             return this;
         }
 
-        public MetricGraphBuilder setComment(@NotNull String comment) {
+        public MetricGraphBuilder setComment(@Nullable String comment) {
             this.comment = comment;
+            return this;
+        }
+
+        public MetricGraphBuilder setId(@NotNull String id) {
+            verifyId(() -> id);
+            this.id = id;
+            ids.put(id, "CURRENT GRAPH");
             return this;
         }
 

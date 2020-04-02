@@ -90,13 +90,13 @@ public final class Arc implements Identity, ObjectWithComment {
                        '}';
     }
 
-    @Contract(value = "_ -> new", pure = true)
-    public static @NotNull Arc.ArcBuilder createBuilder(@NotNull String id) {
-        return new ArcBuilder(id);
+    @Contract(value = " -> new", pure = true)
+    public static @NotNull Arc.ArcBuilder createBuilder() {
+        return new ArcBuilder();
     }
 
     public final static class ArcBuilder {
-        private final String id;
+        private String id;
         private String label;
         private Node source;
         private Node target;
@@ -104,8 +104,16 @@ public final class Arc implements Identity, ObjectWithComment {
         private double length;
         private List<MovingPoint> points = new ArrayList<>();
 
-        private ArcBuilder(@NotNull String id) {
-            this.id = Objects.requireNonNull(id, "id");
+        private ArcBuilder() {
+        }
+
+        public @NotNull ArcBuilder setId(@NotNull String id) {
+            Objects.requireNonNull(id, "id");
+            for (var point : points) {
+                verifyPointId(point, id);
+            }
+            this.id = id;
+            return this;
         }
 
         public @NotNull ArcBuilder setLabel(@NotNull String label) {
@@ -135,14 +143,14 @@ public final class Arc implements Identity, ObjectWithComment {
 
         public @NotNull ArcBuilder setPoints(@NotNull List<MovingPoint> points) {
             for (var point : Objects.requireNonNull(points, "points")) {
-                verifyPointId(Objects.requireNonNull(point, "point in points"));
+                verifyPointId(Objects.requireNonNull(point, "point in points"), id);
             }
             this.points = points;
             return this;
         }
 
         public @NotNull ArcBuilder addPoint(@NotNull MovingPoint point) {
-            points.add(verifyPointId(Objects.requireNonNull(point, "point")));
+            points.add(verifyPointId(Objects.requireNonNull(point, "point"), id));
             return this;
         }
 
@@ -151,7 +159,7 @@ public final class Arc implements Identity, ObjectWithComment {
             return new Arc(id, label, source, target, comment, length, points);
         }
 
-        private @NotNull MovingPoint verifyPointId(@NotNull MovingPoint movingPoint) {
+        private @NotNull MovingPoint verifyPointId(@NotNull MovingPoint movingPoint, @NotNull String id) {
             if (movingPoint.getId().equals(id)) {
                 throw new IllegalArgumentException(String.format(POINT_ID_ALREADY_ASSIGNED_TO_NODE, id));
             }

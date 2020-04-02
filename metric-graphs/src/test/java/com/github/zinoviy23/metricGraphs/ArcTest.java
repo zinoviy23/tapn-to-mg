@@ -12,7 +12,8 @@ public class ArcTest {
     @Test
     public void validCreation() {
         var p1 = new MovingPoint("p1", 0.1);
-        var arc = Arc.createBuilder("0")
+        var arc = Arc.createBuilder()
+                          .setId("0")
                           .setLabel("Arc 0")
                           .setLength(10)
                           .setSource(node1)
@@ -31,7 +32,8 @@ public class ArcTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void wrongPointGreater() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setSource(node1)
@@ -42,7 +44,8 @@ public class ArcTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void wrongPointLesser() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setSource(node1)
@@ -53,7 +56,8 @@ public class ArcTest {
 
     @Test(expected = NullPointerException.class)
     public void withoutSource() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setTarget(node2)
@@ -62,7 +66,8 @@ public class ArcTest {
 
     @Test(expected = NullPointerException.class)
     public void withoutTarget() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setSource(node1)
@@ -71,17 +76,19 @@ public class ArcTest {
 
     @Test
     public void withoutLabel() {
-        var arc = Arc.createBuilder("0")
+        var arc = Arc.createBuilder()
+                          .setId("0")
                           .setLength(10)
                           .setSource(node1)
                           .setTarget(node2)
                           .createArc();
-        assertEquals("0",  arc.getLabel());
+        assertEquals("0", arc.getLabel());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void sameIdWithPoint() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setSource(node1)
@@ -91,8 +98,21 @@ public class ArcTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void sameAfterIdWithPoint() {
+        Arc.createBuilder()
+                .setLabel("Arc 0")
+                .setLength(10)
+                .setSource(node1)
+                .setTarget(node2)
+                .addPoint(new MovingPoint("0", 2))
+                .setId("0")
+                .createArc();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void sameIdWithPoints() {
-        Arc.createBuilder("0")
+        Arc.createBuilder()
+                .setId("0")
                 .setLabel("Arc 0")
                 .setLength(10)
                 .setSource(node1)
@@ -103,21 +123,24 @@ public class ArcTest {
 
     @Test
     public void equals() {
-        var arc1 = Arc.createBuilder("0")
-                          .setLabel("Arc 0")
-                          .setLength(10)
-                          .setSource(node1)
-                          .setTarget(node2)
-                          .createArc();
+        var arc1 = Arc.createBuilder()
+                           .setId("0")
+                           .setLabel("Arc 0")
+                           .setLength(10)
+                           .setSource(node1)
+                           .setTarget(node2)
+                           .createArc();
 
-        var arc2 = Arc.createBuilder("0")
-                          .setLabel("Arc 1")
-                          .setLength(11)
-                          .setSource(node2)
-                          .setTarget(node1)
-                          .createArc();
+        var arc2 = Arc.createBuilder()
+                           .setId("0")
+                           .setLabel("Arc 1")
+                           .setLength(11)
+                           .setSource(node2)
+                           .setTarget(node1)
+                           .createArc();
 
-        var arc3 = Arc.createBuilder("1")
+        var arc3 = Arc.createBuilder()
+                           .setId("1")
                            .setLabel("Arc 0")
                            .setLength(10)
                            .setSource(node1)
@@ -130,7 +153,8 @@ public class ArcTest {
 
     @Test
     public void toStringTest() {
-        var arc = Arc.createBuilder("0")
+        var arc = Arc.createBuilder()
+                          .setId("0")
                           .setLabel("Arc 0")
                           .setLength(10)
                           .setSource(node1)

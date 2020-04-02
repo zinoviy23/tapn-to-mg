@@ -8,7 +8,8 @@ import static org.junit.Assert.*;
 public class MetricGraphTest {
     @Test(expected = IllegalArgumentException.class)
     public void addExistingNode() {
-        MetricGraph.createBuilder("1")
+        MetricGraph.createBuilder()
+                .setId("1")
                 .addNode(new Node("1", "aaa"))
                 .addNode(new Node("1", "bbb"));
     }
@@ -16,16 +17,19 @@ public class MetricGraphTest {
     @Test(expected = IllegalArgumentException.class)
     public void addExistingArc() {
         MetricGraph
-                .createBuilder("1")
+                .createBuilder()
+                .setId("1")
                 .addNode(node1)
                 .addNode(node2)
-                .addArc(Arc.createBuilder("1")
+                .addArc(Arc.createBuilder()
+                                .setId("1")
                                 .setLabel("2")
                                 .setSource(node1)
                                 .setTarget(node2)
                                 .createArc()
                 )
-                .addArc(Arc.createBuilder("1")
+                .addArc(Arc.createBuilder()
+                                .setId("1")
                                 .setLabel("3")
                                 .setTarget(node1)
                                 .setSource(node2)
@@ -35,7 +39,8 @@ public class MetricGraphTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void addExistingPoint() {
-        var arc1 = Arc.createBuilder("1")
+        var arc1 = Arc.createBuilder()
+                           .setId("1")
                            .setTarget(node1)
                            .setSource(node2)
                            .setLabel("1")
@@ -43,7 +48,8 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("p1", 1))
                            .createArc();
 
-        var arc2 = Arc.createBuilder("2")
+        var arc2 = Arc.createBuilder()
+                           .setId("2")
                            .setTarget(node1)
                            .setSource(node3)
                            .setLabel("2")
@@ -51,7 +57,8 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("p1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder("3")
+        MetricGraph.createBuilder()
+                .setId("3")
                 .addNode(node1)
                 .addNode(node2)
                 .addNode(node3)
@@ -61,7 +68,8 @@ public class MetricGraphTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void sameIdNodeAndArc() {
-        var arc1 = Arc.createBuilder("Node1")
+        var arc1 = Arc.createBuilder()
+                           .setId("Node1")
                            .setTarget(node1)
                            .setSource(node2)
                            .setLabel("1")
@@ -69,7 +77,8 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("p1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder("3")
+        MetricGraph.createBuilder()
+                .setId("3")
                 .addNode(node1)
                 .addNode(node2)
                 .addArc(arc1);
@@ -77,7 +86,8 @@ public class MetricGraphTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void sameIdNodePoint() {
-        var arc1 = Arc.createBuilder("arc1")
+        var arc1 = Arc.createBuilder()
+                           .setId("arc1")
                            .setTarget(node1)
                            .setSource(node2)
                            .setLabel("1")
@@ -85,7 +95,8 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("Node1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder("3")
+        MetricGraph.createBuilder()
+                .setId("3")
                 .addNode(node1)
                 .addNode(node2)
                 .addArc(arc1);
@@ -93,9 +104,26 @@ public class MetricGraphTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void sameIdNodeAndGraph() {
-        MetricGraph.createBuilder("Node1")
+        MetricGraph.createBuilder()
+                .setId("Node1")
                 .addNode(node1)
                 .addNode(node2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void sameIdGraphAndNode() {
+        MetricGraph.createBuilder()
+                .addNode(node1)
+                .setId("Node1")
+                .addNode(node2);
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    @Test(expected = NullPointerException.class)
+    public void withoutId() {
+        MetricGraph.createBuilder()
+                .addNode(node1)
+                .buildGraph();
     }
 
     @Test
@@ -121,7 +149,7 @@ public class MetricGraphTest {
 
     @Test
     public void toStringTest() {
-        var graph = MetricGraph.createBuilder("1").buildGraph();
+        var graph = MetricGraph.createBuilder().setId("1").buildGraph();
         assertEquals("MetricGraph{id='1'}", graph.toString());
     }
 }
