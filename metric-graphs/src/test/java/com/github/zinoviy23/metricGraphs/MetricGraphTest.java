@@ -2,13 +2,10 @@ package com.github.zinoviy23.metricGraphs;
 
 import org.junit.Test;
 
+import static com.github.zinoviy23.metricGraphs.TestData.*;
 import static org.junit.Assert.*;
 
 public class MetricGraphTest {
-    private final Node node1 = new Node("Node1", "Node1");
-    private final Node node2 = new Node("Node2", "Node2");
-    private final Node node3 = new Node("Node3", "Node3");
-
     @Test(expected = IllegalArgumentException.class)
     public void addExistingNode() {
         MetricGraph.createBuilder("1")
@@ -103,39 +100,7 @@ public class MetricGraphTest {
 
     @Test
     public void validCreation() {
-        var arc1 = Arc.createBuilder("arc1")
-                          .setTarget(node1)
-                          .setSource(node2)
-                          .setLength(1)
-                          .addPoint(new MovingPoint("p1", 0.5))
-                          .setLabel("my arc")
-                          .createArc();
-
-        var arc2 = Arc.createBuilder("arc2")
-                          .setTarget(node2)
-                          .setSource(node3)
-                          .setLength(1)
-                          .addPoint(new MovingPoint("p2", 0.7))
-                          .setLabel("my arc")
-                          .createArc();
-
-        var arc3 = Arc.createBuilder("arc3")
-                          .setTarget(node3)
-                          .setSource(node1)
-                          .setLength(1)
-                          .addPoint(new MovingPoint("p3", 0.2))
-                          .setLabel("my arc")
-                          .createArc();
-
-        var graph = MetricGraph.createBuilder("Graph")
-                            .addNode(node1)
-                            .addNode(node2)
-                            .addNode(node3)
-                            .addArc(arc1)
-                            .addArc(arc2)
-                            .addArc(arc3)
-                            .setComment("Comment")
-                            .buildGraph();
+        var graph = createGraph();
 
         assertEquals("Graph", graph.getId());
         assertEquals("Graph", graph.getLabel());

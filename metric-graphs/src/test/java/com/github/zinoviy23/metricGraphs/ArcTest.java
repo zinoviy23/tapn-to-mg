@@ -4,12 +4,11 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static com.github.zinoviy23.metricGraphs.TestData.node1;
+import static com.github.zinoviy23.metricGraphs.TestData.node2;
 import static org.junit.Assert.*;
 
 public class ArcTest {
-    private final Node node1 = new Node("Node1", "Node1");
-    private final Node node2 = new Node("Node2", "Node2");
-
     @Test
     public void validCreation() {
         var p1 = new MovingPoint("p1", 0.1);

@@ -1,6 +1,7 @@
 plugins {
     java
     jacoco
+    `java-library`
 }
 
 group = "com.github.zinoviy23"
@@ -11,8 +12,10 @@ repositories {
 }
 
 dependencies {
-    implementation(group = "org.jgrapht", name = "jgrapht-core", version = "1.4.0")
-    implementation(group = "org.jgrapht", name = "jgrapht-io", version = "1.4.0")
+    api(group = "org.jgrapht", name = "jgrapht-core", version = "1.4.0")
+
+    implementation(group = "com.fasterxml.jackson.core", name = "jackson-core", version = "2.10.3")
+    implementation(group = "org.everit.json", name = "org.everit.json.schema", version = "1.5.1")
 
     compileOnly("org.jetbrains:annotations:19.0.0")
 

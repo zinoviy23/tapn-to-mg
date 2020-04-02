@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="json-graph-schema">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="json-graph-schema" />
+              <option name="relativePathToSchema" value="https://jsongraphformat.info/v2.0/json-graph-schema.json" />
+              <option name="schemaVersion" value="JSON Schema version 7" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="metric-graphs/src/test/resources/testData/writer/validGraph.json" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
