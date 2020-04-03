@@ -38,9 +38,13 @@
           "type": "string"
         },
         "metadata": {
-          "type": [
-            "object"
-          ]
+          "type": "object",
+          "properties": {
+            "comment": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
         },
         "nodes": {
           "type": "object",
@@ -51,7 +55,13 @@
                 "type": "string"
               },
               "metadata": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                  "comment": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
               }
             },
             "additionalProperties": false
@@ -103,12 +113,21 @@
                           "type": "number"
                         },
                         "metadata": {
-                          "type": "object"
+                          "type": "object",
+                          "properties": {
+                            "comment": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "additionalProperties": false,
                       "required": ["id", "position"]
                     }
+                  },
+                  "length": {
+                    "type": "number"
                   }
                 },
                 "additionalProperties": true
