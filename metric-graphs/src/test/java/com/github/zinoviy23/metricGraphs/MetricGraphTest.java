@@ -6,7 +6,7 @@ import static com.github.zinoviy23.metricGraphs.TestData.*;
 import static org.junit.Assert.*;
 
 public class MetricGraphTest {
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void addExistingNode() {
         MetricGraph.createBuilder()
                 .setId("1")
@@ -14,7 +14,7 @@ public class MetricGraphTest {
                 .addNode(new Node("1", "bbb"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void addExistingArc() {
         MetricGraph
                 .createBuilder()
@@ -37,7 +37,7 @@ public class MetricGraphTest {
                 );
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void addExistingPoint() {
         var arc1 = Arc.createBuilder()
                            .setId("1")
@@ -66,7 +66,7 @@ public class MetricGraphTest {
                 .addArc(arc2);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdNodeAndArc() {
         var arc1 = Arc.createBuilder()
                            .setId("Node1")
@@ -84,7 +84,7 @@ public class MetricGraphTest {
                 .addArc(arc1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdNodePoint() {
         var arc1 = Arc.createBuilder()
                            .setId("arc1")
@@ -102,7 +102,7 @@ public class MetricGraphTest {
                 .addArc(arc1);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdNodeAndGraph() {
         MetricGraph.createBuilder()
                 .setId("Node1")
@@ -110,7 +110,7 @@ public class MetricGraphTest {
                 .addNode(node2);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdGraphAndNode() {
         MetricGraph.createBuilder()
                 .addNode(node1)
@@ -124,6 +124,21 @@ public class MetricGraphTest {
         MetricGraph.createBuilder()
                 .addNode(node1)
                 .buildGraph();
+    }
+
+    @Test(expected = MetricGraphStructureException.class)
+    public void wrongReversal() {
+        MetricGraph.createBuilder()
+                .addNode(node1)
+                .addNode(node2)
+                .addArc(arc1)
+                .addArc(Arc.createBuilder()
+                                .setId("arc 2")
+                                .setLength(2)
+                                .setSource(node1)
+                                .setTarget(node2)
+                                .createArc()
+                );
     }
 
     @Test

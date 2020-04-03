@@ -30,7 +30,7 @@ public class ArcTest {
         assertTrue(arc.getPoints().contains(p1));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void wrongPointGreater() {
         Arc.createBuilder()
                 .setId("0")
@@ -42,7 +42,7 @@ public class ArcTest {
                 .createArc();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void wrongPointLesser() {
         Arc.createBuilder()
                 .setId("0")
@@ -85,7 +85,7 @@ public class ArcTest {
         assertEquals("0", arc.getLabel());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdWithPoint() {
         Arc.createBuilder()
                 .setId("0")
@@ -97,7 +97,7 @@ public class ArcTest {
                 .createArc();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameAfterIdWithPoint() {
         Arc.createBuilder()
                 .setLabel("Arc 0")
@@ -109,7 +109,7 @@ public class ArcTest {
                 .createArc();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = MetricGraphStructureException.class)
     public void sameIdWithPoints() {
         Arc.createBuilder()
                 .setId("0")

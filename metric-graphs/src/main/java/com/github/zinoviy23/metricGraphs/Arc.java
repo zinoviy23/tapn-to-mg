@@ -161,14 +161,14 @@ public final class Arc implements Identity, ObjectWithComment {
 
         private @NotNull MovingPoint verifyPointId(@NotNull MovingPoint movingPoint, @NotNull String id) {
             if (movingPoint.getId().equals(id)) {
-                throw new IllegalArgumentException(String.format(POINT_ID_ALREADY_ASSIGNED_TO_NODE, id));
+                throw new MetricGraphStructureException(String.format(POINT_ID_ALREADY_ASSIGNED_TO_NODE, id));
             }
             return movingPoint;
         }
     }
 
     private static double verifyLength(double length) {
-        if (length <= 0) throw new IllegalArgumentException("length must be greater than 0");
+        if (length <= 0) throw new MetricGraphStructureException("length must be greater than 0");
         return length;
     }
 
@@ -177,7 +177,7 @@ public final class Arc implements Identity, ObjectWithComment {
                 .filter(point -> point.getPosition() < 0 || point.getPosition() > arcLength)
                 .findAny()
                 .ifPresent(point -> {
-                    throw new IllegalArgumentException(String.format(POINT_MUST_BE_ON_ARC_ERROR, point, arcLength));
+                    throw new MetricGraphStructureException(String.format(POINT_MUST_BE_ON_ARC_ERROR, point, arcLength));
                 });
         return points;
     }

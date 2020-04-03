@@ -2,6 +2,7 @@ package com.github.zinoviy23.metricGraphs;
 
 import com.github.zinoviy23.metricGraphs.api.Identity;
 import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
+import com.github.zinoviy23.metricGraphs.util.DoubleUtil;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -106,6 +107,7 @@ public final class MetricGraph implements Identity, ObjectWithComment {
             Objects.requireNonNull(arc, "arc");
             verifyId(arc);
             verifyPoints(arc);
+            verifyReversal(arc);
             if (!graph.addEdge(arc.getSource(), arc.getTarget(), arc)) {
                 failAlreadyExists(arc);
             }
@@ -136,7 +138,7 @@ public final class MetricGraph implements Identity, ObjectWithComment {
             for (var point : arc.getPoints()) {
                 verifyId(point);
                 if (containingPoints.containsKey(point)) {
-                    throw new IllegalArgumentException(point + ALREADY_EXISTS_IN_GRAPH_MESSAGE + id + " in node " + arc);
+                    throw new MetricGraphStructureException(point + ALREADY_EXISTS_IN_GRAPH_MESSAGE + id + " in node " + arc);
                 }
             }
         }
@@ -150,8 +152,19 @@ public final class MetricGraph implements Identity, ObjectWithComment {
 
         private void verifyId(@NotNull Identity identity) {
             if (ids.containsKey(identity.getId())) {
-                throw new IllegalArgumentException(
+                throw new MetricGraphStructureException(
                         String.format(ID_ALREADY_EXISTS_MESSAGE, identity.getId(), ids.get(identity.getId()))
+                );
+            }
+        }
+
+        private void verifyReversal(@NotNull Arc arc) {
+            var edge = graph.getEdge(arc.getTarget(), arc.getSource());
+            if (edge == null) return;
+
+            if (!DoubleUtil.equals(edge.getLength(), arc.getLength())) {
+                throw new MetricGraphStructureException(
+                        String.format("Reversal edge %s of %s must have length %f", edge, arc, arc.getLength())
                 );
             }
         }
@@ -162,7 +175,7 @@ public final class MetricGraph implements Identity, ObjectWithComment {
 
         @Contract("_ -> fail")
         private void failAlreadyExists(Object o) {
-            throw new IllegalArgumentException(o + ALREADY_EXISTS_IN_GRAPH_MESSAGE + id);
+            throw new MetricGraphStructureException(o + ALREADY_EXISTS_IN_GRAPH_MESSAGE + id);
         }
     }
 }
