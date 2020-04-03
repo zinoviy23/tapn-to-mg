@@ -17,6 +17,9 @@ dependencies {
     implementation(group = "com.fasterxml.jackson.core", name = "jackson-core", version = "2.10.3")
     implementation(group = "org.everit.json", name = "org.everit.json.schema", version = "1.5.1")
 
+    implementation(group = "org.apache.logging.log4j", name = "log4j-api", version = "2.13.1")
+    implementation(group = "org.apache.logging.log4j", name = "log4j-core", version = "2.13.1")
+
     compileOnly("org.jetbrains:annotations:19.0.0")
 
     testImplementation("junit", "junit", "4.12")

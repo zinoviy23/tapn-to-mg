@@ -8,6 +8,8 @@ import com.github.zinoviy23.metricGraphs.MovingPoint;
 import com.github.zinoviy23.metricGraphs.Node;
 import com.github.zinoviy23.metricGraphs.util.Ref;
 import com.github.zinoviy23.metricGraphs.util.ThrowableBiConsumer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jgrapht.alg.util.Triple;
@@ -17,9 +19,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
 
 public final class MetricGraphReader implements AutoCloseable, Closeable {
+    private static final Logger LOG = LogManager.getLogger(MetricGraphReader.class);
+
+    private static final String GRAPH_HAS_EDGES_BUT_HASN_T_NODES_MESSAGE = "Graph has edges, but hasn't nodes";
+    private static final String HASN_T_ANY_NODES_WITH_ID_MESSAGE = "Hasn't any nodes with id=";
+
     private final JsonParser parser;
     private boolean isRead;
     private boolean errorOccurred;
@@ -67,24 +73,34 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
         Map<String, Node> nodes = null;
         List<Triple<String, String, Arc.ArcBuilder>> edgesInfo = null;
         while (parser.nextToken() != JsonToken.END_OBJECT) {
-            if (IoUtils.ID.equals(parser.getCurrentName())) {
+            var currentName = parser.getCurrentName();
+            if (IoUtils.ID.equals(currentName)) {
                 parser.nextToken();
                 graphBuilder.setId(parser.getValueAsString());
             }
 
-            if (IoUtils.LABEL.equals(parser.getCurrentName())) {
+            if (IoUtils.LABEL.equals(currentName)) {
                 parser.nextToken();
                 graphBuilder.setLabel(parser.getValueAsString());
             }
 
-            if (IoUtils.NODES.equals(parser.getCurrentName())) {
+            if (IoUtils.NODES.equals(currentName)) {
                 parser.nextToken();
                 nodes = readNodes(graphBuilder);
             }
 
-            if (IoUtils.EDGES.equals(parser.getCurrentName())) {
+            if (IoUtils.EDGES.equals(currentName)) {
                 parser.nextToken();
                 edgesInfo = readEdges();
+            }
+
+            if (IoUtils.METADATA.equals(currentName)) {
+                fetchMetadata((name, balance) -> {
+                    if (IoUtils.COMMENT.equals(name) && balance == 1) {
+                        parser.nextToken();
+                        graphBuilder.setComment(parser.getValueAsString());
+                    }
+                });
             }
         }
 
@@ -92,20 +108,22 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
             for (var triple : edgesInfo) {
                 var source = nodes.get(triple.getFirst());
                 var target = nodes.get(triple.getSecond());
-                if (source != null && target != null) {
-                    var arcBuilder = triple.getThird();
-                    graphBuilder.addArc(
-                            arcBuilder
-                                    .setSource(source)
-                                    .setTarget(target)
-                                    .createArc()
-                    );
-                } else {
-                    throw new RuntimeException("(((");
+                if (source == null) {
+                    throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getFirst());
                 }
+                if (target == null) {
+                    throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getSecond());
+                }
+                var arcBuilder = triple.getThird();
+                graphBuilder.addArc(
+                        arcBuilder
+                                .setSource(source)
+                                .setTarget(target)
+                                .createArc()
+                );
             }
         } else if (edgesInfo != null) {
-            throw new RuntimeException("(((((");
+            throw new MetricGraphReadingException(GRAPH_HAS_EDGES_BUT_HASN_T_NODES_MESSAGE);
         }
 
         return graphBuilder.buildGraph();
@@ -142,8 +160,9 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
             }
             if (IoUtils.ID.equals(currentName)) {
                 parser.nextToken();
-                arcBuilder.setId(parser.getValueAsString());
-                System.out.println("read edge " + parser.getValueAsString());
+                var valueAsString = parser.getValueAsString();
+                arcBuilder.setId(valueAsString);
+                LOG.debug(() -> "read edge " + valueAsString);
             }
             if (IoUtils.METADATA.equals(currentName)) {
                 readArcMetadata(arcBuilder);
@@ -188,7 +207,8 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
             if (IoUtils.ID.equals(currentName)) {
                 parser.nextToken();
                 id = parser.getValueAsString();
-                System.out.println("read point " + id);
+                String finalId = id;
+                LOG.debug(() -> "read point " + finalId);
             }
             if (IoUtils.POSITION.equals(currentName)) {
                 parser.nextToken();
@@ -212,7 +232,7 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
     private @NotNull Map<String, Node> readNodes(@NotNull MetricGraph.MetricGraphBuilder graphBuilder) throws IOException {
         Map<String, Node> nodes = new HashMap<>();
         while (parser.nextToken() != JsonToken.END_OBJECT) {
-            System.out.println("read nodes");
+            LOG.debug(() -> "read nodes");
             String id = parser.getCurrentName();
             if (id != null) {
                 var node = readNode(id);
@@ -228,7 +248,7 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
         Ref<String> comment = new Ref<>();
         while (parser.nextToken() != JsonToken.END_OBJECT) {
             if (IoUtils.LABEL.equals(parser.getCurrentName())) {
-                System.out.println("read node " + id);
+                LOG.debug(() -> "read node " + id);
                 parser.nextToken();
                 label = parser.getValueAsString();
             }

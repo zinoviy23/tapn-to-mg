@@ -1,0 +1,29 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "Graph",
+    "type" : "metric graph",
+    "label" : "Graph",
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "Node1",
+      "target" : "Node4",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "length" : 1.0
+      }
+    } ],
+    "metadata" : {
+      "comment" : "Comment"
+    },
+    "nodes" : {
+      "Node1" : {
+        "label" : "Node1"
+      },
+      "Node2" : {
+        "label" : "Node2"
+      }
+    }
+  }
+}

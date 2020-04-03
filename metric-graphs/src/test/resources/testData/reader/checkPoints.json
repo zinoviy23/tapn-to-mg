@@ -1,0 +1,48 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "Graph",
+    "type" : "metric graph",
+    "label" : "Graph",
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "Node2",
+      "target" : "Node1",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "length" : 1.0,
+        "points" : [
+          {
+            "id" : "p1",
+            "position" : 0.3,
+            "metadata": {
+              "comment" : "this is point 1",
+              "lol" : {
+                "kek": true
+              }
+            }
+          },
+          {
+            "metadata": {
+              "comment": "this is point 2"
+            },
+            "id": "p2",
+            "position" : 0.4
+          }
+        ]
+      }
+    } ],
+    "metadata" : {
+      "comment" : "Comment"
+    },
+    "nodes" : {
+      "Node1" : {
+        "label" : "Node1"
+      },
+      "Node2" : {
+        "label" : "Node2"
+      }
+    }
+  }
+}

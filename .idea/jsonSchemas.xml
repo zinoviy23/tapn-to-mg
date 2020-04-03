@@ -14,6 +14,9 @@
                   <Item>
                     <option name="path" value="metric-graphs/src/test/resources/testData/writer/validGraph.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="metric-graphs/src/test/resources/testData/reader/edgesBeforeNodes.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
