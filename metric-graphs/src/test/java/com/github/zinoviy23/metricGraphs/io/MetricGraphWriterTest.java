@@ -33,7 +33,7 @@ public class MetricGraphWriterTest {
 
     @Test
     public void writeToFile() throws IOException {
-        var file = new File("file.json");
+        var file = File.createTempFile("file", ".json");
         try {
             var graph = createGraph();
             try (var writer = new MetricGraphWriter(new FileOutputStream(file), true)) {

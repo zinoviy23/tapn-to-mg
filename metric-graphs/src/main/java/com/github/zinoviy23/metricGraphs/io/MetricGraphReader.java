@@ -13,8 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -42,6 +42,10 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
 
     public MetricGraphReader(@NotNull File file) throws IOException {
         parser = IoUtils.factory.createParser(file);
+    }
+
+    public MetricGraphReader(@NotNull String source) throws IOException {
+        parser = IoUtils.factory.createParser(source);
     }
 
     public @Nullable MetricGraph read() throws IOException {
