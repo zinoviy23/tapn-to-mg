@@ -163,6 +163,34 @@ public class MetricGraphTest {
     }
 
     @Test
+    public void reversalTestNonExisting() {
+        var graph = createGraph();
+        assertThat(graph.getReversal(arc1)).isNull();
+    }
+
+    @Test
+    public void reversalTestExisting() {
+        var metricGraph = MetricGraph.createBuilder()
+                                  .setId("graph")
+                                  .addNode(node1)
+                                  .addNode(node2)
+                                  .addArc(arc1)
+                                  .addArc(Arc.createBuilder()
+                                                  .setId("arc 2")
+                                                  .setLength(1)
+                                                  .setSource(node1)
+                                                  .setTarget(node2)
+                                                  .createArc()
+                                  )
+                                  .buildGraph();
+
+        assertThat(metricGraph.getReversal(arc1))
+                .isNotNull()
+                .hasFieldOrPropertyWithValue("source", node1)
+                .hasFieldOrPropertyWithValue("target", node2);
+    }
+
+    @Test
     public void toStringTest() {
         var graph = MetricGraph.createBuilder().setId("1").buildGraph();
         assertThat(graph.toString()).isEqualTo("MetricGraph{id='1'}");

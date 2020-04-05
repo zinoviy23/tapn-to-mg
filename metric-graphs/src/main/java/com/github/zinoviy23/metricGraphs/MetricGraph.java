@@ -48,6 +48,12 @@ public final class MetricGraph implements Identity, ObjectWithComment {
         return comment;
     }
 
+    public @Nullable Arc getReversal(@NotNull Arc arc) {
+        Objects.requireNonNull(arc, "arc");
+
+        return graph.getEdge(arc.getTarget(), arc.getSource());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
