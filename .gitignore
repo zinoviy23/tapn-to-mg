@@ -21,6 +21,7 @@
 *.mtc1
 *.out
 *.synctex.gz
+*.log.gz
 
 # tapaal ignore
 tapaal/gradle
