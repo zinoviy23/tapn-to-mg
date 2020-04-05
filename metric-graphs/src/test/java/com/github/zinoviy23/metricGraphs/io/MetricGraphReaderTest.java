@@ -11,7 +11,8 @@ import java.io.IOException;
 import java.util.function.Predicate;
 
 import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.first;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.data.Offset.offset;
 
 public class MetricGraphReaderTest {
     @Rule public TestName name = new TestName();
@@ -22,7 +23,7 @@ public class MetricGraphReaderTest {
         try (var reader = new MetricGraphReader(getClass().getResourceAsStream(fileName))) {
             graph = reader.read();
         }
-        assertNotNull(graph);
+        assertThat(graph).isNotNull();
         return graph;
     }
 
@@ -31,19 +32,19 @@ public class MetricGraphReaderTest {
         MetricGraph graph = readGraph();
 
         var nodes = graph.getGraph().vertexSet();
-        assertEquals(3, nodes.size());
+        assertThat(nodes.size()).isEqualTo(3);
         var arcs = graph.getGraph().edgeSet();
-        assertEquals(3, arcs.size());
+        assertThat(arcs.size()).isEqualTo(3);
 
-        assertEquals(1, arcs.stream().filter(checkArc("arc1", "p1", 1.0, 0.5, "Node2", "Node1")).count());
-        assertEquals(1, arcs.stream().filter(checkArc("arc2", "p2", 1.0, 0.7, "Node3", "Node2")).count());
-        assertEquals(1, arcs.stream().filter(checkArc("arc3", "p3", 1.0, 0.2, "Node1", "Node3")).count());
+        assertThat(arcs.stream().filter(checkArc("arc1", "p1", 1.0, 0.5, "Node2", "Node1")).count()).isEqualTo(1);
+        assertThat(arcs.stream().filter(checkArc("arc2", "p2", 1.0, 0.7, "Node3", "Node2")).count()).isEqualTo(1);
+        assertThat(arcs.stream().filter(checkArc("arc3", "p3", 1.0, 0.2, "Node1", "Node3")).count()).isEqualTo(1);
 
-        assertEquals(1, nodes.stream().filter(node -> "Node1".equals(node.getId())).count());
-        assertEquals(1, nodes.stream().filter(node -> "Node2".equals(node.getId())).count());
-        assertEquals(1, nodes.stream().filter(node -> "Node3".equals(node.getId())).count());
+        assertThat(nodes.stream().filter(node -> "Node1".equals(node.getId())).count()).isEqualTo(1);
+        assertThat(nodes.stream().filter(node -> "Node2".equals(node.getId())).count()).isEqualTo(1);
+        assertThat(nodes.stream().filter(node -> "Node3".equals(node.getId())).count()).isEqualTo(1);
 
-        assertEquals("Comment", graph.getComment());
+        assertThat(graph.getComment()).isEqualTo("Comment");
     }
 
     @Test
@@ -51,17 +52,17 @@ public class MetricGraphReaderTest {
         MetricGraph metricGraph = readGraph();
 
         var arcs = metricGraph.getGraph().edgeSet();
-        assertEquals(1, arcs.size());
+        assertThat(arcs.size()).isEqualTo(1);
 
         var nodes = metricGraph.getGraph().vertexSet();
-        assertEquals(2, nodes.size());
-        assertEquals(1, nodes.stream().filter(node -> "Node1".equals(node.getId())).count());
-        assertEquals(1, nodes.stream().filter(node -> "Node2".equals(node.getId())).count());
+        assertThat(nodes.size()).isEqualTo(2);
+        assertThat(nodes.stream().filter(node -> "Node1".equals(node.getId())).count()).isEqualTo(1);
+        assertThat(nodes.stream().filter(node -> "Node2".equals(node.getId())).count()).isEqualTo(1);
 
         var arc = first(arcs);
         //noinspection ConstantConditions
-        assertEquals("Node2", arc.getSource().getId());
-        assertEquals("Node1", arc.getTarget().getId());
+        assertThat(arc.getSource().getId()).isEqualTo("Node2");
+        assertThat(arc.getTarget().getId()).isEqualTo("Node1");
     }
 
     @Test
@@ -69,7 +70,7 @@ public class MetricGraphReaderTest {
         try {
             readGraph();
         } catch (MetricGraphReadingException e) {
-            assertEquals("Hasn't any nodes with id=Node3", e.getMessage());
+            assertThat(e.getMessage()).isEqualTo("Hasn't any nodes with id=Node3");
         }
     }
 
@@ -78,7 +79,7 @@ public class MetricGraphReaderTest {
         try {
             readGraph();
         } catch (MetricGraphReadingException e) {
-            assertEquals("Hasn't any nodes with id=Node4", e.getMessage());
+            assertThat(e.getMessage()).isEqualTo("Hasn't any nodes with id=Node4");
         }
     }
 
@@ -87,9 +88,9 @@ public class MetricGraphReaderTest {
         MetricGraph graph = readGraph();
 
         var arc = first(graph.getGraph().edgeSet());
-        assertNotNull(arc);
+        assertThat(arc).isNotNull();
 
-        assertEquals(2, arc.getPoints().size());
+        assertThat(arc.getPoints().size()).isEqualTo(2);
         assertPoint(arc.getPoints().get(0), "p1", 0.3, "this is point 1");
         assertPoint(arc.getPoints().get(1), "p2", 0.4, "this is point 2");
     }
@@ -99,14 +100,14 @@ public class MetricGraphReaderTest {
         try {
             readGraph();
         } catch (MetricGraphReadingException e) {
-            assertEquals(e.getMessage(), "Graph has edges, but hasn't nodes");
+            assertThat("Graph has edges, but hasn't nodes").isEqualTo(e.getMessage());
         }
     }
 
     private void assertPoint(MovingPoint point, String id, double position, String comment) {
-        assertEquals(id, point.getId());
-        assertEquals(position, point.getPosition(), 1e-7);
-        assertEquals(comment, point.getComment());
+        assertThat(point.getId()).isEqualTo(id);
+        assertThat(point.getPosition()).isCloseTo(position, offset(1e-7));
+        assertThat(point.getComment()).isEqualTo(comment);
     }
 
     @SuppressWarnings("SameParameterValue")

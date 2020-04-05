@@ -7,7 +7,7 @@ import org.junit.rules.TestName;
 
 import java.io.*;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ValidatedMetricGraphReaderTest {
     @Rule public TestName testName = new TestName();
@@ -59,10 +59,10 @@ public class ValidatedMetricGraphReaderTest {
 
             var validatedMetricGraphReader = new ValidatedMetricGraphReader(file);
             if (read) {
-                assertNotNull(validatedMetricGraphReader.getReader().read());
+                assertThat(validatedMetricGraphReader.getReader().read()).isNotNull();
             }
         } finally {
-            assertTrue(file.delete());
+            assertThat(file.delete()).isTrue();
         }
     }
 }

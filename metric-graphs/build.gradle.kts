@@ -23,6 +23,7 @@ dependencies {
     compileOnly("org.jetbrains:annotations:19.0.0")
 
     testImplementation("junit", "junit", "4.12")
+    testImplementation("org.assertj:assertj-core:3.15.0")
 }
 
 configure<JavaPluginConvention> {

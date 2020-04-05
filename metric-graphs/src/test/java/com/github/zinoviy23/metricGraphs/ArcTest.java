@@ -6,7 +6,8 @@ import java.util.List;
 
 import static com.github.zinoviy23.metricGraphs.TestData.node1;
 import static com.github.zinoviy23.metricGraphs.TestData.node2;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.data.Offset.offset;
 
 public class ArcTest {
     @Test
@@ -21,13 +22,13 @@ public class ArcTest {
                           .addPoint(p1)
                           .createArc();
 
-        assertEquals("0", arc.getId());
-        assertEquals("Arc 0", arc.getLabel());
-        assertEquals(10.0, arc.getLength(), 1e-7);
-        assertEquals(node1, arc.getSource());
-        assertEquals(node2, arc.getTarget());
-        assertEquals(1, arc.getPoints().size());
-        assertTrue(arc.getPoints().contains(p1));
+        assertThat(arc.getId()).isEqualTo("0");
+        assertThat(arc.getLabel()).isEqualTo("Arc 0");
+        assertThat(arc.getLength()).isCloseTo(10.0, offset(1e-7));
+        assertThat(arc.getSource()).isEqualTo(node1);
+        assertThat(arc.getTarget()).isEqualTo(node2);
+        assertThat(arc.getPoints().size()).isEqualTo(1);
+        assertThat(arc.getPoints().contains(p1)).isTrue();
     }
 
     @Test(expected = MetricGraphStructureException.class)
@@ -82,7 +83,7 @@ public class ArcTest {
                           .setSource(node1)
                           .setTarget(node2)
                           .createArc();
-        assertEquals("0", arc.getLabel());
+        assertThat(arc.getLabel()).isEqualTo("0");
     }
 
     @Test(expected = MetricGraphStructureException.class)
@@ -147,8 +148,8 @@ public class ArcTest {
                            .setTarget(node2)
                            .createArc();
 
-        assertEquals(arc1, arc2);
-        assertNotEquals(arc1, arc3);
+        assertThat(arc2).isEqualTo(arc1);
+        assertThat(arc3).isNotEqualTo(arc1);
     }
 
     @Test
@@ -160,6 +161,6 @@ public class ArcTest {
                           .setSource(node1)
                           .setTarget(node2)
                           .createArc();
-        assertEquals("Arc{id='0', label='Arc 0', length=10.0}", arc.toString());
+        assertThat(arc.toString()).isEqualTo("Arc{id='0', label='Arc 0', length=10.0}");
     }
 }

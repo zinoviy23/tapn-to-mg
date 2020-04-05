@@ -3,7 +3,7 @@ package com.github.zinoviy23.metricGraphs;
 import org.junit.Test;
 
 import static com.github.zinoviy23.metricGraphs.TestData.*;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MetricGraphTest {
     @Test(expected = MetricGraphStructureException.class)
@@ -145,26 +145,26 @@ public class MetricGraphTest {
     public void validCreation() {
         var graph = createGraph();
 
-        assertEquals("Graph", graph.getId());
-        assertEquals("Graph", graph.getLabel());
-        assertEquals("Comment", graph.getComment());
+        assertThat(graph.getId()).isEqualTo("Graph");
+        assertThat(graph.getLabel()).isEqualTo("Graph");
+        assertThat(graph.getComment()).isEqualTo("Comment");
 
         var arcs = graph.getGraph().edgeSet();
-        assertEquals(3, arcs.size());
-        assertTrue(arcs.contains(arc1));
-        assertTrue(arcs.contains(arc2));
-        assertTrue(arcs.contains(arc3));
+        assertThat(arcs.size()).isEqualTo(3);
+        assertThat(arcs.contains(arc1)).isTrue();
+        assertThat(arcs.contains(arc2)).isTrue();
+        assertThat(arcs.contains(arc3)).isTrue();
 
         var nodes = graph.getGraph().vertexSet();
-        assertEquals(3, nodes.size());
-        assertTrue(nodes.contains(node1));
-        assertTrue(nodes.contains(node2));
-        assertTrue(nodes.contains(node3));
+        assertThat(nodes.size()).isEqualTo(3);
+        assertThat(nodes.contains(node1)).isTrue();
+        assertThat(nodes.contains(node2)).isTrue();
+        assertThat(nodes.contains(node3)).isTrue();
     }
 
     @Test
     public void toStringTest() {
         var graph = MetricGraph.createBuilder().setId("1").buildGraph();
-        assertEquals("MetricGraph{id='1'}", graph.toString());
+        assertThat(graph.toString()).isEqualTo("MetricGraph{id='1'}");
     }
 }

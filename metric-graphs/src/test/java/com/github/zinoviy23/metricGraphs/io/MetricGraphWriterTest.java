@@ -9,8 +9,7 @@ import java.io.*;
 import java.util.stream.Collectors;
 
 import static com.github.zinoviy23.metricGraphs.TestData.createGraph;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MetricGraphWriterTest {
     @Test
@@ -45,9 +44,9 @@ public class MetricGraphWriterTest {
                     new InputStreamReader(getClass().getResourceAsStream("/testData/writer/validGraph.json"))
             ).lines().collect(Collectors.joining("\n"));
 
-            assertEquals(expectedContent, fileContent);
+            assertThat(fileContent).isEqualTo(expectedContent);
         } finally {
-            assertTrue(file.delete());
+            assertThat(file.delete()).isTrue();
         }
     }
 }

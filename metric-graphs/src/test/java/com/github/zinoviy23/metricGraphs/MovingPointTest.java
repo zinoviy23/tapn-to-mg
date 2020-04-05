@@ -2,7 +2,7 @@ package com.github.zinoviy23.metricGraphs;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MovingPointTest {
 
@@ -12,13 +12,13 @@ public class MovingPointTest {
         var point2 = new MovingPoint("0", -100);
         var point3 = new MovingPoint("1", 100);
 
-        assertEquals(point1, point2);
-        assertNotEquals(point1, point3);
+        assertThat(point2).isEqualTo(point1);
+        assertThat(point3).isNotEqualTo(point1);
     }
 
     @Test
     public void testToString() {
         var point = new MovingPoint("0", 100);
-        assertEquals("MovingPoint{id='0', position=100.0}", point.toString());
+        assertThat(point.toString()).isEqualTo("MovingPoint{id='0', position=100.0}");
     }
 }
