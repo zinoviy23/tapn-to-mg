@@ -38,9 +38,9 @@ public final class TestData {
                        .addNode(node1)
                        .addNode(node2)
                        .addNode(node3)
-                       .addArc(arc1)
-                       .addArc(arc2)
-                       .addArc(arc3)
+                       .addArc(arc1).withReversal("rev_arc1")
+                       .addArc(arc2).withReversal("rev_arc2")
+                       .addArc(arc3).withReversal("rev_arc3")
                        .setComment("Comment")
                        .buildGraph();
     }

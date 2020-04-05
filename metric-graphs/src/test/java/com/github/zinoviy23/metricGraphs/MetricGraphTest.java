@@ -4,40 +4,52 @@ import org.junit.Test;
 
 import static com.github.zinoviy23.metricGraphs.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MetricGraphTest {
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void addExistingNode() {
-        MetricGraph.createBuilder()
-                .setId("1")
-                .addNode(new Node("1", "aaa"))
-                .addNode(new Node("1", "bbb"));
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .setId("1")
+                                           .addNode(new Node("2", "aaa"))
+                                           .addNode(new Node("2", "bbb"))
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id 2 already assigned to Node{id='2', label='aaa'}");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void addExistingArc() {
-        MetricGraph
-                .createBuilder()
-                .setId("1")
-                .addNode(node1)
-                .addNode(node2)
-                .addArc(Arc.createBuilder()
-                                .setId("1")
-                                .setLabel("2")
-                                .setSource(node1)
-                                .setTarget(node2)
-                                .createArc()
-                )
-                .addArc(Arc.createBuilder()
-                                .setId("1")
-                                .setLabel("3")
-                                .setTarget(node1)
-                                .setSource(node2)
-                                .createArc()
-                );
+        assertThatThrownBy(() ->
+                                   MetricGraph
+                                           .createBuilder()
+                                           .setId("1")
+                                           .addNode(node1)
+                                           .addNode(node2)
+                                           .addArc(Arc.createBuilder()
+                                                           .setId("2")
+                                                           .setLabel("2")
+                                                           .setLength(1)
+                                                           .setSource(node1)
+                                                           .setTarget(node2)
+                                                           .createArc()
+                                           )
+                                           .withReversal("tmp")
+                                           .addArc(Arc.createBuilder()
+                                                           .setId("2")
+                                                           .setLabel("3")
+                                                           .setLength(2)
+                                                           .setTarget(node1)
+                                                           .setSource(node2)
+                                                           .createArc()
+                                           ).withReversal("tmp2")
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id 2 already assigned to Arc{id='2', label='2', length=1.0}");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void addExistingPoint() {
         var arc1 = Arc.createBuilder()
                            .setId("1")
@@ -57,16 +69,22 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("p1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder()
-                .setId("3")
-                .addNode(node1)
-                .addNode(node2)
-                .addNode(node3)
-                .addArc(arc1)
-                .addArc(arc2);
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .setId("3")
+                                           .addNode(node1)
+                                           .addNode(node2)
+                                           .addNode(node3)
+                                           .addArc(arc1)
+                                           .withReversal("rev1")
+                                           .addArc(arc2)
+                                           .withReversal("rev2")
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id p1 already assigned to MovingPoint{id='p1', position=1.0}");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void sameIdNodeAndArc() {
         var arc1 = Arc.createBuilder()
                            .setId("Node1")
@@ -77,14 +95,19 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("p1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder()
-                .setId("3")
-                .addNode(node1)
-                .addNode(node2)
-                .addArc(arc1);
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .setId("3")
+                                           .addNode(node1)
+                                           .addNode(node2)
+                                           .addArc(arc1)
+                                           .withReversal("rev3")
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id Node1 already assigned to Node{id='Node1', label='Node1'}");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void sameIdNodePoint() {
         var arc1 = Arc.createBuilder()
                            .setId("arc1")
@@ -95,50 +118,82 @@ public class MetricGraphTest {
                            .addPoint(new MovingPoint("Node1", 1))
                            .createArc();
 
-        MetricGraph.createBuilder()
-                .setId("3")
-                .addNode(node1)
-                .addNode(node2)
-                .addArc(arc1);
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .setId("3")
+                                           .addNode(node1)
+                                           .addNode(node2)
+                                           .addArc(arc1)
+                                           .withReversal("rev3")
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id Node1 already assigned to Node{id='Node1', label='Node1'}");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void sameIdNodeAndGraph() {
-        MetricGraph.createBuilder()
-                .setId("Node1")
-                .addNode(node1)
-                .addNode(node2);
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .setId("Node1")
+                                           .addNode(node1)
+                                           .addNode(node2)
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id Node1 already assigned to CURRENT GRAPH");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void sameIdGraphAndNode() {
-        MetricGraph.createBuilder()
-                .addNode(node1)
-                .setId("Node1")
-                .addNode(node2);
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .addNode(node1)
+                                           .setId("Node1")
+                                           .addNode(node2)
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id Node1 already assigned to Node{id='Node1', label='Node1'}");
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    @Test(expected = NullPointerException.class)
+    @Test
     public void withoutId() {
-        MetricGraph.createBuilder()
-                .addNode(node1)
-                .buildGraph();
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .addNode(node1)
+                                           .buildGraph()
+        )
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("id");
     }
 
-    @Test(expected = MetricGraphStructureException.class)
+    @Test
     public void wrongReversal() {
-        MetricGraph.createBuilder()
+        assertThatThrownBy(() ->
+                                   MetricGraph.createBuilder()
+                                           .addNode(node1)
+                                           .addNode(node2)
+                                           .addArc(arc1)
+                                           .withReversal(Arc.createBuilder()
+                                                                 .setId("arc 2")
+                                                                 .setLength(2)
+                                                                 .setSource(node1)
+                                                                 .setTarget(node2)
+                                                                 .createArc())
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Reversal edge Arc{id='arc 2', label='arc 2', length=2.0} of Arc{id='arc1', label='my arc', length=1.0} must have length 1.000000");
+    }
+
+    @Test
+    public void sameIdWithReversal() {
+        assertThatThrownBy(() ->
+                                  MetricGraph.createBuilder()
                 .addNode(node1)
                 .addNode(node2)
-                .addArc(arc1)
-                .addArc(Arc.createBuilder()
-                                .setId("arc 2")
-                                .setLength(2)
-                                .setSource(node1)
-                                .setTarget(node2)
-                                .createArc()
-                );
+                .addArc(arc1).withReversal("arc1")
+        )
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Id arc1 already assigned to Arc{id='arc1', label='my arc', length=1.0}");
     }
 
     @Test
@@ -150,7 +205,7 @@ public class MetricGraphTest {
         assertThat(graph.getComment()).isEqualTo("Comment");
 
         var arcs = graph.getGraph().edgeSet();
-        assertThat(arcs.size()).isEqualTo(3);
+        assertThat(arcs.size()).isEqualTo(6);
         assertThat(arcs.contains(arc1)).isTrue();
         assertThat(arcs.contains(arc2)).isTrue();
         assertThat(arcs.contains(arc3)).isTrue();
@@ -165,7 +220,24 @@ public class MetricGraphTest {
     @Test
     public void reversalTestNonExisting() {
         var graph = createGraph();
-        assertThat(graph.getReversal(arc1)).isNull();
+        var arc = Arc.createBuilder()
+                          .setSource(new Node("1000"))
+                          .setTarget(new Node("10000"))
+                          .setLength(1000)
+                          .setId("10000000")
+                          .createArc();
+        assertThat(graph.getReversal(arc)).isNull();
+    }
+
+    @Test
+    public void wrongNodesReversal() {
+        assertThatThrownBy(() -> MetricGraph.createBuilder()
+                .addNode(node1)
+                .addNode(node2)
+                .addArc(arc1)
+                .withReversal(arc2))
+                .isInstanceOf(MetricGraphStructureException.class)
+                .hasMessage("Reversal of Arc{id='arc1', label='my arc', length=1.0} must have wrong source=Node{id='Node3', label='Node3'} and target=Node{id='Node2', label='Node2'}");
     }
 
     @Test
@@ -175,13 +247,12 @@ public class MetricGraphTest {
                                   .addNode(node1)
                                   .addNode(node2)
                                   .addArc(arc1)
-                                  .addArc(Arc.createBuilder()
-                                                  .setId("arc 2")
-                                                  .setLength(1)
-                                                  .setSource(node1)
-                                                  .setTarget(node2)
-                                                  .createArc()
-                                  )
+                                  .withReversal(Arc.createBuilder()
+                                                        .setId("arc 2")
+                                                        .setLength(1)
+                                                        .setSource(node1)
+                                                        .setTarget(node2)
+                                                        .createArc())
                                   .buildGraph();
 
         assertThat(metricGraph.getReversal(arc1))

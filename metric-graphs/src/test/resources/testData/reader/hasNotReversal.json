@@ -13,15 +13,6 @@
       "metadata" : {
         "length" : 1.0
       }
-    }, {
-      "id" : "arc2",
-      "source" : "Node1",
-      "target" : "Node2",
-      "relation" : "nodes connection",
-      "label" : "my arc",
-      "metadata" : {
-        "length" : 1.0
-      }
     } ],
     "metadata" : {
       "comment" : "Comment"

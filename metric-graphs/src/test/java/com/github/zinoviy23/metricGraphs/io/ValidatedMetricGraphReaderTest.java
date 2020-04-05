@@ -47,6 +47,11 @@ public class ValidatedMetricGraphReaderTest {
         doTest(false);
     }
 
+    @Test
+    public void hasNotReversal() throws IOException {
+        doTest(false);
+    }
+
     private void doTest(boolean read) throws IOException {
         var fileName = "/testData/reader/" + testName.getMethodName() + ".json";
 

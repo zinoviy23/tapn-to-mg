@@ -7,26 +7,25 @@ import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.MovingPoint;
 import com.github.zinoviy23.metricGraphs.Node;
+import com.github.zinoviy23.metricGraphs.util.ContainerUtil;
 import com.github.zinoviy23.metricGraphs.util.Ref;
 import com.github.zinoviy23.metricGraphs.util.ThrowableBiConsumer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
-import org.json.JSONObject;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class MetricGraphReader implements AutoCloseable, Closeable {
     private static final Logger LOG = LogManager.getLogger(MetricGraphReader.class);
 
     private static final String GRAPH_HAS_EDGES_BUT_HASN_T_NODES_MESSAGE = "Graph has edges, but hasn't nodes";
     private static final String HASN_T_ANY_NODES_WITH_ID_MESSAGE = "Hasn't any nodes with id=";
+    private static final String ARC_S_MUST_HAVE_REVERSAL_EDGE = "Arc %s must have reversal edge!";
 
     private final JsonParser parser;
     private boolean isRead;
@@ -77,7 +76,7 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
     private @NotNull MetricGraph readGraph() throws IOException {
         var graphBuilder = MetricGraph.createBuilder();
         Map<String, Node> nodes = null;
-        List<Triple<String, String, Arc.ArcBuilder>> edgesInfo = null;
+        Map<String, Map<String, Arc.ArcBuilder>> edgesInfo = null;
         while (parser.nextToken() != JsonToken.END_OBJECT) {
             var currentName = parser.getCurrentName();
             if (IoUtils.ID.equals(currentName)) {
@@ -111,22 +110,23 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
         }
 
         if (edgesInfo != null && nodes != null) {
-            for (var triple : edgesInfo) {
-                var source = nodes.get(triple.getFirst());
-                var target = nodes.get(triple.getSecond());
-                if (source == null) {
-                    throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getFirst());
-                }
-                if (target == null) {
-                    throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getSecond());
-                }
-                var arcBuilder = triple.getThird();
-                graphBuilder.addArc(
-                        arcBuilder
-                                .setSource(source)
-                                .setTarget(target)
-                                .createArc()
-                );
+            Set<String> processedArcs = new HashSet<>();
+
+            var edgesStream = edgesInfo.entrySet().stream()
+                                       .flatMap(mapEntry ->
+                                                        mapEntry.getValue().entrySet().stream()
+                                                                .map(targetAndBuilder -> Triple.of(mapEntry.getKey(),
+                                                                        targetAndBuilder.getKey(),
+                                                                        targetAndBuilder.getValue())
+                                                                )
+                                       );
+
+            for (var triple : ContainerUtil.iterate(edgesStream)) {
+                if (processedArcs.contains(triple.getThird().getId())) continue;
+
+                var stringStringPair = addArcAndReversal(graphBuilder, nodes, edgesInfo, triple);
+                processedArcs.add(stringStringPair.getFirst());
+                processedArcs.add(stringStringPair.getSecond());
             }
         } else if (edgesInfo != null) {
             throw new MetricGraphReadingException(GRAPH_HAS_EDGES_BUT_HASN_T_NODES_MESSAGE);
@@ -135,11 +135,45 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
         return graphBuilder.buildGraph();
     }
 
-    private @NotNull List<Triple<String, String, Arc.ArcBuilder>> readEdges() throws IOException {
-        var result = new ArrayList<Triple<String, String, Arc.ArcBuilder>>();
+    private @NotNull Pair<String, String> addArcAndReversal(@NotNull MetricGraph.MetricGraphBuilder graphBuilder,
+                                                            @NotNull Map<String, Node> finalNodes,
+                                                            @NotNull Map<String, Map<String, Arc.ArcBuilder>> finalEdgesInfo,
+                                                            @NotNull Triple<String, String, Arc.ArcBuilder> triple) {
+        var source = finalNodes.get(triple.getFirst());
+        var target = finalNodes.get(triple.getSecond());
+        if (source == null) {
+            throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getFirst());
+        }
+        if (target == null) {
+            throw new MetricGraphReadingException(HASN_T_ANY_NODES_WITH_ID_MESSAGE + triple.getSecond());
+        }
+
+        var arcBuilder = triple.getThird();
+        var reversal = ContainerUtil.getFromTable(finalEdgesInfo, triple.getSecond(), triple.getFirst());
+        if (reversal == null) {
+            throw new MetricGraphReadingException(String.format(ARC_S_MUST_HAVE_REVERSAL_EDGE, arcBuilder.getId()));
+        }
+
+        var arc = arcBuilder
+                          .setSource(source)
+                          .setTarget(target)
+                          .createArc();
+        graphBuilder
+                .addArc(arc)
+                .setReversalComment(reversal.getComment())
+                .setReversalLabel(reversal.getLabel())
+                .withReversal(reversal.getId(), reversal.getPoints());
+
+        return Pair.of(arc.getId(), reversal.getId());
+    }
+
+    private @NotNull Map<String, Map<String, Arc.ArcBuilder>> readEdges() throws IOException {
+        var result = new HashMap<String, Map<String, Arc.ArcBuilder>>();
         while (parser.nextToken() != JsonToken.END_ARRAY) {
             if (parser.currentToken() == JsonToken.START_OBJECT) {
-                result.add(readEdge());
+                var edgeInfo = readEdge();
+                result.computeIfAbsent(edgeInfo.getFirst(), (k) -> new HashMap<>())
+                        .put(edgeInfo.getSecond(), edgeInfo.getThird());
             }
         }
         return result;

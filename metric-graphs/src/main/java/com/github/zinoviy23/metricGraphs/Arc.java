@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -116,8 +117,8 @@ public final class Arc implements Identity, ObjectWithComment {
             return this;
         }
 
-        public @NotNull ArcBuilder setLabel(@NotNull String label) {
-            this.label = Objects.requireNonNull(label, "label");
+        public @NotNull ArcBuilder setLabel(@Nullable String label) {
+            this.label = label;
             return this;
         }
 
@@ -164,6 +165,22 @@ public final class Arc implements Identity, ObjectWithComment {
                 throw new MetricGraphStructureException(String.format(POINT_ID_ALREADY_ASSIGNED_TO_NODE, id));
             }
             return movingPoint;
+        }
+
+        public @NotNull String getId() {
+            return id;
+        }
+
+        public @NotNull List<MovingPoint> getPoints() {
+            return Collections.unmodifiableList(points);
+        }
+
+        public @Nullable String getLabel() {
+            return label;
+        }
+
+        public @Nullable String getComment() {
+            return comment;
         }
     }
 

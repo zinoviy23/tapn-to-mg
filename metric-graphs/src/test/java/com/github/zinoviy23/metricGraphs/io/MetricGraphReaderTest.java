@@ -11,11 +11,13 @@ import java.io.IOException;
 import java.util.function.Predicate;
 
 import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.first;
+import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.second;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.data.Offset.offset;
 
 public class MetricGraphReaderTest {
-    @Rule public TestName name = new TestName();
+    @Rule
+    public TestName name = new TestName();
 
     private MetricGraph readGraph() throws IOException {
         var fileName = "/testData/reader/" + name.getMethodName() + ".json";
@@ -34,7 +36,7 @@ public class MetricGraphReaderTest {
         var nodes = graph.getGraph().vertexSet();
         assertThat(nodes.size()).isEqualTo(3);
         var arcs = graph.getGraph().edgeSet();
-        assertThat(arcs.size()).isEqualTo(3);
+        assertThat(arcs.size()).isEqualTo(6);
 
         assertThat(arcs.stream().filter(checkArc("arc1", "p1", 1.0, 0.5, "Node2", "Node1")).count()).isEqualTo(1);
         assertThat(arcs.stream().filter(checkArc("arc2", "p2", 1.0, 0.7, "Node3", "Node2")).count()).isEqualTo(1);
@@ -52,7 +54,7 @@ public class MetricGraphReaderTest {
         MetricGraph metricGraph = readGraph();
 
         var arcs = metricGraph.getGraph().edgeSet();
-        assertThat(arcs.size()).isEqualTo(1);
+        assertThat(arcs.size()).isEqualTo(2);
 
         var nodes = metricGraph.getGraph().vertexSet();
         assertThat(nodes.size()).isEqualTo(2);
@@ -61,8 +63,8 @@ public class MetricGraphReaderTest {
 
         var arc = first(arcs);
         //noinspection ConstantConditions
-        assertThat(arc.getSource().getId()).isEqualTo("Node2");
-        assertThat(arc.getTarget().getId()).isEqualTo("Node1");
+        assertThat(arc.getSource().getId()).isEqualTo("Node1");
+        assertThat(arc.getTarget().getId()).isEqualTo("Node2");
     }
 
     @Test
@@ -87,7 +89,7 @@ public class MetricGraphReaderTest {
     public void checkPoints() throws IOException {
         MetricGraph graph = readGraph();
 
-        var arc = first(graph.getGraph().edgeSet());
+        var arc = second(graph.getGraph().edgeSet());
         assertThat(arc).isNotNull();
 
         assertThat(arc.getPoints().size()).isEqualTo(2);
@@ -101,6 +103,15 @@ public class MetricGraphReaderTest {
             readGraph();
         } catch (MetricGraphReadingException e) {
             assertThat("Graph has edges, but hasn't nodes").isEqualTo(e.getMessage());
+        }
+    }
+
+    @Test
+    public void hasNotReversal() throws IOException {
+        try {
+            readGraph();
+        } catch (MetricGraphReadingException e) {
+            assertThat("Arc arc1 must have reversal edge!").isEqualTo(e.getMessage());
         }
     }
 
