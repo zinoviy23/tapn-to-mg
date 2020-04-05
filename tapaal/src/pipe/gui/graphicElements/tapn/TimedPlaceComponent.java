@@ -426,6 +426,11 @@ public class TimedPlaceComponent extends Place {
 		super.setName(nameInput);
 	}
 
+	@Override
+	public String getName() {
+		return place.name();
+	}
+
 	private static Shape createDashedOutline(){
 		return new Ellipse2D.Double(-Pipe.DASHED_PADDING/2, -Pipe.DASHED_PADDING/2, DIAMETER + Pipe.DASHED_PADDING, DIAMETER + Pipe.DASHED_PADDING);
 	}
