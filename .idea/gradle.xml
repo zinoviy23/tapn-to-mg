@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/cli-app" />
+            <option value="$PROJECT_DIR$/converters" />
             <option value="$PROJECT_DIR$/metric-graphs" />
             <option value="$PROJECT_DIR$/tapaal" />
           </set>
