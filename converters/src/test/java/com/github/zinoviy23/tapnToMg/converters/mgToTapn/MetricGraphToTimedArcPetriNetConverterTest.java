@@ -131,7 +131,7 @@ public class MetricGraphToTimedArcPetriNetConverterTest {
     var ctReva1 = tapnGraph1.getTransitionByName("ct_rev_a1");
     assertThat(ctReva1).isNotNull();
 
-    var timeInterval = new TimeInterval(true, new IntBound(0), new IntBound(10), true);
+    var timeInterval = new TimeInterval(true, new IntBound(10), new IntBound(10), true);
     var pa1ta1 = tapnGraph1.getInputArcFromPlaceToTransition(pa1, ta1);
     assertThat(pa1ta1)
         .isNotNull()

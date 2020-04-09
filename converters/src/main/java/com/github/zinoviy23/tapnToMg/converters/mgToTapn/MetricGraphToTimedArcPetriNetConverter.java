@@ -60,9 +60,10 @@ public final class MetricGraphToTimedArcPetriNetConverter implements Converter<M
 
     //TODO make rational
     var timedTransition = new TimedTransition(TapnNamingUtil.nameForTransition(arc), false);
+    var arcLength = new IntBound((int) arc.getLength());
     var timedInputArc = new TimedInputArc(placeSourceTarget, timedTransition,
         new TimeInterval(
-            true, new IntBound(0), new IntBound((int) arc.getLength()), true
+            true, arcLength, arcLength.copy(), true
         )
     );
     petriNet.add(timedTransition);
