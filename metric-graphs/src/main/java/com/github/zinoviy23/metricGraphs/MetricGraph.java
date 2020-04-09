@@ -221,7 +221,8 @@ public final class MetricGraph implements Identity, ObjectWithComment {
           throw new MetricGraphStructureException(String.format("Reversal of %s must have wrong source=%s and target=%s",
               currentArc,
               reversalArc.getSource(),
-              reversalArc.getTarget()));
+              reversalArc.getTarget()
+          ));
         }
 
         verifyId(currentArc);

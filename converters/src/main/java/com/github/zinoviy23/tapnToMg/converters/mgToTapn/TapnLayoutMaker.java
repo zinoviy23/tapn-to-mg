@@ -57,7 +57,8 @@ final class TapnLayoutMaker {
         ITERATIONS,
         IndexedFRLayoutAlgorithm2D.DEFAULT_THETA_FACTOR,
         FRLayoutAlgorithm2D.DEFAULT_NORMALIZATION_FACTOR,
-        random);
+        random
+    );
 
     var size = calcSize(objectGraph.vertexSet().size());
     MapLayoutModel2D<Object> layoutModel2D = new MapLayoutModel2D<>(new Box2D(size, size));
@@ -107,7 +108,8 @@ final class TapnLayoutMaker {
         NOTE_WIDTH,
         NODE_HEIGHT,
         true,
-        true);
+        true
+    );
   }
 
   private @NotNull PetriNetObject createPetriNetObject(@NotNull Object object,
@@ -117,7 +119,8 @@ final class TapnLayoutMaker {
       var timedPlaceComponent = new TimedPlaceComponent(
           point2D.getX() + X_OFFSET,
           point2D.getY() + Y_OFFSET,
-          (TimedPlace) object);
+          (TimedPlace) object
+      );
       visualComponents.put(object, timedPlaceComponent);
       return timedPlaceComponent;
     }
@@ -127,7 +130,8 @@ final class TapnLayoutMaker {
       var timedTransitionComponent = new TimedTransitionComponent(
           point2D.getX() + X_OFFSET,
           point2D.getY() + Y_OFFSET,
-          (TimedTransition) object);
+          (TimedTransition) object
+      );
       visualComponents.put(object, timedTransitionComponent);
       return timedTransitionComponent;
     }

@@ -117,7 +117,8 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
               mapEntry.getValue().entrySet().stream()
                   .map(targetAndBuilder -> Triple.of(mapEntry.getKey(),
                       targetAndBuilder.getKey(),
-                      targetAndBuilder.getValue())
+                      targetAndBuilder.getValue()
+                      )
                   )
           );
 
