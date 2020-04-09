@@ -1,4 +1,4 @@
-package com.github.zinoviy23.tapnToMg.converters;
+package com.github.zinoviy23.tapnToMg.converters.mgToTapn;
 
 import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;

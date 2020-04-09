@@ -1,4 +1,4 @@
-package com.github.zinoviy23.tapnToMg.converters;
+package com.github.zinoviy23.tapnToMg.converters.mgToTapn;
 
 import dk.aau.cs.model.tapn.TimedArcPetriNet;
 import dk.aau.cs.model.tapn.TimedArcPetriNetNetwork;
