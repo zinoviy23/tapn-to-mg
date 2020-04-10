@@ -10,10 +10,7 @@ import org.jgrapht.Graph;
 import org.jgrapht.graph.AsUnmodifiableGraph;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public final class MetricGraph implements Identity, ObjectWithComment {
   private final String id;
@@ -84,9 +81,9 @@ public final class MetricGraph implements Identity, ObjectWithComment {
     private static final String ALREADY_EXISTS_IN_GRAPH_MESSAGE = " already exists in graph ";
     private static final String ID_ALREADY_EXISTS_MESSAGE = "Id %s already assigned to %s";
 
-    private final Graph<Node, Arc> graph = new SimpleDirectedWeightedGraph<>(null, null);
+    private final Graph<Node, Arc.ArcBuilder> graph = new SimpleDirectedWeightedGraph<>(null, null);
 
-    private final Map<MovingPoint, Arc> containingPoints = new HashMap<>();
+    private final Map<MovingPoint, Arc.ArcBuilder> containingPoints = new HashMap<>();
     private final Map<String, Object> ids = new HashMap<>();
 
     private String id;
@@ -98,7 +95,17 @@ public final class MetricGraph implements Identity, ObjectWithComment {
 
     @Contract(value = " -> new", pure = true)
     public @NotNull MetricGraph buildGraph() {
-      return new MetricGraph(id, label, comment, new AsUnmodifiableGraph<>(graph));
+      var resultGraph = new SimpleDirectedWeightedGraph<Node, Arc>(null, null);
+      for (Node node : graph.vertexSet()) {
+        resultGraph.addVertex(node);
+      }
+      graph.edgeSet().stream()
+          .map(Arc.ArcBuilder::createArc)
+          .forEach(arc -> {
+            resultGraph.addEdge(arc.getSource(), arc.getTarget(), arc);
+            resultGraph.setEdgeWeight(arc, arc.getLength());
+          });
+      return new MetricGraph(id, label, comment, new AsUnmodifiableGraph<>(resultGraph));
     }
 
     public @NotNull MetricGraphBuilder addNode(@NotNull Node node) {
@@ -110,30 +117,50 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       return this;
     }
 
-    public @NotNull ArcWithReversalBuilder addArc(@NotNull Arc arc) {
-      Objects.requireNonNull(arc, "arc");
-      return new ArcWithReversalBuilder(arc);
+    public @NotNull ArcWithReversalBuilder addArc(@NotNull Arc.ArcBuilder arcBuilder) {
+      Objects.requireNonNull(arcBuilder, "arcBuilder");
+      return new ArcWithReversalBuilder(arcBuilder.copy());
     }
 
-    public MetricGraphBuilder setLabel(@Nullable String label) {
+    public @NotNull ArcWithReversalBuilder addArc(@NotNull Arc arc) {
+      Objects.requireNonNull(arc, "arc");
+      return new ArcWithReversalBuilder(arc.toBuilder());
+    }
+
+    public @NotNull MetricGraphBuilder setLabel(@Nullable String label) {
       this.label = label;
       return this;
     }
 
-    public MetricGraphBuilder setComment(@Nullable String comment) {
+    public @NotNull MetricGraphBuilder setComment(@Nullable String comment) {
       this.comment = comment;
       return this;
     }
 
-    public MetricGraphBuilder setId(@NotNull String id) {
+    public @NotNull MetricGraphBuilder setId(@NotNull String id) {
       verifyId(() -> id);
       this.id = id;
       ids.put(id, "CURRENT GRAPH");
       return this;
     }
 
-    private void verifyPoints(@NotNull Arc arc) {
-      for (var point : arc.getPoints()) {
+    public @NotNull MetricGraphBuilder addPoints(@NotNull String arcId, @NotNull List<MovingPoint> points) {
+      var arc = ids.get(arcId);
+      if (!(arc instanceof Arc.ArcBuilder)) {
+        throw new MetricGraphStructureException("Graph is not contain arc with id=" + arcId);
+      }
+      verifyPoints(((Arc.ArcBuilder) arc), points);
+      //noinspection ConstantConditions verified while adding arc
+      Arc.checkPointsOnArc(((Arc.ArcBuilder) arc).getLength(), points);
+      for (MovingPoint point : points) {
+        ((Arc.ArcBuilder) arc).addPoint(point);
+      }
+      addPoints(((Arc.ArcBuilder) arc), points);
+      return this;
+    }
+
+    private void verifyPoints(@NotNull Arc.ArcBuilder arc, @NotNull List<MovingPoint> points) {
+      for (var point : points) {
         verifyId(point);
         if (containingPoints.containsKey(point)) {
           throw new MetricGraphStructureException(point + ALREADY_EXISTS_IN_GRAPH_MESSAGE + id + " in node " + arc);
@@ -141,8 +168,8 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       }
     }
 
-    private void addPoints(@NotNull Arc arc) {
-      for (var point : arc.getPoints()) {
+    private void addPoints(@NotNull Arc.ArcBuilder arc, @NotNull List<MovingPoint> points) {
+      for (var point : points) {
         addId(point);
         containingPoints.put(point, arc);
       }
@@ -152,17 +179,6 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       if (ids.containsKey(identity.getId())) {
         throw new MetricGraphStructureException(
             String.format(ID_ALREADY_EXISTS_MESSAGE, identity.getId(), ids.get(identity.getId()))
-        );
-      }
-    }
-
-    private void verifyReversal(@NotNull Arc arc) {
-      var edge = graph.getEdge(arc.getTarget(), arc.getSource());
-      if (edge == null) return;
-
-      if (!DoubleUtil.equals(edge.getLength(), arc.getLength())) {
-        throw new MetricGraphStructureException(
-            String.format("Reversal edge %s of %s must have length %f", edge, arc, arc.getLength())
         );
       }
     }
@@ -177,13 +193,14 @@ public final class MetricGraph implements Identity, ObjectWithComment {
     }
 
     public class ArcWithReversalBuilder {
-      private final Arc currentArc;
+      private final Arc.ArcBuilder currentArc;
 
       private String comment;
       private String label;
 
-      private ArcWithReversalBuilder(@NotNull Arc currentArc) {
+      private ArcWithReversalBuilder(@NotNull Arc.ArcBuilder currentArc) {
         this.currentArc = currentArc;
+        verifyArcBuilder(currentArc, "currentArc");
       }
 
       public @NotNull ArcWithReversalBuilder setReversalComment(@Nullable String comment) {
@@ -201,7 +218,8 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       }
 
       public @NotNull MetricGraphBuilder withReversal(@NotNull String id, @NotNull List<MovingPoint> points) {
-        return withReversal(Arc.createBuilder()
+        //noinspection ConstantConditions verified in class ctor
+        return internalWithReversal(Arc.createBuilder()
             .setId(id)
             .setLength(currentArc.getLength())
             .setSource(currentArc.getTarget())
@@ -209,13 +227,21 @@ public final class MetricGraph implements Identity, ObjectWithComment {
             .setLabel(label)
             .setComment(comment)
             .setPoints(points)
-            .createArc()
         );
       }
 
       public @NotNull MetricGraphBuilder withReversal(@NotNull Arc reversalArc) {
-        Objects.requireNonNull(reversalArc, "reversalArc");
+        return withReversal(reversalArc.toBuilder());
+      }
 
+      public @NotNull MetricGraphBuilder withReversal(@NotNull Arc.ArcBuilder reversalArc) {
+        return internalWithReversal(reversalArc.copy());
+      }
+
+      private @NotNull MetricGraphBuilder internalWithReversal(@NotNull Arc.ArcBuilder reversalArc) {
+        verifyArcBuilder(reversalArc, "reversalArc");
+
+        //noinspection ConstantConditions verified in verifyArcBuilder and ctor
         if (!reversalArc.getTarget().equals(currentArc.getSource()) ||
             !reversalArc.getSource().equals(currentArc.getTarget())) {
           throw new MetricGraphStructureException(String.format("Reversal of %s must have wrong source=%s and target=%s",
@@ -226,10 +252,11 @@ public final class MetricGraph implements Identity, ObjectWithComment {
         }
 
         verifyId(currentArc);
-        verifyPoints(currentArc);
+        verifyPoints(currentArc, currentArc.getPoints());
         verifyId(reversalArc);
-        verifyPoints(reversalArc);
+        verifyPoints(reversalArc, reversalArc.getPoints());
 
+        //noinspection ConstantConditions verified in verifyArcBuilder and ctor
         if (!DoubleUtil.equals(currentArc.getLength(), reversalArc.getLength())) {
           throw new MetricGraphStructureException(
               String.format("Reversal edge %s of %s must have length %f", reversalArc, currentArc, currentArc.getLength())
@@ -252,11 +279,18 @@ public final class MetricGraph implements Identity, ObjectWithComment {
         graph.setEdgeWeight(reversalArc, reversalArc.getLength());
 
         addId(currentArc);
-        addPoints(currentArc);
+        addPoints(currentArc, currentArc.getPoints());
         addId(reversalArc);
-        addPoints(reversalArc);
+        addPoints(reversalArc, reversalArc.getPoints());
 
         return MetricGraphBuilder.this;
+      }
+
+      private void verifyArcBuilder(Arc.@NotNull ArcBuilder arcBuilder, final String fieldName) {
+        Objects.requireNonNull(arcBuilder, fieldName);
+        Objects.requireNonNull(arcBuilder.getSource(), fieldName + " must have source");
+        Objects.requireNonNull(arcBuilder.getTarget(), fieldName + " must have target");
+        Objects.requireNonNull(arcBuilder.getLength(), fieldName + " must have length");
       }
     }
   }

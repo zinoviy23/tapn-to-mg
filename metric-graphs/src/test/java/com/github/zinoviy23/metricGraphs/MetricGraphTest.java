@@ -2,6 +2,8 @@ package com.github.zinoviy23.metricGraphs;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static com.github.zinoviy23.metricGraphs.TestData.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -46,7 +48,7 @@ public class MetricGraphTest {
             ).withReversal("tmp2")
     )
         .isInstanceOf(MetricGraphStructureException.class)
-        .hasMessage("Id 2 already assigned to Arc{id='2', label='2', length=1.0}");
+        .hasMessage("Id 2 already assigned to Raw Arc{id='2', label='2', length=1.0}");
   }
 
   @Test
@@ -181,7 +183,7 @@ public class MetricGraphTest {
                 .createArc())
     )
         .isInstanceOf(MetricGraphStructureException.class)
-        .hasMessage("Reversal edge Arc{id='arc 2', label='arc 2', length=2.0} of Arc{id='arc1', label='my arc', length=1.0} must have length 1.000000");
+        .hasMessage("Reversal edge Raw Arc{id='arc 2', label='arc 2', length=2.0} of Raw Arc{id='arc1', label='my arc', length=1.0} must have length 1.000000");
   }
 
   @Test
@@ -193,7 +195,7 @@ public class MetricGraphTest {
             .addArc(arc1).withReversal("arc1")
     )
         .isInstanceOf(MetricGraphStructureException.class)
-        .hasMessage("Id arc1 already assigned to Arc{id='arc1', label='my arc', length=1.0}");
+        .hasMessage("Id arc1 already assigned to Raw Arc{id='arc1', label='my arc', length=1.0}");
   }
 
   @Test
@@ -237,7 +239,7 @@ public class MetricGraphTest {
         .addArc(arc1)
         .withReversal(arc2))
         .isInstanceOf(MetricGraphStructureException.class)
-        .hasMessage("Reversal of Arc{id='arc1', label='my arc', length=1.0} must have wrong source=Node{id='Node3', label='Node3'} and target=Node{id='Node2', label='Node2'}");
+        .hasMessage("Reversal of Raw Arc{id='arc1', label='my arc', length=1.0} must have wrong source=Node{id='Node3', label='Node3'} and target=Node{id='Node2', label='Node2'}");
   }
 
   @Test
@@ -259,6 +261,69 @@ public class MetricGraphTest {
         .isNotNull()
         .hasFieldOrPropertyWithValue("source", node1)
         .hasFieldOrPropertyWithValue("target", node2);
+  }
+
+  @Test
+  public void addPointsSuccess() {
+    var p1 = new MovingPoint("p1", 3);
+    var metricGraph = MetricGraph.createBuilder()
+        .setId("graph")
+        .addNode(node1)
+        .addNode(node2)
+        .addArc(Arc.createBuilder()
+            .setId("arc")
+            .setSource(node1)
+            .setTarget(node2)
+            .setLength(10)
+        )
+        .withReversal("rev_arc")
+        .addPoints("arc", List.of(p1))
+        .buildGraph();
+
+    assertThat(metricGraph.getGraph().getEdge(node1, node2).getPoints())
+        .contains(p1);
+  }
+
+  @Test
+  public void addPointsToNonexistingArc() {
+    var p1 = new MovingPoint("p1", 3);
+    assertThatThrownBy(() ->
+        MetricGraph.createBuilder()
+            .setId("graph")
+            .addNode(node1)
+            .addNode(node2)
+            .addArc(Arc.createBuilder()
+                .setId("arc3")
+                .setSource(node1)
+                .setTarget(node2)
+                .setLength(10)
+            )
+            .withReversal("rev_arc")
+            .addPoints("arc", List.of(p1))
+    )
+        .isInstanceOf(MetricGraphStructureException.class)
+        .hasMessage("Graph is not contain arc with id=arc");
+  }
+
+  @Test
+  public void addExistingPointToArc() {
+    var p1 = new MovingPoint("p1", 3);
+    assertThatThrownBy(() ->
+        MetricGraph.createBuilder()
+            .setId("graph")
+            .addNode(node1)
+            .addNode(node2)
+            .addArc(Arc.createBuilder()
+                .setId("arc")
+                .setSource(node1)
+                .setTarget(node2)
+                .setLength(10)
+            )
+            .withReversal("rev_arc", p1)
+            .addPoints("arc", List.of(p1))
+    )
+        .isInstanceOf(MetricGraphStructureException.class)
+        .hasMessage("Id p1 already assigned to MovingPoint{id='p1', position=3.0}");
   }
 
   @Test

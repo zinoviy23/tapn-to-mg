@@ -163,4 +163,98 @@ public class ArcTest {
         .createArc();
     assertThat(arc.toString()).isEqualTo("Arc{id='0', label='Arc 0', length=10.0}");
   }
+
+  @Test
+  public void toBuilder() {
+    var arc = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(node1)
+        .setTarget(node2)
+        .createArc();
+
+    var arcBuilder = arc.toBuilder();
+    assertThat(arcBuilder.createArc()).isSameAs(arc);
+  }
+
+  @Test
+  public void builderCopy() {
+    var p1 = new MovingPoint("p1", 7);
+    var builder = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(node1)
+        .setTarget(node2)
+        .setComment("aaaa")
+        .addPoint(p1);
+
+    var copy = builder.copy();
+    assertThat(builder)
+        .isEqualToComparingOnlyGivenFields(copy,
+            "id", "label", "length", "source", "target", "comment", "points");
+  }
+
+  @Test
+  public void exactBuilderCopy() {
+    var arcBuilder = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(node1)
+        .setTarget(node2)
+        .createArc()
+        .toBuilder();
+
+    assertThat(arcBuilder.copy()).isSameAs(arcBuilder);
+  }
+
+  @Test
+  public void builderToStringAll() {
+    var arcBuilder = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10);
+
+    assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{id='0', label='Arc 0', length=10.0}");
+  }
+
+  @Test
+  public void builderToStringWithoutId() {
+    var arcBuilder = Arc.createBuilder()
+        .setLabel("Arc 0")
+        .setLength(10);
+
+    assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{label='Arc 0', length=10.0}");
+  }
+
+  @Test
+  public void builderToStringWithoutIdAndLength() {
+    var arcBuilder = Arc.createBuilder()
+        .setLabel("Arc 0");
+
+    assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{label='Arc 0'}");
+  }
+
+  @Test
+  public void builderToStringWithoutAll() {
+    var arcBuilder = Arc.createBuilder();
+
+    assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{}");
+  }
+
+  @Test
+  public void exactBuilderToString() {
+    var arcBuilder = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(node1)
+        .setTarget(node2)
+        .createArc()
+        .toBuilder();
+
+    assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{id='0', label='Arc 0', length=10.0}");
+  }
 }
