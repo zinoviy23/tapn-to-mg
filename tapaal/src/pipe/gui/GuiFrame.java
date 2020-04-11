@@ -21,6 +21,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import com.apple.eawt.Application;
+import com.github.zinoviy23.tapaal.extenstions.ExtensionManager;
+import com.github.zinoviy23.tapaal.extenstions.ExtensionPoint;
 import dk.aau.cs.gui.TabTransformer;
 import dk.aau.cs.model.tapn.*;
 import dk.aau.cs.verification.VerifyTAPN.VerifyPN;
@@ -940,7 +942,7 @@ public class GuiFrame extends JFrame  {
 	
 
 	private JMenu buildMenuTools() {
-		JMenu toolsMenu = new JMenu("Tools");
+      JMenu toolsMenu = new JMenu("Tools");
 		toolsMenu.setMnemonic('t');
 
 		int shortcutkey = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
@@ -1026,6 +1028,16 @@ public class GuiFrame extends JFrame  {
 			}
 		});
 		toolsMenu.add(clearPreferences);
+
+        ExtensionPoint<GuiAction> extensionPoint = ExtensionManager.getInstance().getExtensionPoint("tapaal.guiframe.tools.other.actions");
+        if (extensionPoint != null) {
+            List<GuiAction> actions = extensionPoint.getExtensions();
+            JMenu menu = new JMenu("Other");
+            for (GuiAction action : actions) {
+              menu.add(new JMenuItem(action));
+            }
+            toolsMenu.add(menu);
+        }
 
 		return toolsMenu;
 	}

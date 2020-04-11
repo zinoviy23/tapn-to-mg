@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/converters" />
             <option value="$PROJECT_DIR$/metric-graphs" />
             <option value="$PROJECT_DIR$/tapaal" />
+            <option value="$PROJECT_DIR$/tapaal.ext" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />
