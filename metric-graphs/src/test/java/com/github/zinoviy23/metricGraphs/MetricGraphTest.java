@@ -217,6 +217,16 @@ public class MetricGraphTest {
     assertThat(nodes.contains(node1)).isTrue();
     assertThat(nodes.contains(node2)).isTrue();
     assertThat(nodes.contains(node3)).isTrue();
+
+    assertThat(graph.getArc("arc1")).isNotNull();
+    assertThat(graph.getArc("arc2")).isNotNull();
+    assertThat(graph.getArc("arc3")).isNotNull();
+    assertThat(graph.getArc("arc4")).isNull();
+
+    assertThat(graph.getNode("Node1")).isNotNull();
+    assertThat(graph.getNode("Node2")).isNotNull();
+    assertThat(graph.getNode("Node3")).isNotNull();
+    assertThat(graph.getNode("node4")).isNull();
   }
 
   @Test

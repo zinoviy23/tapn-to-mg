@@ -47,6 +47,9 @@ public abstract class Node implements Identity, ObjectWithComment {
     return new InfinityNode(id);
   }
 
+  public static @NotNull Node createMultiEdgeHandler(@NotNull String id, @NotNull Node source, @NotNull Node target) {
+    return new MultiEdgeHandleNode(id, source, target);
+  }
   @Override
   public @NotNull String getId() {
     return id;
@@ -103,6 +106,12 @@ public abstract class Node implements Identity, ObjectWithComment {
   static class InfinityNode extends Node {
     private InfinityNode(@NotNull String id) {
       super(id, "Infinity node", "This node placed on infinity distance from graph.");
+    }
+  }
+
+  static class MultiEdgeHandleNode extends Node {
+    private MultiEdgeHandleNode(@NotNull String id, @NotNull Node source, @NotNull Node target) {
+      super(id, "id", "Handles multiedges between " + source.getId() + " and " + target.getId());
     }
   }
 }

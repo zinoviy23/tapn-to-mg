@@ -17,15 +17,18 @@ public final class MetricGraph implements Identity, ObjectWithComment {
   private final String label;
   private final String comment;
   private final Graph<Node, Arc> graph;
+  private final Map<String, Identity> ids;
 
   private MetricGraph(@NotNull String id,
                       @Nullable String label,
                       @Nullable String comment,
-                      @NotNull Graph<Node, Arc> graph) {
+                      @NotNull Graph<Node, Arc> graph,
+                      @NotNull Map<String, Identity> ids) {
     this.id = Objects.requireNonNull(id, "id");
     this.comment = comment;
     this.label = Objects.requireNonNullElse(label, id);
     this.graph = Objects.requireNonNull(graph, "graph");
+    this.ids = new HashMap<>(ids);
   }
 
   @Contract(" -> new")
@@ -57,6 +60,20 @@ public final class MetricGraph implements Identity, ObjectWithComment {
     return graph.getEdge(arc.getTarget(), arc.getSource());
   }
 
+  public @Nullable Node getNode(@NotNull String id) {
+    Objects.requireNonNull(id);
+
+    var identity = ids.get(id);
+    return identity instanceof Node ? ((Node) identity) : null;
+  }
+
+  public @Nullable Arc getArc(@NotNull String id) {
+    Objects.requireNonNull(id);
+
+    var identity = ids.get(id);
+    return identity instanceof Arc ? ((Arc) identity) : null;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -84,7 +101,7 @@ public final class MetricGraph implements Identity, ObjectWithComment {
     private final Graph<Node, Arc.ArcBuilder> graph = new SimpleDirectedWeightedGraph<>(null, null);
 
     private final Map<MovingPoint, Arc.ArcBuilder> containingPoints = new HashMap<>();
-    private final Map<String, Object> ids = new HashMap<>();
+    private final Map<String, Identity> ids = new HashMap<>();
 
     private String id;
     private String label;
@@ -99,13 +116,17 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       for (Node node : graph.vertexSet()) {
         resultGraph.addVertex(node);
       }
+      Map<String, Arc> arcIds = new HashMap<>();
       graph.edgeSet().stream()
           .map(Arc.ArcBuilder::createArc)
           .forEach(arc -> {
             resultGraph.addEdge(arc.getSource(), arc.getTarget(), arc);
             resultGraph.setEdgeWeight(arc, arc.getLength());
+            arcIds.put(arc.getId(), arc);
           });
-      return new MetricGraph(id, label, comment, new AsUnmodifiableGraph<>(resultGraph));
+      var newIds = new HashMap<>(ids);
+      newIds.putAll(arcIds);
+      return new MetricGraph(id, label, comment, new AsUnmodifiableGraph<>(resultGraph), newIds);
     }
 
     public @NotNull MetricGraphBuilder addNode(@NotNull Node node) {
@@ -138,9 +159,21 @@ public final class MetricGraph implements Identity, ObjectWithComment {
     }
 
     public @NotNull MetricGraphBuilder setId(@NotNull String id) {
-      verifyId(() -> id);
+      Identity identity = new Identity() {
+        @Override
+        public @NotNull String getId() {
+          return id;
+        }
+
+        @Override
+        public String toString() {
+          return "CURRENT GRAPH";
+        }
+      };
+      verifyId(identity);
+
       this.id = id;
-      ids.put(id, "CURRENT GRAPH");
+      ids.put(id, identity);
       return this;
     }
 
