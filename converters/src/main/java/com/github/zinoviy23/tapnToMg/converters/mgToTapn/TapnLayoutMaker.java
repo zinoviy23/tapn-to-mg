@@ -1,5 +1,6 @@
 package com.github.zinoviy23.tapnToMg.converters.mgToTapn;
 
+import com.github.zinoviy23.metricGraphs.util.GraphLayout;
 import dk.aau.cs.model.tapn.TimedInputArc;
 import dk.aau.cs.model.tapn.TimedOutputArc;
 import dk.aau.cs.model.tapn.TimedPlace;
@@ -47,28 +48,7 @@ final class TapnLayoutMaker {
   TapnLayoutMaker(@NotNull String graphId, @NotNull Graph<Object, Object> graph) {
     this.graphId = graphId;
     this.graph = graph;
-    layoutModel = createLayout(graph);
-  }
-
-  private static @NotNull LayoutModel2D<Object> createLayout(@NotNull Graph<Object, Object> objectGraph) {
-    Random random = new Random(11);
-
-    var layoutAlgorithm2D = new IndexedFRLayoutAlgorithm2D<>(
-        ITERATIONS,
-        IndexedFRLayoutAlgorithm2D.DEFAULT_THETA_FACTOR,
-        FRLayoutAlgorithm2D.DEFAULT_NORMALIZATION_FACTOR,
-        random
-    );
-
-    var size = calcSize(objectGraph.vertexSet().size());
-    MapLayoutModel2D<Object> layoutModel2D = new MapLayoutModel2D<>(new Box2D(size, size));
-    layoutAlgorithm2D.layout(objectGraph, layoutModel2D);
-
-    return layoutModel2D;
-  }
-
-  private static int calcSize(int vertexCount) {
-    return (int) Math.ceil(Math.sqrt(vertexCount) * VERTEX_SIZE) + SIZE_OFFSET;
+    layoutModel = new GraphLayout().createLayout(graph, VERTEX_SIZE, SIZE_OFFSET);
   }
 
   private static String getTextFromId(@NotNull String id) {
