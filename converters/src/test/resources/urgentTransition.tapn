@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN1" type="P/T net">
+    <place displayName="true" id="P0" initialMarking="0" invariant="&lt; inf" name="P0" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="330.0" positionY="195.0"/>
+    <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="510.0" positionY="195.0" priority="0" urgent="true"/>
+    <arc id="T0 to P0" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="T0" target="P0" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="516" yCoord="207"/>
+      <arcpath arcPointType="false" id="1" xCoord="356" yCoord="207"/>
+    </arc>
+  </net>
+  <k-bound bound="3"/>
+</pnml>

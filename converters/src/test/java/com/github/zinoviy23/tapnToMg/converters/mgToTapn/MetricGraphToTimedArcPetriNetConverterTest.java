@@ -20,11 +20,11 @@ import static org.assertj.core.api.Assertions.*;
 
 public class MetricGraphToTimedArcPetriNetConverterTest {
   private MetricGraph graphFromPaper() {
-    var node1 = new Node("n1");
-    var node2 = new Node("n2");
-    var node3 = new Node("n3");
-    var node4 = new Node("n4");
-    var node5 = new Node("n5");
+    var node1 = Node.createNode("n1");
+    var node2 = Node.createNode("n2");
+    var node3 = Node.createNode("n3");
+    var node4 = Node.createNode("n4");
+    var node5 = Node.createNode("n5");
 
     return MetricGraph.createBuilder()
         .setId("graph")
@@ -91,8 +91,8 @@ public class MetricGraphToTimedArcPetriNetConverterTest {
 
   @Test
   public void simpleGraph() {
-    var node1 = new Node("n1");
-    var node2 = new Node("n2");
+    var node1 = Node.createNode("n1");
+    var node2 = Node.createNode("n2");
 
     var graph = MetricGraph.createBuilder()
         .setId("graph1")
