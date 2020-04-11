@@ -18,7 +18,10 @@ import java.util.stream.Collectors;
 public final class TimedArcPetriNetToMetricGraphConverter implements Converter<TimedArcPetriNet, MetricGraph> {
   @Override
   public @NotNull MetricGraph convert(@NotNull TimedArcPetriNet petriNet) {
-    var graphBuilder = MetricGraph.createBuilder().setId(MgMetadataUtil.getGraphName(petriNet));
+    var graphName = MgMetadataUtil.getGraphName(petriNet);
+    var graphBuilder = MetricGraph.createBuilder()
+        .setId(graphName)
+        .setComment(MgMetadataUtil.getComment(graphName, petriNet));
 
     var transitionNodes = addNodes(graphBuilder, petriNet);
     var placesArcs = new TapnPlacesArcs(petriNet);

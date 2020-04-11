@@ -1,5 +1,6 @@
 package com.github.zinoviy23.tapnToMg.converters.tapnToMg;
 
+import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.util.Ref;
 import dk.aau.cs.model.tapn.*;
 import org.jetbrains.annotations.NotNull;
@@ -62,5 +63,18 @@ final class MgMetadataUtil {
 
   static @NotNull Triple<String, String, String> getSelfLoopHandleArcsNames(@NotNull String name) {
     return Triple.of("br_" + name + "_part1", "br_" + name + "_part2", "br_" + name + "_part3");
+  }
+
+  static @NotNull String getComment(@NotNull String name, @NotNull TimedArcPetriNet petriNet) {
+    return String.format("Metric graph %s generated from corresponding Timed Arc Petri Net %s.\n" +
+            "n_* - nodes, generated from transitions.\n" +
+            "a_*_*_* - arc, generated from transition, place, and transition.\n" +
+            "rev_* - reversal arc. Arc + reversal arc = edge in metric graph.\n" +
+            "t_* - point generated from token.\n" +
+            "l_* - lead generated from place, which has only incoming or only outgoing arcs.\n" +
+            "inf_* - node representing infinity node, which isn't exist.\n" +
+            "br_* - additional node, to break self loop or multiple edges between to nodes.",
+        name, petriNet.name()
+    );
   }
 }

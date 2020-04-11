@@ -209,15 +209,15 @@ public class MetricGraphYedWriter implements Closeable, AutoCloseable {
 
       writer.writeStartElement(Y, "EdgeLabel");
       if (hide) {
-        writer.writeAttribute("textColor", "#00000000");
+        writer.writeAttribute("visible", "false");
       }
       writer.writeCharacters(arc.getLabel() + ", " + arc.getLength());
       writer.writeEndElement();
 
       writer.writeStartElement(Y, "Path");
-      writer.writeAttribute("sx", "0.0");
+      writer.writeAttribute("sx", !hide ? "0.0" : "10.0");
       writer.writeAttribute("sy", "0.0");
-      writer.writeAttribute("tx", "0.0");
+      writer.writeAttribute("tx", !hide ? "0.0" : "10.0");
       writer.writeAttribute("ty", "0.0");
       writer.writeEndElement();
 
