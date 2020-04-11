@@ -7,6 +7,7 @@ import java.util.List;
 import static com.github.zinoviy23.metricGraphs.TestData.node1;
 import static com.github.zinoviy23.metricGraphs.TestData.node2;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.data.Offset.offset;
 
 public class ArcTest {
@@ -193,7 +194,8 @@ public class ArcTest {
     var copy = builder.copy();
     assertThat(builder)
         .isEqualToComparingOnlyGivenFields(copy,
-            "id", "label", "length", "source", "target", "comment", "points");
+            "id", "label", "length", "source", "target", "comment", "points"
+        );
   }
 
   @Test
@@ -256,5 +258,49 @@ public class ArcTest {
         .toBuilder();
 
     assertThat(arcBuilder.toString()).isEqualTo("Raw Arc{id='0', label='Arc 0', length=10.0}");
+  }
+
+  @Test
+  public void distanceToTargetRegularArc() {
+    var arc = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(node1)
+        .setTarget(node2)
+        .createArc();
+
+    assertThat(arc.isDistanceToTarget()).isFalse();
+  }
+
+  @Test
+  public void distanceToTargetLeadArc() {
+    var inf = Node.createInfinity("node inf");
+    var arc = Arc.createBuilder()
+        .setId("0")
+        .setLabel("Arc 0")
+        .setLength(10)
+        .setSource(inf)
+        .setTarget(node2)
+        .createArc();
+
+    assertThat(arc.isDistanceToTarget()).isTrue();
+  }
+
+  @Test
+  public void arcWithTwoInfinities() {
+    var inf = Node.createInfinity("node inf");
+    var inf2 = Node.createInfinity("node inf1");
+    assertThatThrownBy(() ->
+        Arc.createBuilder()
+            .setId("0")
+            .setLabel("Arc 0")
+            .setLength(10)
+            .setSource(inf)
+            .setTarget(inf2)
+            .createArc()
+    )
+        .isInstanceOf(MetricGraphStructureException.class)
+        .hasMessage("Node{id='node inf', label='Infinity node'} and Node{id='node inf1', label='Infinity node'} both are infinity nodes");
   }
 }

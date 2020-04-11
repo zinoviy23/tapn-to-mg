@@ -2,7 +2,6 @@ package com.github.zinoviy23.metricGraphs;
 
 import com.github.zinoviy23.metricGraphs.api.Identity;
 import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
-import com.github.zinoviy23.metricGraphs.util.ObjectUtil;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,6 +24,7 @@ public final class Arc implements Identity, ObjectWithComment {
   private final String comment;
   private final double length;
   private final List<MovingPoint> points;
+  private final boolean distanceToTarget;
 
   private Arc(@NotNull String id,
               @Nullable String label,
@@ -40,6 +40,12 @@ public final class Arc implements Identity, ObjectWithComment {
     this.comment = comment;
     this.length = length;
     this.points = List.copyOf(checkPointsOnArc(length, Objects.requireNonNull(points, "points")));
+
+    if (Node.isInfinity(source) && Node.isInfinity(target)) {
+      throw new MetricGraphStructureException(String.format("%s and %s both are infinity nodes", source, target));
+    }
+
+    distanceToTarget = Node.isInfinity(source);
   }
 
   @Contract(value = " -> new", pure = true)
@@ -90,6 +96,16 @@ public final class Arc implements Identity, ObjectWithComment {
 
   public @NotNull List<MovingPoint> getPoints() {
     return points;
+  }
+
+  /**
+   * Direction for points movement. <br>
+   * If this is true, it means that points positions are relative to arc's target, not source. <br>
+   * If this is false, which is regular situation, it means, that points positions are relative to arc's source.
+   * @return true, only if this arc is lead, with infinity source, otherwise false
+   */
+  public boolean isDistanceToTarget() {
+    return distanceToTarget;
   }
 
   @Override

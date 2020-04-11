@@ -14,7 +14,7 @@ repositories {
 dependencies {
     api(group = "org.jgrapht", name = "jgrapht-core", version = "1.4.0")
 
-    implementation(group = "com.fasterxml.jackson.core", name = "jackson-core", version = "2.10.3")
+    api(group = "com.fasterxml.jackson.core", name = "jackson-core", version = "2.10.3")
     implementation(group = "org.everit.json", name = "org.everit.json.schema", version = "1.5.1")
 
     implementation(group = "org.apache.logging.log4j", name = "log4j-api", version = "2.13.1")

@@ -159,6 +159,10 @@ public final class MetricGraph implements Identity, ObjectWithComment {
       return this;
     }
 
+    public boolean containsEdge(Node source, Node target) {
+      return graph.containsEdge(source, target);
+    }
+
     private void verifyPoints(@NotNull Arc.ArcBuilder arc, @NotNull List<MovingPoint> points) {
       for (var point : points) {
         verifyId(point);

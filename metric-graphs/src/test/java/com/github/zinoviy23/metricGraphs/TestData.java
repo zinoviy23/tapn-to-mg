@@ -1,9 +1,9 @@
 package com.github.zinoviy23.metricGraphs;
 
 public final class TestData {
-  public static final Node node1 = new Node("Node1", "Node1", "AAAAAAA this is node!");
-  public static final Node node2 = new Node("Node2", "Node2");
-  public static final Node node3 = new Node("Node3", "Node3");
+  public static final Node node1 = Node.createNode("Node1", "Node1", "AAAAAAA this is node!");
+  public static final Node node2 = Node.createNode("Node2", "Node2");
+  public static final Node node3 = Node.createNode("Node3", "Node3");
 
   public static final Arc arc1 = Arc.createBuilder()
       .setId("arc1")

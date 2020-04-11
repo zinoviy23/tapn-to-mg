@@ -2,31 +2,49 @@ package com.github.zinoviy23.metricGraphs;
 
 import com.github.zinoviy23.metricGraphs.api.Identity;
 import com.github.zinoviy23.metricGraphs.api.ObjectWithComment;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public final class Node implements Identity, ObjectWithComment {
-  public static final Node INFINITY = new Node(
-      "infinity", "infinity", "This is an infinity node. Edges with this node has only one vertex"
-  );
+public abstract class Node implements Identity, ObjectWithComment {
   private final String id;
   private final String label;
   private final String comment;
 
-  public Node(@NotNull String id) {
+  private Node(@NotNull String id) {
     this(id, id);
   }
 
-  public Node(@NotNull String id, @Nullable String label) {
+  private Node(@NotNull String id, @Nullable String label) {
     this(id, label, null);
   }
 
-  public Node(@NotNull String id, @Nullable String label, @Nullable String comment) {
+  private Node(@NotNull String id, @Nullable String label, @Nullable String comment) {
     this.id = Objects.requireNonNull(id, "id");
     this.label = Objects.requireNonNull(label, "label");
     this.comment = comment;
+  }
+
+  @Contract("_ -> new")
+  public static @NotNull Node createNode(@NotNull String id) {
+    return new NodeImpl(id);
+  }
+
+  @Contract("_, _ -> new")
+  public static @NotNull Node createNode(@NotNull String id, @Nullable String label) {
+    return new NodeImpl(id, label);
+  }
+
+  @Contract("_, _, _ -> new")
+  public static @NotNull Node createNode(@NotNull String id, @Nullable String label, @Nullable String comment) {
+    return new NodeImpl(id, label, comment);
+  }
+
+  @Contract("_ -> new")
+  public static @NotNull Node createInfinity(@NotNull String id) {
+    return new InfinityNode(id);
   }
 
   @Override
@@ -62,5 +80,29 @@ public final class Node implements Identity, ObjectWithComment {
         "id='" + id + '\'' +
         ", label='" + label + '\'' +
         '}';
+  }
+
+  public static boolean isInfinity(@Nullable Node node) {
+    return node instanceof InfinityNode;
+  }
+
+  static class NodeImpl extends Node {
+    private NodeImpl(@NotNull String id) {
+      super(id);
+    }
+
+    private NodeImpl(@NotNull String id, @Nullable String label) {
+      super(id, label);
+    }
+
+    private NodeImpl(@NotNull String id, @Nullable String label, @Nullable String comment) {
+      super(id, label, comment);
+    }
+  }
+
+  static class InfinityNode extends Node {
+    private InfinityNode(@NotNull String id) {
+      super(id, "Infinity node", "This node placed on infinity distance from graph.");
+    }
   }
 }

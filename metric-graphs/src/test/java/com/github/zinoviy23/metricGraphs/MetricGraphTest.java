@@ -14,8 +14,8 @@ public class MetricGraphTest {
     assertThatThrownBy(() ->
         MetricGraph.createBuilder()
             .setId("1")
-            .addNode(new Node("2", "aaa"))
-            .addNode(new Node("2", "bbb"))
+            .addNode(Node.createNode("2", "aaa"))
+            .addNode(Node.createNode("2", "bbb"))
     )
         .isInstanceOf(MetricGraphStructureException.class)
         .hasMessage("Id 2 already assigned to Node{id='2', label='aaa'}");
@@ -223,8 +223,8 @@ public class MetricGraphTest {
   public void reversalTestNonExisting() {
     var graph = createGraph();
     var arc = Arc.createBuilder()
-        .setSource(new Node("1000"))
-        .setTarget(new Node("10000"))
+        .setSource(Node.createNode("1000"))
+        .setTarget(Node.createNode("10000"))
         .setLength(1000)
         .setId("10000000")
         .createArc();
@@ -324,6 +324,21 @@ public class MetricGraphTest {
     )
         .isInstanceOf(MetricGraphStructureException.class)
         .hasMessage("Id p1 already assigned to MovingPoint{id='p1', position=3.0}");
+  }
+
+  @Test
+  public void containsEdge() {
+    var builder = MetricGraph.createBuilder()
+        .setId("1")
+        .addNode(node1)
+        .addNode(node2)
+        .addNode(node3)
+        .addArc(arc1).withReversal("rev1")
+        .addArc(arc2).withReversal("rev2");
+
+    assertThat(builder.containsEdge(node1, node2)).isTrue();
+    assertThat(builder.containsEdge(node2, node3)).isTrue();
+    assertThat(builder.containsEdge(node1, node3)).isFalse();
   }
 
   @Test

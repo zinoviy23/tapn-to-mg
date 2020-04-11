@@ -303,7 +303,7 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
         });
       }
     }
-    return new Node(id, label, comment.getData());
+    return Node.createNode(id, label, comment.getData());
   }
 
   private void fetchMetadata(ThrowableBiConsumer<String, Integer, IOException> fetcher) throws IOException {
