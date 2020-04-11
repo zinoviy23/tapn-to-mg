@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.iml" filepath="$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/cli-app/tapn-to-mg.cli-app.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.iml" filepath="$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.main.iml" filepath="$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.test.iml" filepath="$PROJECT_DIR$/.idea/modules/metric-graphs/tapn-to-mg.metric-graphs.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cli-app/com.github.zinoviy23.tapn-to-mg.cli-app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/cli-app/com.github.zinoviy23.tapn-to-mg.cli-app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cli-app/com.github.zinoviy23.tapn-to-mg.cli-app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/cli-app/com.github.zinoviy23.tapn-to-mg.cli-app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/metric-graphs/com.github.zinoviy23.tapn-to-mg.metric-graphs.main.iml" filepath="$PROJECT_DIR$/.idea/modules/metric-graphs/com.github.zinoviy23.tapn-to-mg.metric-graphs.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/metric-graphs/com.github.zinoviy23.tapn-to-mg.metric-graphs.test.iml" filepath="$PROJECT_DIR$/.idea/modules/metric-graphs/com.github.zinoviy23.tapn-to-mg.metric-graphs.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/converters/tapn-to-mg.converters.main.iml" filepath="$PROJECT_DIR$/.idea/modules/converters/tapn-to-mg.converters.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/converters/tapn-to-mg.converters.test.iml" filepath="$PROJECT_DIR$/.idea/modules/converters/tapn-to-mg.converters.test.iml" />
     </modules>
   </component>
 </project>
