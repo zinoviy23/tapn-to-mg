@@ -112,7 +112,7 @@ public abstract class Node implements Identity, ObjectWithComment {
 
   static class MultiEdgeHandleNode extends Node {
     private MultiEdgeHandleNode(@NotNull String id, @NotNull Node source, @NotNull Node target) {
-      super(id, "id", "Handles multiedges between " + source.getId() + " and " + target.getId());
+      super(id, id, "Handles multiedges between " + source.getId() + " and " + target.getId());
     }
   }
 }
