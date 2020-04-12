@@ -16,7 +16,7 @@ public class ValidatedMetricGraphReader {
     try (var bufferedReader = new BufferedReader(new FileReader(file))) {
       validate(bufferedReader);
     } catch (ValidationException e) {
-      throw new IOException(e.getMessage());
+      throw new IOException(String.join("\n", e.getAllMessages()));
     }
     reader = new MetricGraphReader(file);
   }

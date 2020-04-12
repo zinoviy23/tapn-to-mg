@@ -1,6 +1,5 @@
 package com.github.zinoviy23.metricGraphs.io;
 
-import org.everit.json.schema.ValidationException;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -8,14 +7,20 @@ import org.junit.rules.TestName;
 import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ValidatedMetricGraphReaderTest {
   @Rule
   public TestName testName = new TestName();
 
-  @Test(expected = ValidationException.class)
-  public void invalidGraph() throws IOException {
-    doTest(false);
+  @Test
+  public void invalidGraph() {
+    assertThatThrownBy(() ->
+      doTest(false)
+    ).isInstanceOf(IOException.class)
+        .hasMessage("#/graph/edges/0: required key [id] not found\n" +
+            "#/graph/edges/1: required key [id] not found\n" +
+            "#/graph/edges/2: required key [target] not found");
   }
 
   @Test
