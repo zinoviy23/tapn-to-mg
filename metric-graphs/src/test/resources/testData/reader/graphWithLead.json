@@ -27,8 +27,11 @@
       "metadata" : {
         "points" : [ {
           "id" : "p1",
-          "position" : 0.5
-        } ],
+          "position" : 10
+        }, {
+          "id": "p10",
+          "position": 20
+        }],
         "length" : "Infinity"
       }
     }, {
