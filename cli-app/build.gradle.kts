@@ -32,8 +32,6 @@ dependencies {
 
     implementation(project(":converters"))
     implementation(project(":tapaal.ext"))
-
-    testImplementation("junit", "junit", "4.12")
 }
 
 configure<JavaPluginConvention> {

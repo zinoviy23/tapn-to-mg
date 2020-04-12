@@ -63,7 +63,7 @@ public class TapnToMgApp implements Callable<Integer> {
     } else if (useGui) {
       String[] args;
       if (sourceFile != null) {
-        args = new String[] { sourceFile.getAbsolutePath() };
+        args = new String[]{sourceFile.getAbsolutePath()};
       } else {
         args = new String[0];
       }
@@ -93,14 +93,11 @@ public class TapnToMgApp implements Callable<Integer> {
       try {
         var graph = converter.apply(sourceFile);
         try (var fileWriter = new FileWriter(mgFile)) {
-          if ("yed".equals(mgFileFormat.toLowerCase())) {
-            try (var graphWriter = new MetricGraphYedWriter(fileWriter, true)) {
-              graphWriter.write(graph);
-            }
-          } else {
-            try (var graphWriter = new MetricGraphJsonWriter(fileWriter, true)) {
-              graphWriter.write(graph);
-            }
+          try (var graphWriter = "yed".equals(mgFileFormat.toLowerCase())
+              ? new MetricGraphYedWriter(fileWriter, true)
+              : new MetricGraphJsonWriter(fileWriter, true)
+          ) {
+            graphWriter.write(graph);
           }
           return 0;
         } catch (IOException e) {
