@@ -2,6 +2,8 @@ package com.github.zinoviy23.tapnToMg.converters.mgToTapn;
 
 import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
+import com.github.zinoviy23.metricGraphs.MovingPoint;
+import com.github.zinoviy23.metricGraphs.Node;
 import com.github.zinoviy23.tapnToMg.converters.Converter;
 import dk.aau.cs.model.tapn.*;
 import org.jetbrains.annotations.NotNull;
@@ -9,6 +11,7 @@ import org.jgrapht.Graph;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +40,8 @@ public final class MetricGraphToTimedArcPetriNetConverter implements Converter<M
                                                             @NotNull Graph<Object, Object> layoutGraph) {
     var arcToPlaceMapping = new HashMap<Arc, TimedPlace>();
     for (Arc arc : graph.getGraph().edgeSet()) {
+      if (Node.isInfinity(arc.getSource())) continue;
+
       var placeSourceTarget = new LocalTimedPlace(TapnNamingUtil.nameForPlace(arc));
       arcToPlaceMapping.put(arc, placeSourceTarget);
       petriNet.add(placeSourceTarget);
@@ -56,11 +61,16 @@ public final class MetricGraphToTimedArcPetriNetConverter implements Converter<M
                           @NotNull TimedArcPetriNet petriNet,
                           @NotNull Map<Arc, TimedPlace> mapping,
                           @NotNull SimpleDirectedWeightedGraph<Object, Object> graphToDraw) {
+    if (Node.isInfinity(arc.getSource())) {
+      handleInfinity(graph, arc, petriNet, mapping, graphToDraw);
+      return;
+    }
+
     var placeSourceTarget = mapping.get(arc);
 
     //TODO make rational
     var timedTransition = new TimedTransition(TapnNamingUtil.nameForTransition(arc), false);
-    var arcLength = new IntBound((int) arc.getLength());
+    var arcLength = new IntBound(Double.isInfinite(arc.getLength()) ? 0 : (int) arc.getLength());
     var timedInputArc = new TimedInputArc(placeSourceTarget, timedTransition,
         new TimeInterval(
             true, arcLength, arcLength.copy(), true
@@ -72,12 +82,7 @@ public final class MetricGraphToTimedArcPetriNetConverter implements Converter<M
     graphToDraw.addVertex(timedTransition);
     graphToDraw.addEdge(placeSourceTarget, timedTransition, timedInputArc);
 
-    for (Arc outgoingArc : graph.getGraph().outgoingEdgesOf(arc.getTarget())) {
-      var destination = mapping.get(outgoingArc);
-      var timedOutputArc = new TimedOutputArc(timedTransition, destination);
-      petriNet.add(timedOutputArc);
-      graphToDraw.addEdge(timedTransition, destination, timedOutputArc);
-    }
+    addArcForNeighbours(graph, arc, petriNet, mapping, graphToDraw, timedTransition);
 
     var collapsingTransition = new TimedTransition(TapnNamingUtil.nameForCollapsingTransition(arc), false);
     var collapsingInputArc = new TimedInputArc(placeSourceTarget, collapsingTransition,
@@ -97,5 +102,57 @@ public final class MetricGraphToTimedArcPetriNetConverter implements Converter<M
     graphToDraw.addEdge(placeSourceTarget, collapsingTransition, collapsingInputArc);
     graphToDraw.setEdgeWeight(collapsingInputArc, 2);
     graphToDraw.addEdge(collapsingTransition, placeSourceTarget, collapsingOutputArc);
+  }
+
+  private void addArcForNeighbours(@NotNull MetricGraph graph,
+                                   @NotNull Arc arc,
+                                   @NotNull TimedArcPetriNet petriNet,
+                                   @NotNull Map<Arc, TimedPlace> mapping,
+                                   @NotNull SimpleDirectedWeightedGraph<Object, Object> graphToDraw,
+                                   @NotNull TimedTransition timedTransition) {
+    if (!Node.isInfinity(arc.getTarget())) {
+      for (Arc outgoingArc : graph.getGraph().outgoingEdgesOf(arc.getTarget())) {
+        var destination = mapping.get(outgoingArc);
+        var timedOutputArc = new TimedOutputArc(timedTransition, destination);
+        petriNet.add(timedOutputArc);
+        graphToDraw.addEdge(timedTransition, destination, timedOutputArc);
+      }
+    }
+  }
+
+  private void handleInfinity(@NotNull MetricGraph graph,
+                              @NotNull Arc arc,
+                              @NotNull TimedArcPetriNet petriNet,
+                              @NotNull Map<Arc, TimedPlace> mapping,
+                              @NotNull SimpleDirectedWeightedGraph<Object, Object> graphToDraw) {
+    if (arc.getPoints().isEmpty()) {
+      return;
+    }
+
+    var timedTransition = new TimedTransition(TapnNamingUtil.nameForTransition(arc), false);
+    petriNet.add(timedTransition);
+    var name = TapnNamingUtil.nameForPlace(arc);
+    var arcs = new ArrayList<TimedInputArc>();
+    for (MovingPoint point : arc.getPoints()) {
+      var placeName = TapnNamingUtil.nameForInfinitePlace(name, point);
+      var place = new LocalTimedPlace(placeName);
+      var length = (int) point.getPosition();
+      var inputArc = new TimedInputArc(place, timedTransition, new TimeInterval(
+        true, new IntBound(length), new IntBound(length), true
+      ));
+      petriNet.add(place);
+      var token = new TimedToken(place);
+      place.addToken(token);
+      petriNet.add(inputArc);
+      graphToDraw.addVertex(place);
+      arcs.add(inputArc);
+    }
+
+    graphToDraw.addVertex(timedTransition);
+    for (TimedInputArc timedInputArc : arcs) {
+      graphToDraw.addEdge(timedInputArc.source(), timedInputArc.destination(), timedInputArc);
+    }
+
+    addArcForNeighbours(graph, arc, petriNet, mapping, graphToDraw, timedTransition);
   }
 }

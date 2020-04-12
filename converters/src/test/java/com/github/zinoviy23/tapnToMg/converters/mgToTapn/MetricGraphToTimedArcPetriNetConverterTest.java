@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -169,5 +168,62 @@ public class MetricGraphToTimedArcPetriNetConverterTest {
 
     assertThat(tapnGraph1.getOutputArcFromTransitionAndPlace(ta1, pReva1)).isNotNull();
     assertThat(tapnGraph1.getOutputArcFromTransitionAndPlace(tReva1, pa1)).isNotNull();
+  }
+
+  @Test
+  public void leads() {
+    var node1 = Node.createNode("n1");
+    var node2 = Node.createNode("n2");
+    var inf = Node.createInfinity("inf");
+
+    var graph = MetricGraph.createBuilder()
+        .setId("graph_with_lead")
+        .addNode(node1)
+        .addNode(node2)
+        .addNode(inf)
+        .addArc(Arc.createBuilder()
+            .setId("a1")
+            .setSource(inf)
+            .setTarget(node1)
+            .setLength(Double.POSITIVE_INFINITY)
+            .addPoint(new MovingPoint("i1", 10))
+            .addPoint(new MovingPoint("i2", 20))
+            .addPoint(new MovingPoint("i3", 30))
+        ).withReversal("rev_a1", new MovingPoint("o4", 3))
+        .addArc(Arc.createBuilder()
+            .setId("a2")
+            .setSource(node1)
+            .setTarget(node2)
+            .setLength(3)
+        ).withReversal("rev_a2")
+        .buildGraph();
+
+    var converter = new MetricGraphToTimedArcPetriNetConverter();
+    ConvertedTimedArcPetriNet petriNet = converter.convert(graph);
+    var net = petriNet.getTemplate().model();
+
+    var p11 = net.getPlaceByName("p_a1_i1");
+    assertThat(p11).isNotNull();
+    var p12 = net.getPlaceByName("p_a1_i2");
+    assertThat(p12).isNotNull();
+    var p13 = net.getPlaceByName("p_a1_i3");
+    assertThat(p13).isNotNull();
+
+    var t1 = net.getTransitionByName("t_a1");
+    assertThat(t1).isNotNull();
+
+    assertThat(net.getInputArcFromPlaceToTransition(p11, t1))
+        .isNotNull()
+        .hasFieldOrPropertyWithValue("interval", new TimeInterval(true, new IntBound(10), new IntBound(10), true));
+    assertThat(net.getInputArcFromPlaceToTransition(p12, t1))
+        .isNotNull()
+        .hasFieldOrPropertyWithValue("interval", new TimeInterval(true, new IntBound(20), new IntBound(20), true));
+    assertThat(net.getInputArcFromPlaceToTransition(p13, t1))
+        .isNotNull()
+        .hasFieldOrPropertyWithValue("interval", new TimeInterval(true, new IntBound(30), new IntBound(30), true));
+
+    var tRev1 = net.getTransitionByName("t_rev_a1");
+    assertThat(tRev1).isNotNull();
+    assertThat(tRev1.getOutputArcs()).isEmpty();
   }
 }
