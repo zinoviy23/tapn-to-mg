@@ -15,14 +15,14 @@ import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.second;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.data.Offset.offset;
 
-public class MetricGraphReaderTest {
+public class MetricGraphJsonReaderTest {
   @Rule
   public TestName name = new TestName();
 
   private MetricGraph readGraph() throws IOException {
     var fileName = "/testData/reader/" + name.getMethodName() + ".json";
     MetricGraph graph;
-    try (var reader = new MetricGraphReader(getClass().getResourceAsStream(fileName))) {
+    try (var reader = new MetricGraphJsonReader(getClass().getResourceAsStream(fileName))) {
       graph = reader.read();
     }
     assertThat(graph).isNotNull();

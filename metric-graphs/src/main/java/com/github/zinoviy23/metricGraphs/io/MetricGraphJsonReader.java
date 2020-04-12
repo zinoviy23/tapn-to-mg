@@ -20,8 +20,8 @@ import org.jgrapht.alg.util.Triple;
 import java.io.*;
 import java.util.*;
 
-public final class MetricGraphReader implements AutoCloseable, Closeable {
-  private static final Logger LOG = LogManager.getLogger(MetricGraphReader.class);
+public final class MetricGraphJsonReader implements AutoCloseable, Closeable {
+  private static final Logger LOG = LogManager.getLogger(MetricGraphJsonReader.class);
 
   private static final String GRAPH_HAS_EDGES_BUT_HASN_T_NODES_MESSAGE = "Graph has edges, but hasn't nodes";
   private static final String HASN_T_ANY_NODES_WITH_ID_MESSAGE = "Hasn't any nodes with id=";
@@ -31,19 +31,19 @@ public final class MetricGraphReader implements AutoCloseable, Closeable {
   private boolean isRead;
   private boolean errorOccurred;
 
-  public MetricGraphReader(@NotNull Reader reader) throws IOException {
+  public MetricGraphJsonReader(@NotNull Reader reader) throws IOException {
     parser = IoUtils.factory.createParser(reader);
   }
 
-  public MetricGraphReader(@NotNull InputStream inputStream) throws IOException {
+  public MetricGraphJsonReader(@NotNull InputStream inputStream) throws IOException {
     parser = IoUtils.factory.createParser(inputStream);
   }
 
-  public MetricGraphReader(@NotNull File file) throws IOException {
+  public MetricGraphJsonReader(@NotNull File file) throws IOException {
     parser = IoUtils.factory.createParser(file);
   }
 
-  public MetricGraphReader(@NotNull String source) throws IOException {
+  public MetricGraphJsonReader(@NotNull String source) throws IOException {
     parser = IoUtils.factory.createParser(source);
   }
 

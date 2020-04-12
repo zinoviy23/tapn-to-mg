@@ -9,7 +9,7 @@ import java.io.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class ValidatedMetricGraphReaderTest {
+public class ValidatedMetricGraphJsonReaderTest {
   @Rule
   public TestName testName = new TestName();
 
@@ -68,7 +68,7 @@ public class ValidatedMetricGraphReaderTest {
         input.lines().forEach(output::println);
       }
 
-      var validatedMetricGraphReader = new ValidatedMetricGraphReader(file);
+      var validatedMetricGraphReader = new ValidatedMetricGraphJsonReader(file);
       if (read) {
         assertThat(validatedMetricGraphReader.getReader().read()).isNotNull();
       }

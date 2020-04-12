@@ -1,15 +1,13 @@
 package com.github.zinoviy23.tapnToMg.converters;
 
 import com.github.zinoviy23.metricGraphs.MetricGraph;
-import com.github.zinoviy23.metricGraphs.io.ValidatedMetricGraphReader;
+import com.github.zinoviy23.metricGraphs.io.ValidatedMetricGraphJsonReader;
 import com.github.zinoviy23.metricGraphs.util.ContainerUtil;
 import com.github.zinoviy23.tapnToMg.converters.mgToTapn.ConvertedTimedArcPetriNet;
 import com.github.zinoviy23.tapnToMg.converters.mgToTapn.MetricGraphToTimedArcPetriNetConverter;
-import dk.aau.cs.io.LoadedModel;
 import dk.aau.cs.io.ModelLoader;
 import dk.aau.cs.io.TimedArcPetriNetNetworkWriter;
 import dk.aau.cs.model.tapn.TimedArcPetriNet;
-import dk.aau.cs.model.tapn.TimedArcPetriNetNetwork;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,7 +27,7 @@ public class ConvertersFactory {
 
   public static @NotNull Function<File, MetricGraph> createFileToMetricGraphConverter() {
     return file -> {
-      try (var reader = new ValidatedMetricGraphReader(file).getReader()) {
+      try (var reader = new ValidatedMetricGraphJsonReader(file).getReader()) {
         return reader.read();
       } catch (IOException e) {
         throw new ConversionException(e);

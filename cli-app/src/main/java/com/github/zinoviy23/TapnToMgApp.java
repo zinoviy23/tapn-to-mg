@@ -1,6 +1,6 @@
 package com.github.zinoviy23;
 
-import com.github.zinoviy23.metricGraphs.io.MetricGraphWriter;
+import com.github.zinoviy23.metricGraphs.io.MetricGraphJsonWriter;
 import com.github.zinoviy23.metricGraphs.io.graphml.MetricGraphYedWriter;
 import com.github.zinoviy23.tapaal.TapaalHeadlessService;
 import com.github.zinoviy23.tapaal.extended.ExtendedTapaal;
@@ -98,7 +98,7 @@ public class TapnToMgApp implements Callable<Integer> {
               graphWriter.write(graph);
             }
           } else {
-            try (var graphWriter = new MetricGraphWriter(fileWriter, true)) {
+            try (var graphWriter = new MetricGraphJsonWriter(fileWriter, true)) {
               graphWriter.write(graph);
             }
           }

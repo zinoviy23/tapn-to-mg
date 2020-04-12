@@ -4,6 +4,7 @@ import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.MovingPoint;
 import com.github.zinoviy23.metricGraphs.Node;
+import com.github.zinoviy23.metricGraphs.io.MetricGraphWriter;
 import com.github.zinoviy23.metricGraphs.util.GraphLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -19,7 +20,7 @@ import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MetricGraphYedWriter implements Closeable, AutoCloseable {
+public final class MetricGraphYedWriter implements MetricGraphWriter<IOException> {
   private boolean isWritten;
   private boolean errorOccurred;
   private final Writer resultWriter;
@@ -66,7 +67,7 @@ public class MetricGraphYedWriter implements Closeable, AutoCloseable {
     }
   }
 
-  private static final class YedWriter implements Closeable, AutoCloseable {
+  private static final class YedWriter implements MetricGraphWriter<XMLStreamException> {
     public static final String EDGE_POINTS = "d12";
     private static final String GRAPH_DESCR = "d0";
     private static final String NODE_DESCR = "d5";
@@ -86,7 +87,7 @@ public class MetricGraphYedWriter implements Closeable, AutoCloseable {
       this.applyLayout = applyLayout;
     }
 
-    private void write(@NotNull MetricGraph graph) throws XMLStreamException {
+    public void write(@NotNull MetricGraph graph) throws XMLStreamException {
       writer.writeStartDocument();
       writer.writeStartElement("graphml");
       writeYedSchemes();

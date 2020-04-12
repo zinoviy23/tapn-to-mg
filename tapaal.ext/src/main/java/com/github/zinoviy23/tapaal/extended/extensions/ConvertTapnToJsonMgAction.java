@@ -1,7 +1,7 @@
 package com.github.zinoviy23.tapaal.extended.extensions;
 
 import com.github.zinoviy23.metricGraphs.MetricGraph;
-import com.github.zinoviy23.metricGraphs.io.MetricGraphWriter;
+import com.github.zinoviy23.metricGraphs.io.MetricGraphJsonWriter;
 import pipe.gui.CreateGui;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class ConvertTapnToJsonMgAction extends ConvertTapnToMgAction {
 
   @Override
   protected boolean save(MetricGraph graph, String path) {
-    try (var writer = new FileWriter(path); MetricGraphWriter gw = new MetricGraphWriter(writer, true)) {
+    try (var writer = new FileWriter(path); MetricGraphJsonWriter gw = new MetricGraphJsonWriter(writer, true)) {
       gw.write(graph);
       return true;
     } catch (IOException e) {

@@ -11,19 +11,19 @@ import java.util.stream.Collectors;
 import static com.github.zinoviy23.metricGraphs.TestData.createGraph;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MetricGraphWriterTest {
+public class MetricGraphJsonWriterTest {
   @Test
   public void validateByScheme() throws IOException {
     var graph = createGraph();
 
     StringWriter sw = new StringWriter();
-    try (var mgw = new MetricGraphWriter(sw, true)) {
+    try (var mgw = new MetricGraphJsonWriter(sw, true)) {
       mgw.write(graph);
     }
 
     var json = sw.toString();
     JSONObject jsonSchema = new JSONObject(new JSONTokener(
-        MetricGraphWriterTest.class.getResourceAsStream("/json-graph-schema.json")
+        MetricGraphJsonWriterTest.class.getResourceAsStream("/json-graph-schema.json")
     ));
     JSONObject jsonGraph = new JSONObject(json);
     var schema = SchemaLoader.load(jsonSchema);
@@ -35,7 +35,7 @@ public class MetricGraphWriterTest {
     var file = File.createTempFile("file", ".json");
     try {
       var graph = createGraph();
-      try (var writer = new MetricGraphWriter(new FileOutputStream(file), true)) {
+      try (var writer = new MetricGraphJsonWriter(new FileOutputStream(file), true)) {
         writer.write(graph);
       }
 
