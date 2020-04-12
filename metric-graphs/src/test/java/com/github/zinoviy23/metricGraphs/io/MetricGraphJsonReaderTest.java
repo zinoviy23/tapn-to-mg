@@ -3,6 +3,7 @@ package com.github.zinoviy23.metricGraphs.io;
 import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.MovingPoint;
+import com.github.zinoviy23.metricGraphs.Node;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -13,6 +14,7 @@ import java.util.function.Predicate;
 import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.first;
 import static com.github.zinoviy23.metricGraphs.util.ContainerUtil.second;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.data.Offset.offset;
 
 public class MetricGraphJsonReaderTest {
@@ -113,6 +115,25 @@ public class MetricGraphJsonReaderTest {
     } catch (MetricGraphReadingException e) {
       assertThat("Arc arc1 must have reversal edge!").isEqualTo(e.getMessage());
     }
+  }
+
+  @Test
+  public void graphWithLead() throws IOException {
+    var graph = readGraph();
+    assertThat(graph.getNode("inf"))
+        .isNotNull();
+    assertThat(Node.isInfinity(graph.getNode("inf"))).isTrue();
+    assertThat(graph.getArc("arc1"))
+        .isNotNull()
+        .hasFieldOrPropertyWithValue("length", Double.POSITIVE_INFINITY);
+  }
+
+  @Test
+  public void invalidNumber() {
+    assertThatThrownBy(this::readGraph)
+        .isInstanceOf(MetricGraphReadingException.class)
+        .hasMessage("Current token (VALUE_STRING) not numeric, can not use numeric value accessors\n" +
+            " at [Source: (BufferedInputStream); line: 53, column: 25]");
   }
 
   private void assertPoint(MovingPoint point, String id, double position, String comment) {

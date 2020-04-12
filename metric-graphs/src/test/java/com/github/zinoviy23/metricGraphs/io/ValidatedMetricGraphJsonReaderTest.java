@@ -58,6 +58,11 @@ public class ValidatedMetricGraphJsonReaderTest {
     doTest(false);
   }
 
+  @Test
+  public void graphWithLead() throws IOException {
+    doTest(true);
+  }
+
   private void doTest(boolean read) throws IOException {
     var fileName = "/testData/reader/" + testName.getMethodName() + ".json";
 

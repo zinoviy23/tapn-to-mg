@@ -1,0 +1,72 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "Graph",
+    "type" : "metric graph",
+    "label" : "Graph",
+    "nodes" : {
+      "inf" : {
+        "label" : "Infinity node",
+        "metadata" : {
+          "comment" : "AAAAAAA this is node!"
+        }
+      },
+      "Node2" : {
+        "label" : "Node2"
+      },
+      "Node3" : {
+        "label" : "Node3"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "inf",
+      "target" : "Node2",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 0.5
+        } ],
+        "length" : "Infinity"
+      }
+    }, {
+      "id" : "rev_arc1",
+      "source" : "Node2",
+      "target" : "inf",
+      "relation" : "nodes connection",
+      "label" : "rev_arc1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : "Infinity"
+      }
+    }, {
+      "id" : "arc2",
+      "source" : "Node3",
+      "target" : "Node2",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 0.7
+        } ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "Node2",
+      "target" : "Node3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }],
+    "metadata" : {
+      "comment" : "Comment"
+    }
+  }
+}

@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public abstract class Node implements Identity, ObjectWithComment {
+  public static final String INFINITY_NODE_LABEL = "Infinity node";
   private final String id;
   private final String label;
   private final String comment;
@@ -105,7 +106,7 @@ public abstract class Node implements Identity, ObjectWithComment {
 
   static class InfinityNode extends Node {
     private InfinityNode(@NotNull String id) {
-      super(id, "Infinity node", "This node placed on infinity distance from graph.");
+      super(id, INFINITY_NODE_LABEL, "This node placed on infinity distance from graph.");
     }
   }
 

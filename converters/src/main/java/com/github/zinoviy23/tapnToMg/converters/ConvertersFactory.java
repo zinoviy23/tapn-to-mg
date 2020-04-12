@@ -1,6 +1,7 @@
 package com.github.zinoviy23.tapnToMg.converters;
 
 import com.github.zinoviy23.metricGraphs.MetricGraph;
+import com.github.zinoviy23.metricGraphs.io.MetricGraphReadingException;
 import com.github.zinoviy23.metricGraphs.io.ValidatedMetricGraphJsonReader;
 import com.github.zinoviy23.metricGraphs.util.ContainerUtil;
 import com.github.zinoviy23.tapnToMg.converters.mgToTapn.ConvertedTimedArcPetriNet;
@@ -29,7 +30,7 @@ public class ConvertersFactory {
     return file -> {
       try (var reader = new ValidatedMetricGraphJsonReader(file).getReader()) {
         return reader.read();
-      } catch (IOException e) {
+      } catch (IOException | MetricGraphReadingException e) {
         throw new ConversionException(e);
       }
     };

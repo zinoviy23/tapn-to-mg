@@ -127,7 +127,7 @@
                     }
                   },
                   "length": {
-                    "type": "number"
+                    "type": ["number", "string"]
                   }
                 },
                 "additionalProperties": true

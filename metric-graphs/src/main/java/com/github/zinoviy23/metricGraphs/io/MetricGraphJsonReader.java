@@ -1,6 +1,7 @@
 package com.github.zinoviy23.metricGraphs.io;
 
 import com.fasterxml.jackson.core.JsonLocation;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.github.zinoviy23.metricGraphs.Arc;
@@ -56,6 +57,9 @@ public final class MetricGraphJsonReader implements AutoCloseable, Closeable {
       var graph = internalRead();
       isRead = true;
       return graph;
+    } catch (JsonParseException e) {
+      errorOccurred = true;
+      throw new MetricGraphReadingException(e.getMessage());
     } catch (IOException e) {
       errorOccurred = true;
       throw new IOException(e);
@@ -225,7 +229,13 @@ public final class MetricGraphJsonReader implements AutoCloseable, Closeable {
       }
       if (IoUtils.LENGTH.equals(name) && balance == 1) {
         parser.nextToken();
-        arcBuilder.setLength(parser.getNumberValue().doubleValue());
+        if (parser.getCurrentToken().isNumeric()) {
+          arcBuilder.setLength(parser.getNumberValue().doubleValue());
+        } else if ("Infinity".equals(parser.getValueAsString())) {
+          arcBuilder.setLength(Double.POSITIVE_INFINITY);
+        } else {
+          throw new MetricGraphReadingException("Unexpected value: " + parser.getValueAsString());
+        }
       }
     });
   }
@@ -302,6 +312,9 @@ public final class MetricGraphJsonReader implements AutoCloseable, Closeable {
           }
         });
       }
+    }
+    if (Node.INFINITY_NODE_LABEL.equals(label)) {
+      return Node.createInfinity(id);
     }
     return Node.createNode(id, label, comment.getData());
   }
