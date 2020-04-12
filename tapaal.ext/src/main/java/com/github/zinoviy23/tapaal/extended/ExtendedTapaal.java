@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 public class ExtendedTapaal {
+  private static final Pattern extensionPattern = Pattern.compile("(.+)\\.\\d+");
+
   public static void main(String[] args) {
     initializeExtensionPoints();
     initializeExtensions();
@@ -47,7 +50,14 @@ public class ExtendedTapaal {
     ExtensionManager instance = ExtensionManager.getInstance();
     for (Map.Entry<Object, Object> extension : properties.entrySet()) {
       Class<?> extensionInterface = Class.forName((String) extension.getValue());
-      instance.registerExtension((String) extension.getKey(), extensionInterface);
+      String key;
+      var matcher = extensionPattern.matcher((String) extension.getKey());
+      if (matcher.matches()) {
+        key = matcher.group(1);
+      } else {
+        key = (String) extension.getKey();
+      }
+      instance.registerExtension(key, extensionInterface);
     }
   }
 }

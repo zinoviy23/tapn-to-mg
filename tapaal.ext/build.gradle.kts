@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     implementation(project(":tapaal"))
+    implementation(project(":converters"))
 
     testImplementation("junit", "junit", "4.12")
 }

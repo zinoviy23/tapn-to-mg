@@ -4,6 +4,7 @@ import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.MovingPoint;
 import com.github.zinoviy23.metricGraphs.Node;
+import com.github.zinoviy23.tapnToMg.converters.ConvertersFactory;
 import dk.aau.cs.io.TimedArcPetriNetNetworkWriter;
 import dk.aau.cs.model.tapn.*;
 import org.assertj.core.api.Condition;
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -87,6 +89,15 @@ public class MetricGraphToTimedArcPetriNetConverterTest {
     } finally {
       assertThat(file.delete()).isTrue();
     }
+  }
+
+  @Test
+  public void convertFromPaperUsingFileConverter() {
+    var graph = graphFromPaper();
+    var converter = new MetricGraphToTimedArcPetriNetConverter()
+        .andThen(ConvertersFactory.createTimedArcPetriNetToFileConverter());
+    var apply = converter.apply(graph);
+    assertThat(apply.exists());
   }
 
   @Test
