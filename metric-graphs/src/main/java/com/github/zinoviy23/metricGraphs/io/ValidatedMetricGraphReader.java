@@ -1,5 +1,6 @@
 package com.github.zinoviy23.metricGraphs.io;
 
+import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -14,6 +15,8 @@ public class ValidatedMetricGraphReader {
   public ValidatedMetricGraphReader(@NotNull File file) throws IOException {
     try (var bufferedReader = new BufferedReader(new FileReader(file))) {
       validate(bufferedReader);
+    } catch (ValidationException e) {
+      throw new IOException(e.getMessage());
     }
     reader = new MetricGraphReader(file);
   }

@@ -1,11 +1,22 @@
 plugins {
     java
-    kotlin("jvm") version "1.3.70"
     application
 }
 
 group = "com.github.zinoviy23"
 version = "0.0"
+
+tasks.distZip {
+    archiveBaseName.set("tapn-to-mg")
+}
+
+tasks.startScripts {
+    applicationName = "tapn-to-mg"
+}
+
+tasks.installDist {
+    destinationDir = file("$buildDir/install/tapn-to-mg")
+}
 
 repositories {
     mavenCentral()
@@ -16,10 +27,11 @@ application {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
-
     implementation("info.picocli:picocli:4.2.0")
     annotationProcessor("info.picocli:picocli-codegen:4.2.0")
+
+    implementation(project(":converters"))
+    implementation(project(":tapaal.ext"))
 
     testImplementation("junit", "junit", "4.12")
 }
@@ -29,13 +41,6 @@ configure<JavaPluginConvention> {
     targetCompatibility = JavaVersion.VERSION_11
 }
 tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-
     compileJava {
         options.compilerArgs = options.compilerArgs + listOf("-Aproject=${project.group}/${project.name}")
     }
