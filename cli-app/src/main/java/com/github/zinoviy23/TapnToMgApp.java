@@ -42,7 +42,7 @@ public class TapnToMgApp implements Callable<Integer> {
   private File tapnFile;
 
   @SuppressWarnings("unused")
-  @CommandLine.Option(names = {"-g", "--gui"})
+  @CommandLine.Option(names = {"-g", "--gui"}, description = "Run extended TAPAAL application")
   private boolean useGui;
 
   private static Runnable resultRunnable;
