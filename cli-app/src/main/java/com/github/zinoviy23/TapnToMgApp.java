@@ -21,7 +21,8 @@ import java.util.concurrent.Callable;
 @CommandLine.Command(
     name = "tapn-to-mg",
     description = "Converts Timed Arc Petri Net to Metric Graph and vice versa.",
-    version = "tapn-to-mg 0.0"
+    version = "tapn-to-mg 0.0",
+    mixinStandardHelpOptions = true
 )
 public class TapnToMgApp implements Callable<Integer> {
   @SuppressWarnings("unused")
