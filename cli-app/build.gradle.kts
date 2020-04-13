@@ -10,6 +10,16 @@ tasks.distZip {
     archiveBaseName.set("tapn-to-mg")
 }
 
+distributions {
+    main {
+        contents {
+            into("examples") {
+                from("$projectDir/../examples")
+            }
+        }
+    }
+}
+
 tasks.startScripts {
     applicationName = "tapn-to-mg"
 }

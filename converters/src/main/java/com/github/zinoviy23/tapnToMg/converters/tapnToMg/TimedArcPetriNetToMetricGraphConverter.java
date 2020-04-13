@@ -4,6 +4,7 @@ import com.github.zinoviy23.metricGraphs.Arc;
 import com.github.zinoviy23.metricGraphs.MetricGraph;
 import com.github.zinoviy23.metricGraphs.MovingPoint;
 import com.github.zinoviy23.metricGraphs.Node;
+import com.github.zinoviy23.metricGraphs.util.DoubleUtil;
 import com.github.zinoviy23.metricGraphs.util.Ref;
 import com.github.zinoviy23.tapnToMg.converters.Converter;
 import dk.aau.cs.model.tapn.*;
@@ -80,14 +81,14 @@ public final class TimedArcPetriNetToMetricGraphConverter implements Converter<T
       var resultArc = Arc.createBuilder()
           .setSource(source)
           .setTarget(target)
-          .setLength(arc.interval().upperBound().value())
+          .setLength(fixLength(arc.interval().upperBound().value()))
           .setId(name);
 
       builder.addArc(resultArc).withReversal(MgMetadataUtil.getNameForReversal(name));
     } else if (!source.equals(target)) {
       var handlerNode = Node.createMultiEdgeHandler(MgMetadataUtil.getMultiedgeHandlerNodeName(name), source, target);
       var edgesNames = MgMetadataUtil.getMultiedgeHandlerArcsNames(name);
-      var length = arc.interval().upperBound().value() / 2.0;
+      var length = fixLength(arc.interval().upperBound().value()) / 2.0;
       builder
           .addNode(handlerNode)
           .addArc(Arc.createBuilder()
@@ -107,7 +108,7 @@ public final class TimedArcPetriNetToMetricGraphConverter implements Converter<T
     } else {
       var edgesNames = MgMetadataUtil.getSelfLoopHandleArcsNames(name);
       var loopFixes = fixSelfLoop(name, source, target);
-      var length = arc.interval().upperBound().value() / 3.0;
+      var length = fixLength(arc.interval().upperBound().value()) / 3.0;
       builder
           .addNode(loopFixes.getFirst())
           .addNode(loopFixes.getSecond())
@@ -133,6 +134,10 @@ public final class TimedArcPetriNetToMetricGraphConverter implements Converter<T
     }
 
     return name;
+  }
+
+  private double fixLength(int length) {
+    return length != 0 ? length : DoubleUtil.DELTA;
   }
 
   private Pair<Node, Node> fixSelfLoop(@NotNull String name, @NotNull Node source, @NotNull Node target) {

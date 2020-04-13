@@ -1,0 +1,118 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "graph",
+    "type" : "metric graph",
+    "label" : "graph",
+    "nodes" : {
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      },
+      "n4" : {
+        "label" : "n4"
+      },
+      "n5" : {
+        "label" : "n5"
+      }
+    },
+    "edges" : [ {
+      "id" : "a1",
+      "source" : "n1",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "a1",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 3.0
+        } ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_a1",
+      "source" : "n5",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_a1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "a2",
+      "source" : "n5",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "a2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 3.0
+        } ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_a2",
+      "source" : "n2",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_a2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "a3",
+      "source" : "n5",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "a3",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p3",
+          "position" : 3.0
+        } ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_a3",
+      "source" : "n3",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_a3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "a4",
+      "source" : "n5",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "a4",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p4",
+          "position" : 3.0
+        } ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_a4",
+      "source" : "n4",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_a4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    } ]
+  }
+}

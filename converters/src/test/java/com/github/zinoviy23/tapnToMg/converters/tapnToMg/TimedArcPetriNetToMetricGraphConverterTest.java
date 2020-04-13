@@ -114,4 +114,9 @@ public class TimedArcPetriNetToMetricGraphConverterTest {
         .isInstanceOf(TimedArcPetriNetToMetricGraphConversionException.class)
         .hasMessage("Transition T0 must be non-urgent");
   }
+
+  @Test
+  public void fig4() throws FormatException {
+    getGraph();
+  }
 }

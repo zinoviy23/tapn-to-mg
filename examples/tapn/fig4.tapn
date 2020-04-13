@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN1" type="P/T net">
+    <place displayName="true" id="controller1" initialMarking="1" invariant="&lt; inf" name="controller1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="195.0" positionY="330.0"/>
+    <place displayName="true" id="tasks1" initialMarking="0" invariant="&lt; inf" name="tasks1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="330.0" positionY="195.0"/>
+    <place displayName="true" id="processing1" initialMarking="0" invariant="&lt; inf" name="processing1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="555.0" positionY="135.0"/>
+    <place displayName="true" id="controller2" initialMarking="1" invariant="&lt; inf" name="controller2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="765.0" positionY="75.0"/>
+    <place displayName="true" id="tasks2" initialMarking="0" invariant="&lt; inf" name="tasks2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="345.0" positionY="315.0"/>
+    <place displayName="true" id="processing2" initialMarking="0" invariant="&lt; inf" name="processing2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="465.0" positionY="270.0"/>
+    <place displayName="true" id="sensor1" initialMarking="0" invariant="&lt; inf" name="sensor1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="675.0" positionY="270.0"/>
+    <place displayName="true" id="tasks4" initialMarking="0" invariant="&lt; inf" name="tasks4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="885.0" positionY="210.0"/>
+    <place displayName="true" id="processing_2" initialMarking="0" invariant="&lt; inf" name="processing_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="450.0" positionY="420.0"/>
+    <place displayName="true" id="sensor2" initialMarking="0" invariant="&lt; inf" name="sensor2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="675.0" positionY="435.0"/>
+    <place displayName="true" id="sensor0" initialMarking="0" invariant="&lt; inf" name="sensor0" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="855.0" positionY="375.0"/>
+    <place displayName="true" id="pool1" initialMarking="1" invariant="&lt; inf" name="pool1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1095.0" positionY="435.0"/>
+    <place displayName="true" id="tasks3" initialMarking="0" invariant="&lt; inf" name="tasks3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="300.0" positionY="525.0"/>
+    <place displayName="true" id="processing3" initialMarking="0" invariant="&lt; inf" name="processing3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="555.0" positionY="615.0"/>
+    <place displayName="true" id="pool2" initialMarking="1" invariant="&lt; inf" name="pool2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="630.0"/>
+    <transition angle="0" displayName="true" id="put1" infiniteServer="false" name="put1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="255.0" positionY="255.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="take1" infiniteServer="false" name="take1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="435.0" positionY="165.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="take2" infiniteServer="false" name="take2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="420.0" positionY="345.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="put2" infiniteServer="false" name="put2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="225.0" positionY="435.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="take3" infiniteServer="false" name="take3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="420.0" positionY="585.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="back3" infiniteServer="false" name="back3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="615.0" positionY="555.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="back_2" infiniteServer="false" name="back_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="555.0" positionY="435.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="back2" infiniteServer="false" name="back2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="555.0" positionY="270.0" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="pass12" infiniteServer="false" name="pass12" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="675.0" positionY="345.0" priority="0" urgent="false"/>
+    <transition angle="225" displayName="true" id="pass01" infiniteServer="false" name="pass01" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="795.0" positionY="315.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="pass20" infiniteServer="false" name="pass20" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="795.0" positionY="435.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="init1" infiniteServer="false" name="init1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="930.0" positionY="435.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="init2" infiniteServer="false" name="init2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="720.0" positionY="615.0" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="put4" infiniteServer="false" name="put4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="780.0" positionY="150.0" priority="0" urgent="false"/>
+    <transition angle="90" displayName="true" id="take4" infiniteServer="false" name="take4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="930.0" positionY="285.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="back1" infiniteServer="false" name="back1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="630.0" positionY="180.0" priority="0" urgent="false"/>
+    <arc id="controller1 to put1" inscription="[15,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="controller1" target="put1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="215" yCoord="329"/>
+      <arcpath arcPointType="false" id="1" xCoord="261" yCoord="267"/>
+    </arc>
+    <arc id="put1 to controller1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put1" target="controller1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="267" yCoord="282"/>
+      <arcpath arcPointType="false" id="1" xCoord="267" yCoord="327"/>
+      <arcpath arcPointType="false" id="2" xCoord="221" yCoord="338"/>
+    </arc>
+    <arc id="put1 to tasks1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put1" target="tasks1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="271" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="330" yCoord="216"/>
+    </arc>
+    <arc id="tasks1 to take1" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="tasks1" target="take1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="356" yCoord="202"/>
+      <arcpath arcPointType="false" id="1" xCoord="441" yCoord="177"/>
+    </arc>
+    <arc id="take1 to processing1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="take1" target="processing1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="452" yCoord="172"/>
+      <arcpath arcPointType="false" id="1" xCoord="552" yCoord="150"/>
+    </arc>
+    <arc id="processing1 to back1" inscription="[6,6]" nameOffsetX="0.0" nameOffsetY="0.0" source="processing1" target="back1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="579" yCoord="155"/>
+      <arcpath arcPointType="false" id="1" xCoord="636" yCoord="192"/>
+    </arc>
+    <arc id="back1 to sensor1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="back1" target="sensor1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="642" yCoord="207"/>
+      <arcpath arcPointType="false" id="1" xCoord="679" yCoord="269"/>
+    </arc>
+    <arc id="sensor1 to take1" inscription="[6,6]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor1" target="take1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="673" yCoord="275"/>
+      <arcpath arcPointType="false" id="1" xCoord="451" yCoord="177"/>
+    </arc>
+    <arc id="controller2 to put4" inscription="[15,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="controller2" target="put4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="779" yCoord="101"/>
+      <arcpath arcPointType="false" id="1" xCoord="786" yCoord="156"/>
+    </arc>
+    <arc id="put4 to controller2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put4" target="controller2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="796" yCoord="157"/>
+      <arcpath arcPointType="false" id="1" xCoord="822" yCoord="117"/>
+      <arcpath arcPointType="false" id="2" xCoord="789" yCoord="95"/>
+    </arc>
+    <arc id="put4 to tasks4" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put4" target="tasks4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="806" yCoord="162"/>
+      <arcpath arcPointType="false" id="1" xCoord="884" yCoord="213"/>
+    </arc>
+    <arc id="tasks4 to take4" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="tasks4" target="take4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="905" yCoord="234"/>
+      <arcpath arcPointType="false" id="1" xCoord="941" yCoord="291"/>
+    </arc>
+    <arc id="take4 to sensor0" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="take4" target="sensor0" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="936" yCoord="301"/>
+      <arcpath arcPointType="false" id="1" xCoord="876" yCoord="375"/>
+    </arc>
+    <arc id="sensor0 to take4" inscription="[10,10]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor0" target="take4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="881" yCoord="384"/>
+      <arcpath arcPointType="false" id="1" xCoord="957" yCoord="372"/>
+      <arcpath arcPointType="false" id="2" xCoord="946" yCoord="302"/>
+    </arc>
+    <arc id="pool1 to init1" inscription="[9,9]" nameOffsetX="0.0" nameOffsetY="0.0" source="pool1" target="init1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1092" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="947" yCoord="442"/>
+    </arc>
+    <arc id="init1 to pool1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="init1" target="pool1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="946" yCoord="452"/>
+      <arcpath arcPointType="false" id="1" xCoord="972" yCoord="492"/>
+      <arcpath arcPointType="false" id="2" xCoord="1092" yCoord="451"/>
+    </arc>
+    <arc id="init1 to sensor0" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="init1" target="sensor0" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="936" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="878" yCoord="396"/>
+    </arc>
+    <arc id="sensor0 to pass01" inscription="[30,30]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor0" target="pass01" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="856" yCoord="376"/>
+      <arcpath arcPointType="false" id="1" xCoord="811" yCoord="330"/>
+    </arc>
+    <arc id="pass01 to sensor1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="pass01" target="sensor1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="803" yCoord="323"/>
+      <arcpath arcPointType="false" id="1" xCoord="701" yCoord="287"/>
+    </arc>
+    <arc id="sensor2 to pass20" inscription="[30,30]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor2" target="pass20" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="701" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="801" yCoord="447"/>
+    </arc>
+    <arc id="pass20 to sensor0" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="pass20" target="sensor0" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="811" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="856" yCoord="398"/>
+    </arc>
+    <arc id="sensor1 to pass12" inscription="[30,30]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor1" target="pass12" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="686" yCoord="296"/>
+      <arcpath arcPointType="false" id="1" xCoord="686" yCoord="351"/>
+    </arc>
+    <arc id="pass12 to sensor2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="pass12" target="sensor2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="686" yCoord="361"/>
+      <arcpath arcPointType="false" id="1" xCoord="686" yCoord="432"/>
+    </arc>
+    <arc id="pool2 to init2" inscription="[30,30]" nameOffsetX="0.0" nameOffsetY="0.0" source="pool2" target="init2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="807" yCoord="639"/>
+      <arcpath arcPointType="false" id="1" xCoord="736" yCoord="627"/>
+    </arc>
+    <arc id="init2 to pool2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="init2" target="pool2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="732" yCoord="642"/>
+      <arcpath arcPointType="false" id="1" xCoord="762" yCoord="687"/>
+      <arcpath arcPointType="false" id="2" xCoord="810" yCoord="651"/>
+    </arc>
+    <arc id="init2 to sensor2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="init2" target="sensor2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="732" yCoord="612"/>
+      <arcpath arcPointType="false" id="1" xCoord="691" yCoord="461"/>
+    </arc>
+    <arc id="put1 to tasks2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put1" target="tasks2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="271" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="344" yCoord="318"/>
+    </arc>
+    <arc id="controller1 to put2" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="controller1" target="put2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="211" yCoord="356"/>
+      <arcpath arcPointType="false" id="1" xCoord="237" yCoord="432"/>
+    </arc>
+    <arc id="put2 to controller1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put2" target="controller1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="241" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="282" yCoord="372"/>
+      <arcpath arcPointType="false" id="2" xCoord="220" yCoord="347"/>
+    </arc>
+    <arc id="put2 to tasks2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put2" target="tasks2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="241" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="346" yCoord="337"/>
+    </arc>
+    <arc id="put2 to tasks3" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="put2" target="tasks3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="241" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="302" yCoord="525"/>
+    </arc>
+    <arc id="tasks3 to take3" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="tasks3" target="take3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="325" yCoord="544"/>
+      <arcpath arcPointType="false" id="1" xCoord="426" yCoord="597"/>
+    </arc>
+    <arc id="take3 to processing3" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="take3" target="processing3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="436" yCoord="602"/>
+      <arcpath arcPointType="false" id="1" xCoord="552" yCoord="624"/>
+    </arc>
+    <arc id="processing3 to back3" inscription="[6,6]" nameOffsetX="0.0" nameOffsetY="0.0" source="processing3" target="back3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="577" yCoord="615"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="567"/>
+    </arc>
+    <arc id="back3 to sensor2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="back3" target="sensor2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="627" yCoord="552"/>
+      <arcpath arcPointType="false" id="1" xCoord="679" yCoord="460"/>
+    </arc>
+    <arc id="sensor2 to take3" inscription="[10,10]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor2" target="take3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="674" yCoord="454"/>
+      <arcpath arcPointType="false" id="1" xCoord="437" yCoord="592"/>
+    </arc>
+    <arc id="tasks2 to take2" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="tasks2" target="take2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="370" yCoord="333"/>
+      <arcpath arcPointType="false" id="1" xCoord="426" yCoord="357"/>
+    </arc>
+    <arc id="take2 to processing2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="take2" target="processing2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="437" yCoord="349"/>
+      <arcpath arcPointType="false" id="1" xCoord="469" yCoord="294"/>
+    </arc>
+    <arc id="processing2 to back2" inscription="[6,6]" nameOffsetX="0.0" nameOffsetY="0.0" source="processing2" target="back2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="491" yCoord="282"/>
+      <arcpath arcPointType="false" id="1" xCoord="561" yCoord="282"/>
+    </arc>
+    <arc id="back2 to sensor1" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="back2" target="sensor1" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="571" yCoord="282"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="282"/>
+    </arc>
+    <arc id="take2 to processing_2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="take2" target="processing_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="432" yCoord="372"/>
+      <arcpath arcPointType="false" id="1" xCoord="455" yCoord="418"/>
+    </arc>
+    <arc id="processing_2 to back_2" inscription="[6,6]" nameOffsetX="0.0" nameOffsetY="0.0" source="processing_2" target="back_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="476" yCoord="434"/>
+      <arcpath arcPointType="false" id="1" xCoord="561" yCoord="447"/>
+    </arc>
+    <arc id="back_2 to sensor2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="back_2" target="sensor2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="571" yCoord="447"/>
+      <arcpath arcPointType="false" id="1" xCoord="672" yCoord="447"/>
+    </arc>
+    <arc id="sensor2 to take2" inscription="[10,10]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor2" target="take2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="672" yCoord="442"/>
+      <arcpath arcPointType="false" id="1" xCoord="436" yCoord="362"/>
+    </arc>
+    <arc id="sensor1 to take2" inscription="[10,10]" nameOffsetX="0.0" nameOffsetY="0.0" source="sensor1" target="take2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="672" yCoord="286"/>
+      <arcpath arcPointType="false" id="1" xCoord="437" yCoord="352"/>
+    </arc>
+  </net>
+  <k-bound bound="3"/>
+</pnml>

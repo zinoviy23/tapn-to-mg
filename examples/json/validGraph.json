@@ -1,0 +1,95 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "Graph",
+    "type" : "metric graph",
+    "label" : "Graph",
+    "nodes" : {
+      "Node1" : {
+        "label" : "Node1",
+        "metadata" : {
+          "comment" : "AAAAAAA this is node!"
+        }
+      },
+      "Node2" : {
+        "label" : "Node2"
+      },
+      "Node3" : {
+        "label" : "Node3"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "Node2",
+      "target" : "Node1",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 0.5
+        } ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_arc1",
+      "source" : "Node1",
+      "target" : "Node2",
+      "relation" : "nodes connection",
+      "label" : "rev_arc1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "arc2",
+      "source" : "Node3",
+      "target" : "Node2",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 0.7
+        } ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "Node2",
+      "target" : "Node3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "arc3",
+      "source" : "Node1",
+      "target" : "Node3",
+      "relation" : "nodes connection",
+      "label" : "my arc",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p3",
+          "position" : 0.2
+        } ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_arc3",
+      "source" : "Node3",
+      "target" : "Node1",
+      "relation" : "nodes connection",
+      "label" : "rev_arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    } ],
+    "metadata" : {
+      "comment" : "Comment"
+    }
+  }
+}
