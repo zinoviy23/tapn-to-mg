@@ -1,6 +1,7 @@
 plugins {
     java
     `java-library`
+    jacoco
 }
 
 group = "com.github.zinoviy23"
@@ -26,4 +27,17 @@ configure<JavaPluginConvention> {
 
 tasks.test {
     systemProperty("java.awt.headless", "true")
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.isEnabled = false
+        csv.isEnabled = false
+        html.destination = file("${buildDir}/jacocoHtml")
+    }
 }
