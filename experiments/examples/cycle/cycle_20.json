@@ -1,0 +1,474 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "cycle_20",
+    "type" : "metric graph",
+    "label" : "cycle_20",
+    "nodes" : {
+      "n0" : {
+        "label" : "n0"
+      },
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      },
+      "n4" : {
+        "label" : "n4"
+      },
+      "n5" : {
+        "label" : "n5"
+      },
+      "n6" : {
+        "label" : "n6"
+      },
+      "n7" : {
+        "label" : "n7"
+      },
+      "n8" : {
+        "label" : "n8"
+      },
+      "n9" : {
+        "label" : "n9"
+      },
+      "n10" : {
+        "label" : "n10"
+      },
+      "n11" : {
+        "label" : "n11"
+      },
+      "n12" : {
+        "label" : "n12"
+      },
+      "n13" : {
+        "label" : "n13"
+      },
+      "n14" : {
+        "label" : "n14"
+      },
+      "n15" : {
+        "label" : "n15"
+      },
+      "n16" : {
+        "label" : "n16"
+      },
+      "n17" : {
+        "label" : "n17"
+      },
+      "n18" : {
+        "label" : "n18"
+      },
+      "n19" : {
+        "label" : "n19"
+      }
+    },
+    "edges" : [ {
+      "id" : "a1",
+      "source" : "n0",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "a1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "rev_a1",
+      "source" : "n1",
+      "target" : "n0",
+      "relation" : "nodes connection",
+      "label" : "rev_a1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "a2",
+      "source" : "n1",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "a2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p",
+          "position" : 0.0
+        } ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "rev_a2",
+      "source" : "n2",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_a2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "a3",
+      "source" : "n2",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "a3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "rev_a3",
+      "source" : "n3",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_a3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "a4",
+      "source" : "n3",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "a4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_a4",
+      "source" : "n4",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "rev_a4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "a5",
+      "source" : "n4",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "a5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_a5",
+      "source" : "n5",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "rev_a5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "a6",
+      "source" : "n5",
+      "target" : "n6",
+      "relation" : "nodes connection",
+      "label" : "a6",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 12.0
+      }
+    }, {
+      "id" : "rev_a6",
+      "source" : "n6",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_a6",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 12.0
+      }
+    }, {
+      "id" : "a7",
+      "source" : "n6",
+      "target" : "n7",
+      "relation" : "nodes connection",
+      "label" : "a7",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_a7",
+      "source" : "n7",
+      "target" : "n6",
+      "relation" : "nodes connection",
+      "label" : "rev_a7",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "a8",
+      "source" : "n7",
+      "target" : "n8",
+      "relation" : "nodes connection",
+      "label" : "a8",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "rev_a8",
+      "source" : "n8",
+      "target" : "n7",
+      "relation" : "nodes connection",
+      "label" : "rev_a8",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "a9",
+      "source" : "n8",
+      "target" : "n9",
+      "relation" : "nodes connection",
+      "label" : "a9",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_a9",
+      "source" : "n9",
+      "target" : "n8",
+      "relation" : "nodes connection",
+      "label" : "rev_a9",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "a10",
+      "source" : "n9",
+      "target" : "n10",
+      "relation" : "nodes connection",
+      "label" : "a10",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "rev_a10",
+      "source" : "n10",
+      "target" : "n9",
+      "relation" : "nodes connection",
+      "label" : "rev_a10",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "a11",
+      "source" : "n10",
+      "target" : "n11",
+      "relation" : "nodes connection",
+      "label" : "a11",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 16.0
+      }
+    }, {
+      "id" : "rev_a11",
+      "source" : "n11",
+      "target" : "n10",
+      "relation" : "nodes connection",
+      "label" : "rev_a11",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 16.0
+      }
+    }, {
+      "id" : "a12",
+      "source" : "n11",
+      "target" : "n12",
+      "relation" : "nodes connection",
+      "label" : "a12",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "rev_a12",
+      "source" : "n12",
+      "target" : "n11",
+      "relation" : "nodes connection",
+      "label" : "rev_a12",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "a13",
+      "source" : "n12",
+      "target" : "n13",
+      "relation" : "nodes connection",
+      "label" : "a13",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "rev_a13",
+      "source" : "n13",
+      "target" : "n12",
+      "relation" : "nodes connection",
+      "label" : "rev_a13",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "a14",
+      "source" : "n13",
+      "target" : "n14",
+      "relation" : "nodes connection",
+      "label" : "a14",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "rev_a14",
+      "source" : "n14",
+      "target" : "n13",
+      "relation" : "nodes connection",
+      "label" : "rev_a14",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "a15",
+      "source" : "n14",
+      "target" : "n15",
+      "relation" : "nodes connection",
+      "label" : "a15",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_a15",
+      "source" : "n15",
+      "target" : "n14",
+      "relation" : "nodes connection",
+      "label" : "rev_a15",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "a16",
+      "source" : "n15",
+      "target" : "n16",
+      "relation" : "nodes connection",
+      "label" : "a16",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "rev_a16",
+      "source" : "n16",
+      "target" : "n15",
+      "relation" : "nodes connection",
+      "label" : "rev_a16",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "a17",
+      "source" : "n16",
+      "target" : "n17",
+      "relation" : "nodes connection",
+      "label" : "a17",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 19.0
+      }
+    }, {
+      "id" : "rev_a17",
+      "source" : "n17",
+      "target" : "n16",
+      "relation" : "nodes connection",
+      "label" : "rev_a17",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 19.0
+      }
+    }, {
+      "id" : "a18",
+      "source" : "n17",
+      "target" : "n18",
+      "relation" : "nodes connection",
+      "label" : "a18",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "rev_a18",
+      "source" : "n18",
+      "target" : "n17",
+      "relation" : "nodes connection",
+      "label" : "rev_a18",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "a19",
+      "source" : "n18",
+      "target" : "n19",
+      "relation" : "nodes connection",
+      "label" : "a19",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "rev_a19",
+      "source" : "n19",
+      "target" : "n18",
+      "relation" : "nodes connection",
+      "label" : "rev_a19",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "a20",
+      "source" : "n19",
+      "target" : "n0",
+      "relation" : "nodes connection",
+      "label" : "a20",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "rev_a20",
+      "source" : "n0",
+      "target" : "n19",
+      "relation" : "nodes connection",
+      "label" : "rev_a20",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    } ]
+  }
+}

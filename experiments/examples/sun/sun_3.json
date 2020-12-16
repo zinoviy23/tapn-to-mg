@@ -1,0 +1,92 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "sun_3",
+    "type" : "metric graph",
+    "label" : "sun_3",
+    "nodes" : {
+      "center" : {
+        "label" : "center"
+      },
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "n1",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc1",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 0.0
+        } ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc1",
+      "source" : "center",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_arc1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc2",
+      "source" : "n2",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 0.0
+        } ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "center",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "arc3",
+      "source" : "n3",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc3",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p3",
+          "position" : 0.0
+        } ],
+        "length" : 21.0
+      }
+    }, {
+      "id" : "rev_arc3",
+      "source" : "center",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 21.0
+      }
+    } ]
+  }
+}

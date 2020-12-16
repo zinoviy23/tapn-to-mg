@@ -1,0 +1,144 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "sun_5",
+    "type" : "metric graph",
+    "label" : "sun_5",
+    "nodes" : {
+      "center" : {
+        "label" : "center"
+      },
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      },
+      "n4" : {
+        "label" : "n4"
+      },
+      "n5" : {
+        "label" : "n5"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "n1",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc1",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 0.0
+        } ],
+        "length" : 7.0
+      }
+    }, {
+      "id" : "rev_arc1",
+      "source" : "center",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_arc1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 7.0
+      }
+    }, {
+      "id" : "arc2",
+      "source" : "n2",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 0.0
+        } ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "center",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "arc3",
+      "source" : "n3",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc3",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p3",
+          "position" : 0.0
+        } ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_arc3",
+      "source" : "center",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "arc4",
+      "source" : "n4",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc4",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p4",
+          "position" : 0.0
+        } ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "rev_arc4",
+      "source" : "center",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "rev_arc4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "arc5",
+      "source" : "n5",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc5",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p5",
+          "position" : 0.0
+        } ],
+        "length" : 16.0
+      }
+    }, {
+      "id" : "rev_arc5",
+      "source" : "center",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_arc5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 16.0
+      }
+    } ]
+  }
+}

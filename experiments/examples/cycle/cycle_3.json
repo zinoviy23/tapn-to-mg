@@ -1,0 +1,83 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "cycle_3",
+    "type" : "metric graph",
+    "label" : "cycle_3",
+    "nodes" : {
+      "n0" : {
+        "label" : "n0"
+      },
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      }
+    },
+    "edges" : [ {
+      "id" : "a1",
+      "source" : "n0",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "a1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "rev_a1",
+      "source" : "n1",
+      "target" : "n0",
+      "relation" : "nodes connection",
+      "label" : "rev_a1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "a2",
+      "source" : "n1",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "a2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p",
+          "position" : 0.0
+        } ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "rev_a2",
+      "source" : "n2",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_a2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "a3",
+      "source" : "n2",
+      "target" : "n0",
+      "relation" : "nodes connection",
+      "label" : "a3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 25.0
+      }
+    }, {
+      "id" : "rev_a3",
+      "source" : "n0",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_a3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 25.0
+      }
+    } ]
+  }
+}

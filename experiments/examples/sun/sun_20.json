@@ -1,0 +1,534 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "sun_20",
+    "type" : "metric graph",
+    "label" : "sun_20",
+    "nodes" : {
+      "center" : {
+        "label" : "center"
+      },
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      },
+      "n4" : {
+        "label" : "n4"
+      },
+      "n5" : {
+        "label" : "n5"
+      },
+      "n6" : {
+        "label" : "n6"
+      },
+      "n7" : {
+        "label" : "n7"
+      },
+      "n8" : {
+        "label" : "n8"
+      },
+      "n9" : {
+        "label" : "n9"
+      },
+      "n10" : {
+        "label" : "n10"
+      },
+      "n11" : {
+        "label" : "n11"
+      },
+      "n12" : {
+        "label" : "n12"
+      },
+      "n13" : {
+        "label" : "n13"
+      },
+      "n14" : {
+        "label" : "n14"
+      },
+      "n15" : {
+        "label" : "n15"
+      },
+      "n16" : {
+        "label" : "n16"
+      },
+      "n17" : {
+        "label" : "n17"
+      },
+      "n18" : {
+        "label" : "n18"
+      },
+      "n19" : {
+        "label" : "n19"
+      },
+      "n20" : {
+        "label" : "n20"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc1",
+      "source" : "n1",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc1",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p1",
+          "position" : 0.0
+        } ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc1",
+      "source" : "center",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_arc1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc2",
+      "source" : "n2",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p2",
+          "position" : 0.0
+        } ],
+        "length" : 30.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "center",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 30.0
+      }
+    }, {
+      "id" : "arc3",
+      "source" : "n3",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc3",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p3",
+          "position" : 0.0
+        } ],
+        "length" : 6.0
+      }
+    }, {
+      "id" : "rev_arc3",
+      "source" : "center",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 6.0
+      }
+    }, {
+      "id" : "arc4",
+      "source" : "n4",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc4",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p4",
+          "position" : 0.0
+        } ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_arc4",
+      "source" : "center",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "rev_arc4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "arc5",
+      "source" : "n5",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc5",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p5",
+          "position" : 0.0
+        } ],
+        "length" : 8.0
+      }
+    }, {
+      "id" : "rev_arc5",
+      "source" : "center",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_arc5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 8.0
+      }
+    }, {
+      "id" : "arc6",
+      "source" : "n6",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc6",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p6",
+          "position" : 0.0
+        } ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc6",
+      "source" : "center",
+      "target" : "n6",
+      "relation" : "nodes connection",
+      "label" : "rev_arc6",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc7",
+      "source" : "n7",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc7",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p7",
+          "position" : 0.0
+        } ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_arc7",
+      "source" : "center",
+      "target" : "n7",
+      "relation" : "nodes connection",
+      "label" : "rev_arc7",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "arc8",
+      "source" : "n8",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc8",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p8",
+          "position" : 0.0
+        } ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "rev_arc8",
+      "source" : "center",
+      "target" : "n8",
+      "relation" : "nodes connection",
+      "label" : "rev_arc8",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "arc9",
+      "source" : "n9",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc9",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p9",
+          "position" : 0.0
+        } ],
+        "length" : 20.0
+      }
+    }, {
+      "id" : "rev_arc9",
+      "source" : "center",
+      "target" : "n9",
+      "relation" : "nodes connection",
+      "label" : "rev_arc9",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 20.0
+      }
+    }, {
+      "id" : "arc10",
+      "source" : "n10",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc10",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p10",
+          "position" : 0.0
+        } ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_arc10",
+      "source" : "center",
+      "target" : "n10",
+      "relation" : "nodes connection",
+      "label" : "rev_arc10",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "arc11",
+      "source" : "n11",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc11",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p11",
+          "position" : 0.0
+        } ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc11",
+      "source" : "center",
+      "target" : "n11",
+      "relation" : "nodes connection",
+      "label" : "rev_arc11",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc12",
+      "source" : "n12",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc12",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p12",
+          "position" : 0.0
+        } ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "rev_arc12",
+      "source" : "center",
+      "target" : "n12",
+      "relation" : "nodes connection",
+      "label" : "rev_arc12",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "arc13",
+      "source" : "n13",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc13",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p13",
+          "position" : 0.0
+        } ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "rev_arc13",
+      "source" : "center",
+      "target" : "n13",
+      "relation" : "nodes connection",
+      "label" : "rev_arc13",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 18.0
+      }
+    }, {
+      "id" : "arc14",
+      "source" : "n14",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc14",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p14",
+          "position" : 0.0
+        } ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_arc14",
+      "source" : "center",
+      "target" : "n14",
+      "relation" : "nodes connection",
+      "label" : "rev_arc14",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "arc15",
+      "source" : "n15",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc15",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p15",
+          "position" : 0.0
+        } ],
+        "length" : 23.0
+      }
+    }, {
+      "id" : "rev_arc15",
+      "source" : "center",
+      "target" : "n15",
+      "relation" : "nodes connection",
+      "label" : "rev_arc15",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 23.0
+      }
+    }, {
+      "id" : "arc16",
+      "source" : "n16",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc16",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p16",
+          "position" : 0.0
+        } ],
+        "length" : 6.0
+      }
+    }, {
+      "id" : "rev_arc16",
+      "source" : "center",
+      "target" : "n16",
+      "relation" : "nodes connection",
+      "label" : "rev_arc16",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 6.0
+      }
+    }, {
+      "id" : "arc17",
+      "source" : "n17",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc17",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p17",
+          "position" : 0.0
+        } ],
+        "length" : 16.0
+      }
+    }, {
+      "id" : "rev_arc17",
+      "source" : "center",
+      "target" : "n17",
+      "relation" : "nodes connection",
+      "label" : "rev_arc17",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 16.0
+      }
+    }, {
+      "id" : "arc18",
+      "source" : "n18",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc18",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p18",
+          "position" : 0.0
+        } ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "rev_arc18",
+      "source" : "center",
+      "target" : "n18",
+      "relation" : "nodes connection",
+      "label" : "rev_arc18",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "arc19",
+      "source" : "n19",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc19",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p19",
+          "position" : 0.0
+        } ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "rev_arc19",
+      "source" : "center",
+      "target" : "n19",
+      "relation" : "nodes connection",
+      "label" : "rev_arc19",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "arc20",
+      "source" : "n20",
+      "target" : "center",
+      "relation" : "nodes connection",
+      "label" : "arc20",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p20",
+          "position" : 0.0
+        } ],
+        "length" : 5.0
+      }
+    }, {
+      "id" : "rev_arc20",
+      "source" : "center",
+      "target" : "n20",
+      "relation" : "nodes connection",
+      "label" : "rev_arc20",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 5.0
+      }
+    } ]
+  }
+}

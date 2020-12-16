@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <key id="d0" for="graph" attr.name="Description" attr.type="string"/>
+  <key id="d1" for="port" yfiles.type="portgraphics"/>
+  <key id="d2" for="port" yfiles.type="portgeometry"/>
+  <key id="d3" for="port" yfiles.type="portuserdata"/>
+  <key id="d4" for="node" attr.name="url" attr.type="string"/>
+  <key id="d5" for="node" attr.name="description" attr.type="string"/>
+  <key id="d6" for="node" yfiles.type="nodegraphics"/>
+  <key id="d7" for="graphml" yfiles.type="resources"/>
+  <key id="d8" for="edge" attr.name="url" attr.type="string"/>
+  <key id="d9" for="edge" attr.name="description" attr.type="string"/>
+  <key id="d10" for="edge" yfiles.type="edgegraphics"/>
+  <key id="d11" for="edge" attr.name="length" attr.type="double"/>
+  <key id="d12" for="edge" attr.name="points"/>
+  <graph edgedefault="directed" id="sun_5">
+    <data key="d0"/>
+    <node id="center">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>center</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="381.79631968167126" y="339.4787151781315"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>n1</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="457.78794005167674" y="171.49120677100547"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>n2</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="244.5906476054975" y="215.59316202114726"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>n3</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="564.7512548767114" y="358.9923643811775"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>n4</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="419.81948726425264" y="519.5367842697228"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:NodeLabel>n5</y:NodeLabel>
+          <y:Geometry height="30" width="30" x="222.51033848724353" y="432.09678265613684"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Shape type="ellipse"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="arc1" source="n1" target="center">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel>arc1, 7.0</y:EdgeLabel>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">7.0</data>
+      <data key="d12">
+        <point id="p1" position="0.0"/>
+      </data>
+    </edge>
+    <edge id="rev_arc1" source="center" target="n1">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel visible="false">rev_arc1, 7.0</y:EdgeLabel>
+          <y:Path sx="10.0" sy="0.0" tx="10.0" ty="0.0"/>
+          <y:LineStyle color="#00000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">7.0</data>
+      <data key="d12"/>
+    </edge>
+    <edge id="arc2" source="n2" target="center">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel>arc2, 27.0</y:EdgeLabel>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">27.0</data>
+      <data key="d12">
+        <point id="p2" position="0.0"/>
+      </data>
+    </edge>
+    <edge id="rev_arc2" source="center" target="n2">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel visible="false">rev_arc2, 27.0</y:EdgeLabel>
+          <y:Path sx="10.0" sy="0.0" tx="10.0" ty="0.0"/>
+          <y:LineStyle color="#00000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">27.0</data>
+      <data key="d12"/>
+    </edge>
+    <edge id="arc3" source="n3" target="center">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel>arc3, 18.0</y:EdgeLabel>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">18.0</data>
+      <data key="d12">
+        <point id="p3" position="0.0"/>
+      </data>
+    </edge>
+    <edge id="rev_arc3" source="center" target="n3">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel visible="false">rev_arc3, 18.0</y:EdgeLabel>
+          <y:Path sx="10.0" sy="0.0" tx="10.0" ty="0.0"/>
+          <y:LineStyle color="#00000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">18.0</data>
+      <data key="d12"/>
+    </edge>
+    <edge id="arc4" source="n4" target="center">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel>arc4, 27.0</y:EdgeLabel>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">27.0</data>
+      <data key="d12">
+        <point id="p4" position="0.0"/>
+      </data>
+    </edge>
+    <edge id="rev_arc4" source="center" target="n4">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel visible="false">rev_arc4, 27.0</y:EdgeLabel>
+          <y:Path sx="10.0" sy="0.0" tx="10.0" ty="0.0"/>
+          <y:LineStyle color="#00000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">27.0</data>
+      <data key="d12"/>
+    </edge>
+    <edge id="arc5" source="n5" target="center">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel>arc5, 16.0</y:EdgeLabel>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">16.0</data>
+      <data key="d12">
+        <point id="p5" position="0.0"/>
+      </data>
+    </edge>
+    <edge id="rev_arc5" source="center" target="n5">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:EdgeLabel visible="false">rev_arc5, 16.0</y:EdgeLabel>
+          <y:Path sx="10.0" sy="0.0" tx="10.0" ty="0.0"/>
+          <y:LineStyle color="#00000000" width="1.0"/>
+          <y:Arrows source="none" target="none"/>
+          <y:BendElement smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+      <data key="d11">16.0</data>
+      <data key="d12"/>
+    </edge>
+  </graph>
+</graphml>

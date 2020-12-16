@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <net active="true" id="TAPN_full_5" type="P/T net">
+    <labels border="true" height="202" positionX="1187" positionY="847" width="502">'TAPN_full_5' - Timed Arc Petri Net automatically generated from Dynamic Metric Graph 'full_5'
+Places p_* - generated from corresponding arc in metric graph
+Transitions t_* - generated from corresponding arc in metric graph
+Transitions ct_* - generated for simulated collapsing of two points on corresponding arc.</labels>
+    <place displayName="true" id="p_arc_1_2" initialMarking="1" invariant="&lt; inf" name="p_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="718.0" positionY="535.0"/>
+    <place displayName="true" id="p_rev_arc_1_2" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="924.0" positionY="615.0"/>
+    <place displayName="true" id="p_arc_1_3" initialMarking="1" invariant="&lt; inf" name="p_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="581.0" positionY="562.0"/>
+    <place displayName="true" id="p_rev_arc_1_3" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="409.0" positionY="715.0"/>
+    <place displayName="true" id="p_arc_1_4" initialMarking="1" invariant="&lt; inf" name="p_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="663.0" positionY="755.0"/>
+    <place displayName="true" id="p_rev_arc_1_4" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="571.0" positionY="962.0"/>
+    <place displayName="true" id="p_arc_1_5" initialMarking="1" invariant="&lt; inf" name="p_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="752.0" positionY="629.0"/>
+    <place displayName="true" id="p_rev_arc_1_5" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="866.0" positionY="899.0"/>
+    <place displayName="true" id="p_arc_2_3" initialMarking="1" invariant="&lt; inf" name="p_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="853.0" positionY="701.0"/>
+    <place displayName="true" id="p_rev_arc_2_3" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="530.0" positionY="694.0"/>
+    <place displayName="true" id="p_arc_2_4" initialMarking="1" invariant="&lt; inf" name="p_arc_2_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="938.0" positionY="825.0"/>
+    <place displayName="true" id="p_rev_arc_2_4" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_2_4" nameOffsetX="-5.0" nameOffsetY="36.0" positionX="755.0" positionY="1068.0"/>
+    <place displayName="true" id="p_arc_2_5" initialMarking="1" invariant="&lt; inf" name="p_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="996.0" positionY="732.0"/>
+    <place displayName="true" id="p_rev_arc_2_5" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="949.0" positionY="966.0"/>
+    <place displayName="true" id="p_arc_3_4" initialMarking="1" invariant="&lt; inf" name="p_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="410.0" positionY="890.0"/>
+    <place displayName="true" id="p_rev_arc_3_4" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="538.0" positionY="1093.0"/>
+    <place displayName="true" id="p_arc_3_5" initialMarking="1" invariant="&lt; inf" name="p_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="513.0" positionY="866.0"/>
+    <place displayName="true" id="p_rev_arc_3_5" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="704.0" positionY="929.0"/>
+    <place displayName="true" id="p_arc_4_5" initialMarking="1" invariant="&lt; inf" name="p_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="685.0" positionY="1160.0"/>
+    <place displayName="true" id="p_rev_arc_4_5" initialMarking="0" invariant="&lt; inf" name="p_rev_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="855.0" positionY="1066.0"/>
+    <place displayName="true" id="P_count" initialMarking="0" invariant="&lt;= 20" name="P_count" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1095.0" positionY="495.0"/>
+    <place displayName="true" id="P_time" initialMarking="1" invariant="&lt; inf" name="P_time" nameOffsetX="-6.0" nameOffsetY="35.0" positionX="1245.0" positionY="480.0"/>
+    <place displayName="true" id="p_count_2" initialMarking="0" invariant="&lt; inf" name="p_count_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="195.0" positionY="525.0"/>
+    <transition angle="0" displayName="true" id="t_arc_1_2" infiniteServer="false" name="t_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="894.0" positionY="649.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_1_2" infiniteServer="false" name="ct_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="715.0" positionY="391.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_1_2" infiniteServer="false" name="t_rev_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="733.0" positionY="582.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_1_2" infiniteServer="false" name="ct_rev_arc_1_2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1007.0" positionY="499.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_1_3" infiniteServer="false" name="t_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="456.0" positionY="725.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_1_3" infiniteServer="false" name="ct_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="520.0" positionY="433.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_1_3" infiniteServer="false" name="t_rev_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="594.0" positionY="618.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_1_3" infiniteServer="false" name="ct_rev_arc_1_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="275.0" positionY="675.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_1_4" infiniteServer="false" name="t_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="648.0" positionY="999.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_1_4" infiniteServer="false" name="ct_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="612.0" positionY="812.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_1_4" infiniteServer="false" name="t_rev_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="635.0" positionY="695.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_1_4" infiniteServer="false" name="ct_rev_arc_1_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="446.0" positionY="1035.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_1_5" infiniteServer="false" name="t_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="817.0" positionY="869.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_1_5" infiniteServer="false" name="ct_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="798.0" positionY="483.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_1_5" infiniteServer="false" name="t_rev_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="732.0" positionY="686.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_1_5" infiniteServer="false" name="ct_rev_arc_1_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1009.0" positionY="957.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_2_3" infiniteServer="false" name="t_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="566.0" positionY="760.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_2_3" infiniteServer="false" name="ct_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="991.0" positionY="623.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_2_3" infiniteServer="false" name="t_rev_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="810.0" positionY="698.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_2_3" infiniteServer="false" name="ct_rev_arc_2_3" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="425.0" positionY="588.0" priority="0" urgent="false"/>
+    <transition angle="45" displayName="true" id="t_arc_2_4" infiniteServer="false" name="t_arc_2_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="722.0" positionY="1012.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_2_4" infiniteServer="false" name="ct_arc_2_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1099.0" positionY="839.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_2_4" infiniteServer="false" name="t_rev_arc_2_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="882.0" positionY="811.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_2_4" infiniteServer="false" name="ct_rev_arc_2_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="802.0" positionY="1213.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_2_5" infiniteServer="false" name="t_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="903.0" positionY="926.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_2_5" infiniteServer="false" name="ct_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1135.0" positionY="690.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_2_5" infiniteServer="false" name="t_rev_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="984.0" positionY="772.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_2_5" infiniteServer="false" name="ct_rev_arc_2_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1078.0" positionY="1044.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_3_4" infiniteServer="false" name="t_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="562.0" positionY="1057.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_3_4" infiniteServer="false" name="ct_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="266.0" positionY="925.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_3_4" infiniteServer="false" name="t_rev_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="455.0" positionY="878.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_3_4" infiniteServer="false" name="ct_rev_arc_3_4" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="460.0" positionY="1207.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_3_5" infiniteServer="false" name="t_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="764.0" positionY="949.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_3_5" infiniteServer="false" name="ct_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="355.0" positionY="861.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_3_5" infiniteServer="false" name="t_rev_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="503.0" positionY="818.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_3_5" infiniteServer="false" name="ct_rev_arc_3_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="607.0" positionY="1000.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_arc_4_5" infiniteServer="false" name="t_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="819.0" positionY="1035.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_arc_4_5" infiniteServer="false" name="ct_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="678.0" positionY="1300.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="t_rev_arc_4_5" infiniteServer="false" name="t_rev_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="670.0" positionY="1113.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ct_rev_arc_4_5" infiniteServer="false" name="ct_rev_arc_4_5" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="933.0" positionY="1179.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1365.0" positionY="480.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T1" infiniteServer="false" name="T1" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="1125.0" positionY="390.0" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="-5.0" nameOffsetY="35.0" positionX="135.0" positionY="450.0" priority="0" urgent="true"/>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_2" target="t_arc_1_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="742" yCoord="555"/>
+      <arcpath arcPointType="false" id="1" xCoord="900" yCoord="661"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_2" target="p_rev_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="910" yCoord="661"/>
+      <arcpath arcPointType="false" id="1" xCoord="927" yCoord="639"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_2" target="p_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="900" yCoord="666"/>
+      <arcpath arcPointType="false" id="1" xCoord="874" yCoord="701"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_2" target="p_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="906" yCoord="676"/>
+      <arcpath arcPointType="false" id="1" xCoord="946" yCoord="822"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_2" target="p_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="910" yCoord="661"/>
+      <arcpath arcPointType="false" id="1" xCoord="996" yCoord="734"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_2" target="ct_arc_1_2" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="729" yCoord="532"/>
+      <arcpath arcPointType="false" id="1" xCoord="727" yCoord="418"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_1_2" target="p_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="727" yCoord="418"/>
+      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="532"/>
+    </arc>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_2" target="t_rev_arc_1_2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="921" yCoord="624"/>
+      <arcpath arcPointType="false" id="1" xCoord="749" yCoord="594"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_2" target="p_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="745" yCoord="579"/>
+      <arcpath arcPointType="false" id="1" xCoord="736" yCoord="560"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_2" target="p_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="739" yCoord="594"/>
+      <arcpath arcPointType="false" id="1" xCoord="607" yCoord="576"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_2" target="p_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="745" yCoord="609"/>
+      <arcpath arcPointType="false" id="1" xCoord="681" yCoord="753"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_2" target="p_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="745" yCoord="609"/>
+      <arcpath arcPointType="false" id="1" xCoord="756" yCoord="628"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_2" target="ct_rev_arc_1_2" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="944" yCoord="614"/>
+      <arcpath arcPointType="false" id="1" xCoord="1013" yCoord="516"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_1_2" target="p_rev_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1014" yCoord="506"/>
+      <arcpath arcPointType="false" id="1" xCoord="944" yCoord="614"/>
+    </arc>
+    <arc id="arc" inscription="[27,27]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_3" target="t_arc_1_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="584" yCoord="586"/>
+      <arcpath arcPointType="false" id="1" xCoord="472" yCoord="737"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_3" target="p_rev_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="462" yCoord="737"/>
+      <arcpath arcPointType="false" id="1" xCoord="435" yCoord="730"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_3" target="p_rev_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="472" yCoord="742"/>
+      <arcpath arcPointType="false" id="1" xCoord="528" yCoord="712"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_3" target="p_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="468" yCoord="752"/>
+      <arcpath arcPointType="false" id="1" xCoord="426" yCoord="887"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_3" target="p_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="468" yCoord="752"/>
+      <arcpath arcPointType="false" id="1" xCoord="518" yCoord="864"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_3" target="ct_arc_1_3" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="585" yCoord="560"/>
+      <arcpath arcPointType="false" id="1" xCoord="532" yCoord="460"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_1_3" target="p_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="532" yCoord="460"/>
+      <arcpath arcPointType="false" id="1" xCoord="585" yCoord="560"/>
+    </arc>
+    <arc id="arc" inscription="[27,27]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_3" target="t_rev_arc_1_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="434" yCoord="719"/>
+      <arcpath arcPointType="false" id="1" xCoord="600" yCoord="630"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_3" target="p_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="610" yCoord="630"/>
+      <arcpath arcPointType="false" id="1" xCoord="717" yCoord="555"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_3" target="p_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="606" yCoord="615"/>
+      <arcpath arcPointType="false" id="1" xCoord="597" yCoord="588"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_3" target="p_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="606" yCoord="645"/>
+      <arcpath arcPointType="false" id="1" xCoord="667" yCoord="753"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_3" target="p_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="610" yCoord="630"/>
+      <arcpath arcPointType="false" id="1" xCoord="749" yCoord="639"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_3" target="ct_rev_arc_1_3" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="406" yCoord="722"/>
+      <arcpath arcPointType="false" id="1" xCoord="292" yCoord="682"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_1_3" target="p_rev_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="291" yCoord="692"/>
+      <arcpath arcPointType="false" id="1" xCoord="406" yCoord="723"/>
+    </arc>
+    <arc id="arc" inscription="[21,21]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_4" target="t_arc_1_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="674" yCoord="781"/>
+      <arcpath arcPointType="false" id="1" xCoord="660" yCoord="996"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_4" target="p_rev_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="654" yCoord="1011"/>
+      <arcpath arcPointType="false" id="1" xCoord="596" yCoord="980"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_4" target="p_rev_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="664" yCoord="1011"/>
+      <arcpath arcPointType="false" id="1" xCoord="754" yCoord="1071"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_4" target="p_rev_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="654" yCoord="1011"/>
+      <arcpath arcPointType="false" id="1" xCoord="561" yCoord="1095"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_4" target="p_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="660" yCoord="1026"/>
+      <arcpath arcPointType="false" id="1" xCoord="693" yCoord="1157"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_4" target="ct_arc_1_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="665" yCoord="778"/>
+      <arcpath arcPointType="false" id="1" xCoord="629" yCoord="819"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_1_4" target="p_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="628" yCoord="829"/>
+      <arcpath arcPointType="false" id="1" xCoord="666" yCoord="779"/>
+    </arc>
+    <arc id="arc" inscription="[21,21]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_4" target="t_rev_arc_1_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="586" yCoord="959"/>
+      <arcpath arcPointType="false" id="1" xCoord="647" yCoord="722"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_4" target="p_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="647" yCoord="692"/>
+      <arcpath arcPointType="false" id="1" xCoord="722" yCoord="560"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_4" target="p_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="647" yCoord="692"/>
+      <arcpath arcPointType="false" id="1" xCoord="599" yCoord="587"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_4" target="p_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="647" yCoord="722"/>
+      <arcpath arcPointType="false" id="1" xCoord="667" yCoord="754"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_4" target="p_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="651" yCoord="707"/>
+      <arcpath arcPointType="false" id="1" xCoord="751" yCoord="648"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_4" target="ct_rev_arc_1_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="569" yCoord="981"/>
+      <arcpath arcPointType="false" id="1" xCoord="463" yCoord="1042"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_1_4" target="p_rev_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="462" yCoord="1052"/>
+      <arcpath arcPointType="false" id="1" xCoord="570" yCoord="982"/>
+    </arc>
+    <arc id="arc" inscription="[15,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_5" target="t_arc_1_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="768" yCoord="655"/>
+      <arcpath arcPointType="false" id="1" xCoord="829" yCoord="866"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_5" target="p_rev_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="833" yCoord="881"/>
+      <arcpath arcPointType="false" id="1" xCoord="865" yCoord="902"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_5" target="p_rev_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="833" yCoord="881"/>
+      <arcpath arcPointType="false" id="1" xCoord="949" yCoord="968"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_5" target="p_rev_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="823" yCoord="881"/>
+      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="933"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_5" target="p_rev_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="829" yCoord="896"/>
+      <arcpath arcPointType="false" id="1" xCoord="863" yCoord="1063"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_1_5" target="ct_arc_1_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="768" yCoord="626"/>
+      <arcpath arcPointType="false" id="1" xCoord="810" yCoord="510"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_1_5" target="p_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="810" yCoord="510"/>
+      <arcpath arcPointType="false" id="1" xCoord="768" yCoord="626"/>
+    </arc>
+    <arc id="arc" inscription="[15,15]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_5" target="t_rev_arc_1_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="870" yCoord="898"/>
+      <arcpath arcPointType="false" id="1" xCoord="748" yCoord="698"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_5" target="p_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="744" yCoord="683"/>
+      <arcpath arcPointType="false" id="1" xCoord="731" yCoord="561"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_5" target="p_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="738" yCoord="698"/>
+      <arcpath arcPointType="false" id="1" xCoord="604" yCoord="583"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_5" target="p_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="738" yCoord="698"/>
+      <arcpath arcPointType="false" id="1" xCoord="685" yCoord="756"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_1_5" target="p_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="744" yCoord="683"/>
+      <arcpath arcPointType="false" id="1" xCoord="757" yCoord="654"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_1_5" target="ct_rev_arc_1_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="891" yCoord="917"/>
+      <arcpath arcPointType="false" id="1" xCoord="1015" yCoord="974"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_1_5" target="p_rev_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1016" yCoord="964"/>
+      <arcpath arcPointType="false" id="1" xCoord="891" yCoord="916"/>
+    </arc>
+    <arc id="arc" inscription="[5,5]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_3" target="t_arc_2_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="850" yCoord="716"/>
+      <arcpath arcPointType="false" id="1" xCoord="582" yCoord="772"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_3" target="p_rev_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="572" yCoord="772"/>
+      <arcpath arcPointType="false" id="1" xCoord="435" yCoord="731"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_3" target="p_rev_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="578" yCoord="757"/>
+      <arcpath arcPointType="false" id="1" xCoord="550" yCoord="718"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_3" target="p_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="572" yCoord="772"/>
+      <arcpath arcPointType="false" id="1" xCoord="433" yCoord="892"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_3" target="p_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="578" yCoord="787"/>
+      <arcpath arcPointType="false" id="1" xCoord="532" yCoord="865"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_3" target="ct_arc_2_3" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="878" yCoord="705"/>
+      <arcpath arcPointType="false" id="1" xCoord="997" yCoord="640"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_2_3" target="p_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="998" yCoord="630"/>
+      <arcpath arcPointType="false" id="1" xCoord="877" yCoord="705"/>
+    </arc>
+    <arc id="arc" inscription="[5,5]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_3" target="t_rev_arc_2_3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="556" yCoord="706"/>
+      <arcpath arcPointType="false" id="1" xCoord="816" yCoord="710"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_3" target="p_rev_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="710"/>
+      <arcpath arcPointType="false" id="1" xCoord="924" yCoord="636"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_3" target="p_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="710"/>
+      <arcpath arcPointType="false" id="1" xCoord="850" yCoord="711"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_3" target="p_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="710"/>
+      <arcpath arcPointType="false" id="1" xCoord="939" yCoord="826"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_3" target="p_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="710"/>
+      <arcpath arcPointType="false" id="1" xCoord="993" yCoord="741"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_3" target="ct_rev_arc_2_3" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="531" yCoord="694"/>
+      <arcpath arcPointType="false" id="1" xCoord="442" yCoord="595"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_2_3" target="p_rev_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="441" yCoord="605"/>
+      <arcpath arcPointType="false" id="1" xCoord="531" yCoord="695"/>
+    </arc>
+    <arc id="arc" inscription="[2,2]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_4" target="t_arc_2_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="938" yCoord="846"/>
+      <arcpath arcPointType="false" id="1" xCoord="745" yCoord="1013"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_4" target="p_rev_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="729" yCoord="1020"/>
+      <arcpath arcPointType="false" id="1" xCoord="597" yCoord="978"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_4" target="p_rev_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="737" yCoord="1027"/>
+      <arcpath arcPointType="false" id="1" xCoord="759" yCoord="1066"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_4" target="p_rev_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="723" yCoord="1034"/>
+      <arcpath arcPointType="false" id="1" xCoord="563" yCoord="1099"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_4" target="p_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="737" yCoord="1027"/>
+      <arcpath arcPointType="false" id="1" xCoord="701" yCoord="1157"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_4" target="ct_arc_2_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="964" yCoord="838"/>
+      <arcpath arcPointType="false" id="1" xCoord="1105" yCoord="856"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_2_4" target="p_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1106" yCoord="846"/>
+      <arcpath arcPointType="false" id="1" xCoord="964" yCoord="837"/>
+    </arc>
+    <arc id="arc" inscription="[2,2]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_4" target="t_rev_arc_2_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="773" yCoord="1066"/>
+      <arcpath arcPointType="false" id="1" xCoord="894" yCoord="838"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_4" target="p_rev_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="894" yCoord="808"/>
+      <arcpath arcPointType="false" id="1" xCoord="932" yCoord="641"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_4" target="p_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="894" yCoord="808"/>
+      <arcpath arcPointType="false" id="1" xCoord="869" yCoord="727"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_4" target="p_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="898" yCoord="823"/>
+      <arcpath arcPointType="false" id="1" xCoord="935" yCoord="833"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_4" target="p_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="898" yCoord="823"/>
+      <arcpath arcPointType="false" id="1" xCoord="995" yCoord="752"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_4" target="ct_rev_arc_2_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="772" yCoord="1094"/>
+      <arcpath arcPointType="false" id="1" xCoord="814" yCoord="1210"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_2_4" target="p_rev_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="814" yCoord="1210"/>
+      <arcpath arcPointType="false" id="1" xCoord="772" yCoord="1094"/>
+    </arc>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_5" target="t_arc_2_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1001" yCoord="757"/>
+      <arcpath arcPointType="false" id="1" xCoord="915" yCoord="923"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_5" target="p_rev_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="909" yCoord="938"/>
+      <arcpath arcPointType="false" id="1" xCoord="889" yCoord="920"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_5" target="p_rev_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="919" yCoord="938"/>
+      <arcpath arcPointType="false" id="1" xCoord="950" yCoord="967"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_5" target="p_rev_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="909" yCoord="938"/>
+      <arcpath arcPointType="false" id="1" xCoord="730" yCoord="940"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_5" target="p_rev_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="915" yCoord="953"/>
+      <arcpath arcPointType="false" id="1" xCoord="872" yCoord="1064"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_2_5" target="ct_arc_2_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="1022" yCoord="740"/>
+      <arcpath arcPointType="false" id="1" xCoord="1141" yCoord="707"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_2_5" target="p_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1142" yCoord="697"/>
+      <arcpath arcPointType="false" id="1" xCoord="1022" yCoord="739"/>
+    </arc>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_5" target="t_rev_arc_2_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="963" yCoord="963"/>
+      <arcpath arcPointType="false" id="1" xCoord="996" yCoord="799"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_5" target="p_rev_arc_1_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="996" yCoord="769"/>
+      <arcpath arcPointType="false" id="1" xCoord="941" yCoord="640"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_5" target="p_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="990" yCoord="784"/>
+      <arcpath arcPointType="false" id="1" xCoord="878" yCoord="720"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_5" target="p_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="990" yCoord="784"/>
+      <arcpath arcPointType="false" id="1" xCoord="959" yCoord="825"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_5" target="p_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="996" yCoord="769"/>
+      <arcpath arcPointType="false" id="1" xCoord="1001" yCoord="757"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_2_5" target="ct_rev_arc_2_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="973" yCoord="986"/>
+      <arcpath arcPointType="false" id="1" xCoord="1084" yCoord="1061"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_2_5" target="p_rev_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1085" yCoord="1051"/>
+      <arcpath arcPointType="false" id="1" xCoord="973" yCoord="985"/>
+    </arc>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_3_4" target="t_arc_3_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="431" yCoord="913"/>
+      <arcpath arcPointType="false" id="1" xCoord="568" yCoord="1069"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_4" target="p_rev_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="574" yCoord="1054"/>
+      <arcpath arcPointType="false" id="1" xCoord="581" yCoord="988"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_4" target="p_rev_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="578" yCoord="1069"/>
+      <arcpath arcPointType="false" id="1" xCoord="752" yCoord="1079"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_4" target="p_rev_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="574" yCoord="1084"/>
+      <arcpath arcPointType="false" id="1" xCoord="561" yCoord="1095"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_4" target="p_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="578" yCoord="1069"/>
+      <arcpath arcPointType="false" id="1" xCoord="685" yCoord="1162"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_3_4" target="ct_arc_3_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="407" yCoord="905"/>
+      <arcpath arcPointType="false" id="1" xCoord="283" yCoord="932"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_3_4" target="p_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="282" yCoord="942"/>
+      <arcpath arcPointType="false" id="1" xCoord="407" yCoord="906"/>
+    </arc>
+    <arc id="arc" inscription="[12,12]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_3_4" target="t_rev_arc_3_4" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="544" yCoord="1091"/>
+      <arcpath arcPointType="false" id="1" xCoord="467" yCoord="905"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_4" target="p_rev_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="467" yCoord="875"/>
+      <arcpath arcPointType="false" id="1" xCoord="425" yCoord="741"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_4" target="p_rev_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="467" yCoord="875"/>
+      <arcpath arcPointType="false" id="1" xCoord="535" yCoord="719"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_4" target="p_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="461" yCoord="890"/>
+      <arcpath arcPointType="false" id="1" xCoord="436" yCoord="897"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_4" target="p_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="471" yCoord="890"/>
+      <arcpath arcPointType="false" id="1" xCoord="510" yCoord="881"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_3_4" target="ct_rev_arc_3_4" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="541" yCoord="1117"/>
+      <arcpath arcPointType="false" id="1" xCoord="477" yCoord="1214"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_3_4" target="p_rev_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="476" yCoord="1224"/>
+      <arcpath arcPointType="false" id="1" xCoord="542" yCoord="1117"/>
+    </arc>
+    <arc id="arc" inscription="[17,17]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_3_5" target="t_arc_3_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="539" yCoord="882"/>
+      <arcpath arcPointType="false" id="1" xCoord="770" yCoord="961"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_5" target="p_rev_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="780" yCoord="961"/>
+      <arcpath arcPointType="false" id="1" xCoord="864" yCoord="917"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_5" target="p_rev_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="780" yCoord="961"/>
+      <arcpath arcPointType="false" id="1" xCoord="946" yCoord="976"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_5" target="p_rev_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="770" yCoord="966"/>
+      <arcpath arcPointType="false" id="1" xCoord="729" yCoord="947"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_3_5" target="p_rev_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="780" yCoord="961"/>
+      <arcpath arcPointType="false" id="1" xCoord="858" yCoord="1065"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_3_5" target="ct_arc_3_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="510" yCoord="877"/>
+      <arcpath arcPointType="false" id="1" xCoord="372" yCoord="868"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_3_5" target="p_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="371" yCoord="878"/>
+      <arcpath arcPointType="false" id="1" xCoord="510" yCoord="878"/>
+    </arc>
+    <arc id="arc" inscription="[17,17]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_3_5" target="t_rev_arc_3_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="702" yCoord="933"/>
+      <arcpath arcPointType="false" id="1" xCoord="519" yCoord="830"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_5" target="p_rev_arc_1_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="509" yCoord="830"/>
+      <arcpath arcPointType="false" id="1" xCoord="430" yCoord="738"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_5" target="p_rev_arc_2_3" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="515" yCoord="815"/>
+      <arcpath arcPointType="false" id="1" xCoord="538" yCoord="720"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_5" target="p_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="509" yCoord="830"/>
+      <arcpath arcPointType="false" id="1" xCoord="433" yCoord="892"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_5" target="p_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="515" yCoord="845"/>
+      <arcpath arcPointType="false" id="1" xCoord="520" yCoord="863"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_3_5" target="ct_rev_arc_3_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="703" yCoord="949"/>
+      <arcpath arcPointType="false" id="1" xCoord="624" yCoord="1007"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_3_5" target="p_rev_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="623" yCoord="1017"/>
+      <arcpath arcPointType="false" id="1" xCoord="704" yCoord="950"/>
+    </arc>
+    <arc id="arc" inscription="[3,3]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_4_5" target="t_arc_4_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="707" yCoord="1161"/>
+      <arcpath arcPointType="false" id="1" xCoord="825" yCoord="1047"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_4_5" target="p_rev_arc_1_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="831" yCoord="1032"/>
+      <arcpath arcPointType="false" id="1" xCoord="872" yCoord="925"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_4_5" target="p_rev_arc_2_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="835" yCoord="1047"/>
+      <arcpath arcPointType="false" id="1" xCoord="947" yCoord="985"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_4_5" target="p_rev_arc_3_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="1042"/>
+      <arcpath arcPointType="false" id="1" xCoord="727" yCoord="951"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_4_5" target="p_rev_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="835" yCoord="1047"/>
+      <arcpath arcPointType="false" id="1" xCoord="856" yCoord="1067"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_arc_4_5" target="ct_arc_4_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="696" yCoord="1186"/>
+      <arcpath arcPointType="false" id="1" xCoord="690" yCoord="1297"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_arc_4_5" target="p_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="690" yCoord="1297"/>
+      <arcpath arcPointType="false" id="1" xCoord="696" yCoord="1186"/>
+    </arc>
+    <arc id="arc" inscription="[3,3]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_4_5" target="t_rev_arc_4_5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="852" yCoord="1081"/>
+      <arcpath arcPointType="false" id="1" xCoord="686" yCoord="1125"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_4_5" target="p_rev_arc_1_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="676" yCoord="1125"/>
+      <arcpath arcPointType="false" id="1" xCoord="590" yCoord="986"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_4_5" target="p_rev_arc_2_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="687" yCoord="1120"/>
+      <arcpath arcPointType="false" id="1" xCoord="753" yCoord="1086"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_4_5" target="p_rev_arc_3_4" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="676" yCoord="1125"/>
+      <arcpath arcPointType="false" id="1" xCoord="564" yCoord="1107"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_4_5" target="p_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="682" yCoord="1140"/>
+      <arcpath arcPointType="false" id="1" xCoord="690" yCoord="1158"/>
+    </arc>
+    <arc id="arc" inscription="[0,0]" nameOffsetX="0.0" nameOffsetY="0.0" source="p_rev_arc_4_5" target="ct_rev_arc_4_5" type="timed" weight="2">
+      <arcpath arcPointType="false" id="0" xCoord="874" yCoord="1090"/>
+      <arcpath arcPointType="false" id="1" xCoord="939" yCoord="1196"/>
+    </arc>
+    <arc id="arc" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="ct_rev_arc_4_5" target="p_rev_arc_4_5" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="940" yCoord="1186"/>
+      <arcpath arcPointType="false" id="1" xCoord="875" yCoord="1090"/>
+    </arc>
+    <arc id="t_rev_arc_2_3 to P_count" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_3" target="P_count" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="826" yCoord="710"/>
+      <arcpath arcPointType="false" id="1" xCoord="1094" yCoord="515"/>
+    </arc>
+    <arc id="t_rev_arc_2_5 to P_count" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_5" target="P_count" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="996" yCoord="769"/>
+      <arcpath arcPointType="false" id="1" xCoord="1101" yCoord="520"/>
+    </arc>
+    <arc id="t_rev_arc_2_4 to P_count" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_2_4" target="P_count" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="898" yCoord="823"/>
+      <arcpath arcPointType="false" id="1" xCoord="1098" yCoord="519"/>
+    </arc>
+    <arc id="t_arc_1_2 to P_count" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_2" target="P_count" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="910" yCoord="661"/>
+      <arcpath arcPointType="false" id="1" xCoord="1095" yCoord="516"/>
+    </arc>
+    <arc id="P_time to T0" inscription="[1000,1000]" nameOffsetX="0.0" nameOffsetY="0.0" source="P_time" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1271" yCoord="492"/>
+      <arcpath arcPointType="false" id="1" xCoord="1371" yCoord="492"/>
+    </arc>
+    <arc id="P_count to T1" inscription="[20,20]" nameOffsetX="0.0" nameOffsetY="0.0" source="P_count" target="T1" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1111" yCoord="492"/>
+      <arcpath arcPointType="false" id="1" xCoord="1137" yCoord="417"/>
+    </arc>
+    <arc id="t_arc_2_3 to p_count_2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_2_3" target="p_count_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="572" yCoord="772"/>
+      <arcpath arcPointType="false" id="1" xCoord="219" yCoord="545"/>
+    </arc>
+    <arc id="t_arc_1_3 to p_count_2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_arc_1_3" target="p_count_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="462" yCoord="737"/>
+      <arcpath arcPointType="false" id="1" xCoord="218" yCoord="546"/>
+    </arc>
+    <arc id="t_rev_arc_3_5 to p_count_2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_5" target="p_count_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="509" yCoord="830"/>
+      <arcpath arcPointType="false" id="1" xCoord="217" yCoord="547"/>
+    </arc>
+    <arc id="t_rev_arc_3_4 to p_count_2" inscription="1" nameOffsetX="0.0" nameOffsetY="0.0" source="t_rev_arc_3_4" target="p_count_2" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="461" yCoord="890"/>
+      <arcpath arcPointType="false" id="1" xCoord="215" yCoord="549"/>
+    </arc>
+    <arc id="p_count_2 to T2" inscription="[0,inf)" nameOffsetX="0.0" nameOffsetY="0.0" source="p_count_2" target="T2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="198" yCoord="524"/>
+      <arcpath arcPointType="false" id="1" xCoord="151" yCoord="462"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="100" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="true" hashTableSize="null" inclusionPlaces="*NONE*" name="first" overApproximation="true" pTrie="true" query="EF (TAPN_full_5.P_count &gt;= 50 and TAPN_full_5.P_time = 1)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true"/>
+  <query active="true" approximationDenominator="2" capacity="100" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="true" hashTableSize="null" inclusionPlaces="*NONE*" name="third" overApproximation="true" pTrie="true" query="AG !(TAPN_full_5.P_count &gt;= 1 and TAPN_full_5.p_count_2 &gt;= 1 and TAPN_full_5.P_time = 1)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true"/>
+  <k-bound bound="3"/>
+</pnml>

@@ -1,0 +1,750 @@
+{
+  "graph" : {
+    "directed" : true,
+    "id" : "key_30",
+    "type" : "metric graph",
+    "label" : "key_30",
+    "nodes" : {
+      "n1" : {
+        "label" : "n1"
+      },
+      "n2" : {
+        "label" : "n2"
+      },
+      "n3" : {
+        "label" : "n3"
+      },
+      "n4" : {
+        "label" : "n4"
+      },
+      "n5" : {
+        "label" : "n5"
+      },
+      "n6" : {
+        "label" : "n6"
+      },
+      "n7" : {
+        "label" : "n7"
+      },
+      "n8" : {
+        "label" : "n8"
+      },
+      "n9" : {
+        "label" : "n9"
+      },
+      "n10" : {
+        "label" : "n10"
+      },
+      "n11" : {
+        "label" : "n11"
+      },
+      "n12" : {
+        "label" : "n12"
+      },
+      "n13" : {
+        "label" : "n13"
+      },
+      "n14" : {
+        "label" : "n14"
+      },
+      "n15" : {
+        "label" : "n15"
+      },
+      "n16" : {
+        "label" : "n16"
+      },
+      "n17" : {
+        "label" : "n17"
+      },
+      "n18" : {
+        "label" : "n18"
+      },
+      "n19" : {
+        "label" : "n19"
+      },
+      "n20" : {
+        "label" : "n20"
+      },
+      "n21" : {
+        "label" : "n21"
+      },
+      "n22" : {
+        "label" : "n22"
+      },
+      "n23" : {
+        "label" : "n23"
+      },
+      "n24" : {
+        "label" : "n24"
+      },
+      "n25" : {
+        "label" : "n25"
+      },
+      "n26" : {
+        "label" : "n26"
+      },
+      "n27" : {
+        "label" : "n27"
+      },
+      "n28" : {
+        "label" : "n28"
+      },
+      "n29" : {
+        "label" : "n29"
+      },
+      "n30" : {
+        "label" : "n30"
+      },
+      "t1" : {
+        "label" : "t1"
+      },
+      "t2" : {
+        "label" : "t2"
+      }
+    },
+    "edges" : [ {
+      "id" : "arc2",
+      "source" : "n1",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "arc2",
+      "metadata" : {
+        "points" : [ {
+          "id" : "p",
+          "position" : 0.0
+        } ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_arc2",
+      "source" : "n2",
+      "target" : "n1",
+      "relation" : "nodes connection",
+      "label" : "rev_arc2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "arc3",
+      "source" : "n2",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_arc3",
+      "source" : "n3",
+      "target" : "n2",
+      "relation" : "nodes connection",
+      "label" : "rev_arc3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "arc4",
+      "source" : "n3",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "arc4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_arc4",
+      "source" : "n4",
+      "target" : "n3",
+      "relation" : "nodes connection",
+      "label" : "rev_arc4",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "arc5",
+      "source" : "n4",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "arc5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "rev_arc5",
+      "source" : "n5",
+      "target" : "n4",
+      "relation" : "nodes connection",
+      "label" : "rev_arc5",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "arc6",
+      "source" : "n5",
+      "target" : "n6",
+      "relation" : "nodes connection",
+      "label" : "arc6",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 28.0
+      }
+    }, {
+      "id" : "rev_arc6",
+      "source" : "n6",
+      "target" : "n5",
+      "relation" : "nodes connection",
+      "label" : "rev_arc6",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 28.0
+      }
+    }, {
+      "id" : "arc7",
+      "source" : "n6",
+      "target" : "n7",
+      "relation" : "nodes connection",
+      "label" : "arc7",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "rev_arc7",
+      "source" : "n7",
+      "target" : "n6",
+      "relation" : "nodes connection",
+      "label" : "rev_arc7",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 26.0
+      }
+    }, {
+      "id" : "arc8",
+      "source" : "n7",
+      "target" : "n8",
+      "relation" : "nodes connection",
+      "label" : "arc8",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 23.0
+      }
+    }, {
+      "id" : "rev_arc8",
+      "source" : "n8",
+      "target" : "n7",
+      "relation" : "nodes connection",
+      "label" : "rev_arc8",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 23.0
+      }
+    }, {
+      "id" : "arc9",
+      "source" : "n8",
+      "target" : "n9",
+      "relation" : "nodes connection",
+      "label" : "arc9",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 11.0
+      }
+    }, {
+      "id" : "rev_arc9",
+      "source" : "n9",
+      "target" : "n8",
+      "relation" : "nodes connection",
+      "label" : "rev_arc9",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 11.0
+      }
+    }, {
+      "id" : "arc10",
+      "source" : "n9",
+      "target" : "n10",
+      "relation" : "nodes connection",
+      "label" : "arc10",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "rev_arc10",
+      "source" : "n10",
+      "target" : "n9",
+      "relation" : "nodes connection",
+      "label" : "rev_arc10",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 9.0
+      }
+    }, {
+      "id" : "arc11",
+      "source" : "n10",
+      "target" : "n11",
+      "relation" : "nodes connection",
+      "label" : "arc11",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 11.0
+      }
+    }, {
+      "id" : "rev_arc11",
+      "source" : "n11",
+      "target" : "n10",
+      "relation" : "nodes connection",
+      "label" : "rev_arc11",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 11.0
+      }
+    }, {
+      "id" : "arc12",
+      "source" : "n11",
+      "target" : "n12",
+      "relation" : "nodes connection",
+      "label" : "arc12",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "rev_arc12",
+      "source" : "n12",
+      "target" : "n11",
+      "relation" : "nodes connection",
+      "label" : "rev_arc12",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 1.0
+      }
+    }, {
+      "id" : "arc13",
+      "source" : "n12",
+      "target" : "n13",
+      "relation" : "nodes connection",
+      "label" : "arc13",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_arc13",
+      "source" : "n13",
+      "target" : "n12",
+      "relation" : "nodes connection",
+      "label" : "rev_arc13",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "arc14",
+      "source" : "n13",
+      "target" : "n14",
+      "relation" : "nodes connection",
+      "label" : "arc14",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_arc14",
+      "source" : "n14",
+      "target" : "n13",
+      "relation" : "nodes connection",
+      "label" : "rev_arc14",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "arc15",
+      "source" : "n14",
+      "target" : "n15",
+      "relation" : "nodes connection",
+      "label" : "arc15",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 24.0
+      }
+    }, {
+      "id" : "rev_arc15",
+      "source" : "n15",
+      "target" : "n14",
+      "relation" : "nodes connection",
+      "label" : "rev_arc15",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 24.0
+      }
+    }, {
+      "id" : "arc16",
+      "source" : "n15",
+      "target" : "n16",
+      "relation" : "nodes connection",
+      "label" : "arc16",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc16",
+      "source" : "n16",
+      "target" : "n15",
+      "relation" : "nodes connection",
+      "label" : "rev_arc16",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc17",
+      "source" : "n16",
+      "target" : "n17",
+      "relation" : "nodes connection",
+      "label" : "arc17",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 25.0
+      }
+    }, {
+      "id" : "rev_arc17",
+      "source" : "n17",
+      "target" : "n16",
+      "relation" : "nodes connection",
+      "label" : "rev_arc17",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 25.0
+      }
+    }, {
+      "id" : "arc18",
+      "source" : "n17",
+      "target" : "n18",
+      "relation" : "nodes connection",
+      "label" : "arc18",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "rev_arc18",
+      "source" : "n18",
+      "target" : "n17",
+      "relation" : "nodes connection",
+      "label" : "rev_arc18",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 3.0
+      }
+    }, {
+      "id" : "arc19",
+      "source" : "n18",
+      "target" : "n19",
+      "relation" : "nodes connection",
+      "label" : "arc19",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 7.0
+      }
+    }, {
+      "id" : "rev_arc19",
+      "source" : "n19",
+      "target" : "n18",
+      "relation" : "nodes connection",
+      "label" : "rev_arc19",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 7.0
+      }
+    }, {
+      "id" : "arc20",
+      "source" : "n19",
+      "target" : "n20",
+      "relation" : "nodes connection",
+      "label" : "arc20",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_arc20",
+      "source" : "n20",
+      "target" : "n19",
+      "relation" : "nodes connection",
+      "label" : "rev_arc20",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "arc21",
+      "source" : "n20",
+      "target" : "n21",
+      "relation" : "nodes connection",
+      "label" : "arc21",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 19.0
+      }
+    }, {
+      "id" : "rev_arc21",
+      "source" : "n21",
+      "target" : "n20",
+      "relation" : "nodes connection",
+      "label" : "rev_arc21",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 19.0
+      }
+    }, {
+      "id" : "arc22",
+      "source" : "n21",
+      "target" : "n22",
+      "relation" : "nodes connection",
+      "label" : "arc22",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 29.0
+      }
+    }, {
+      "id" : "rev_arc22",
+      "source" : "n22",
+      "target" : "n21",
+      "relation" : "nodes connection",
+      "label" : "rev_arc22",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 29.0
+      }
+    }, {
+      "id" : "arc23",
+      "source" : "n22",
+      "target" : "n23",
+      "relation" : "nodes connection",
+      "label" : "arc23",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "rev_arc23",
+      "source" : "n23",
+      "target" : "n22",
+      "relation" : "nodes connection",
+      "label" : "rev_arc23",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 17.0
+      }
+    }, {
+      "id" : "arc24",
+      "source" : "n23",
+      "target" : "n24",
+      "relation" : "nodes connection",
+      "label" : "arc24",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "rev_arc24",
+      "source" : "n24",
+      "target" : "n23",
+      "relation" : "nodes connection",
+      "label" : "rev_arc24",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 13.0
+      }
+    }, {
+      "id" : "arc25",
+      "source" : "n24",
+      "target" : "n25",
+      "relation" : "nodes connection",
+      "label" : "arc25",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "rev_arc25",
+      "source" : "n25",
+      "target" : "n24",
+      "relation" : "nodes connection",
+      "label" : "rev_arc25",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "arc26",
+      "source" : "n25",
+      "target" : "n26",
+      "relation" : "nodes connection",
+      "label" : "arc26",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "rev_arc26",
+      "source" : "n26",
+      "target" : "n25",
+      "relation" : "nodes connection",
+      "label" : "rev_arc26",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "arc27",
+      "source" : "n26",
+      "target" : "n27",
+      "relation" : "nodes connection",
+      "label" : "arc27",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "rev_arc27",
+      "source" : "n27",
+      "target" : "n26",
+      "relation" : "nodes connection",
+      "label" : "rev_arc27",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 4.0
+      }
+    }, {
+      "id" : "arc28",
+      "source" : "n27",
+      "target" : "n28",
+      "relation" : "nodes connection",
+      "label" : "arc28",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 29.0
+      }
+    }, {
+      "id" : "rev_arc28",
+      "source" : "n28",
+      "target" : "n27",
+      "relation" : "nodes connection",
+      "label" : "rev_arc28",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 29.0
+      }
+    }, {
+      "id" : "arc29",
+      "source" : "n28",
+      "target" : "n29",
+      "relation" : "nodes connection",
+      "label" : "arc29",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "rev_arc29",
+      "source" : "n29",
+      "target" : "n28",
+      "relation" : "nodes connection",
+      "label" : "rev_arc29",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 15.0
+      }
+    }, {
+      "id" : "arc30",
+      "source" : "n29",
+      "target" : "n30",
+      "relation" : "nodes connection",
+      "label" : "arc30",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "rev_arc30",
+      "source" : "n30",
+      "target" : "n29",
+      "relation" : "nodes connection",
+      "label" : "rev_arc30",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 27.0
+      }
+    }, {
+      "id" : "c1",
+      "source" : "n30",
+      "target" : "t1",
+      "relation" : "nodes connection",
+      "label" : "c1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "rev_c1",
+      "source" : "t1",
+      "target" : "n30",
+      "relation" : "nodes connection",
+      "label" : "rev_c1",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 10.0
+      }
+    }, {
+      "id" : "c2",
+      "source" : "t1",
+      "target" : "t2",
+      "relation" : "nodes connection",
+      "label" : "c2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "rev_c2",
+      "source" : "t2",
+      "target" : "t1",
+      "relation" : "nodes connection",
+      "label" : "rev_c2",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 2.0
+      }
+    }, {
+      "id" : "c3",
+      "source" : "t2",
+      "target" : "n30",
+      "relation" : "nodes connection",
+      "label" : "c3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    }, {
+      "id" : "rev_c3",
+      "source" : "n30",
+      "target" : "t2",
+      "relation" : "nodes connection",
+      "label" : "rev_c3",
+      "metadata" : {
+        "points" : [ ],
+        "length" : 22.0
+      }
+    } ]
+  }
+}
